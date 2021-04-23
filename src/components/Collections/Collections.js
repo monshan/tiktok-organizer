@@ -1,7 +1,9 @@
-const Collections = () => {
+const Collections = ({ toRender }) => {
 
   return (
-    <div></div>
+    <section>
+      
+    </section>
   )
 };
 

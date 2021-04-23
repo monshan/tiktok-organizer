@@ -13,7 +13,7 @@ const App = () => {
       <main>
         <input type="text" />
         <button>Open Modal</button>
-        <Collections />
+        <Collections toRender={ collections }/>
       </main>
     </div>
   );
