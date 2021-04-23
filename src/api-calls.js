@@ -1,6 +1,4 @@
-const getOembed = (desiredClip) => {
-  fetch(`https://www.tiktok.com/oembed?url=${desiredClip}`)
+export const getOembed = (desiredClip) => {
+  return fetch(`https://www.tiktok.com/oembed?url=${desiredClip}`)
     .then(result => result.json())
-}
-
-export default getOembed;
+};
