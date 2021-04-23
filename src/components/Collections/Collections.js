@@ -1,16 +1,16 @@
 import getOembed from '../../api-calls';
 
-const Collections = ({ toRender }) => {
+const Collections = ( props ) => {
 
   const cleanGetReq = (singleUrl) => {
     getOembed(singleUrl)
-      .then(result => result.html)
+      .then(cleaned => cleaned)
       .catch(error => console.log(error))
   }
 
   return (
     <section>
-      { cleanGetReq(toRender.urls[0]) }
+      { cleanGetReq(props.toRender[0].urls[0]) }
     </section>
   )
 };
