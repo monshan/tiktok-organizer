@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@material-ui/core": "^4.11.3",
+    "node-sass": "^5.0.0",
     "react-router": "^5.2.0"
   }
 }
