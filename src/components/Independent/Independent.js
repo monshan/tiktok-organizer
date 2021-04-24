@@ -1,13 +1,20 @@
+import { CardContent, CardMedia, Typography } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+
 const Independent = ({ title, author_name, html, thumbnail_url }) => {
   return (
     <Card>
-      <h2>{ title }</h2>
-      <p>{ author_name }</p>
-      <img src={ thumbnail_url } />
+      <CardMedia image={ thumbnail_url } component="img"/>
+      <CardContent>
+        <Typography variant="h5">
+          { title }
+        </Typography>
+        <Typography variant="subtitle1">
+          { author_name }
+        </Typography>
+      </CardContent>
     </Card>
   )
 }
-
-
 
 export default Independent;
