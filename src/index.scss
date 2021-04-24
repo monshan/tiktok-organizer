@@ -1,4 +1,9 @@
-@import './components/App/App.scss';
+@import './partials/variables',
+'./partials/extends',
+'./partials/mixins',
+'./components/App/App.scss',
+'./components/Collections/Collections.js',
+'./components/Independent/Independent.scss';
 
 body {
   margin: 0;

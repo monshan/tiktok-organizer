@@ -30,7 +30,7 @@ const Collections = ({ collectionDet }) => {
   // }, [cardUrls])
 
   return (
-    <section>
+    <section className="collection">
       { renderAllCards() }
     </section>
   )
