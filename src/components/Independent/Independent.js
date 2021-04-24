@@ -16,7 +16,7 @@ const Independent = ({ tiktoksrc }) => {
         setThumbnail(oembed.thumbnail_url);
       })
       .catch(error => setError(error))
-  }, [title, author, thumbnail, error])
+  }, [tiktoksrc, title, author, thumbnail, error])
 
   return (
     <Card>
