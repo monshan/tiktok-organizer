@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "@material-ui/core": "^4.11.3",
+    "cypress": "^7.1.0",
+    "node-sass": "^5.0.0",
     "react-router": "^5.2.0"
   }
 }
