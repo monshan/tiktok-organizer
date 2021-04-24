@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import Independent from '../Independent/Independent';
 
 const Collections = ({ collectionDet }) => {
-  const [cardUrls, setCardUrls] = useState([...collectionDet.urls]);
+  // const [cardUrls, setCardUrls] = useState([]);
 
   // const cleanGetReq = async (singleUrl) => {
   //   try {
@@ -15,11 +15,11 @@ const Collections = ({ collectionDet }) => {
   // }
 
   const renderAllCards = () => {
-    return cardUrls.map(url => {
+    return collectionDet.urls.map(url => {
       return (
       <Independent 
         key={ url.substring(23, 63) }
-        url={ url }
+        tiktoksrc={ url }
       />
       )
     })

@@ -1,15 +1,33 @@
 import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { useEffect, useState } from 'react';
+import { getOembed } from '../../api-calls';
 
-const Independent = ({ title, author_name, html, thumbnail_url }) => {
+const Independent = ({ tiktoksrc }) => {
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [thumbnail, setThumbnail] = useState('');
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    getOembed(tiktoksrc)
+      .then(oembed => {
+        setTitle(oembed.title);
+        setAuthor(oembed.author_name);
+        setThumbnail(oembed.thumbnail_url);
+      })
+      .catch(error => setError(error))
+  }, [title, author, thumbnail, error])
+
   return (
     <Card>
-      <CardMedia image={ thumbnail_url } component="img"/>
+      <CardMedia image={ thumbnail } component="img"/>
       <CardContent>
+        {error && <Typography variant="h3">{ error }</Typography> }
         <Typography variant="h5">
           { title }
         </Typography>
         <Typography variant="subtitle1">
-          { author_name }
+          { author }
         </Typography>
       </CardContent>
     </Card>
