@@ -20,7 +20,7 @@ const App = () => {
     return collections.map(collection => {
       return (
         <Collections
-        key={ `collection-${ Date.now() }` } 
+        key={ collection.title ? collection.title : `single-${ collection.urls[0].substring(23, 63) }` } 
         collectionDet={ collection }
         />
       )

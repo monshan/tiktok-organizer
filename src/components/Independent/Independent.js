@@ -1,5 +1,4 @@
-import { CardContent, CardMedia, Typography } from '@material-ui/core';
-import Card from '@material-ui/core/Card';
+import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 
 const Independent = ({ title, author_name, html, thumbnail_url }) => {
   return (
