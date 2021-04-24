@@ -8,12 +8,20 @@ const App = () => {
     }
   ]);
 
+  const renderAllCollections = () => {
+    return collections.map(collection => {
+      return <Collection toRender={ collection }/>
+    })
+  }
+
   return (
     <div className="App">
       <main>
         <input type="text" />
         <button>Open Modal</button>
-        <Collections toRender={ collections }/>
+          <section className="" >
+            { renderAllCollections() }
+          </section>
       </main>
     </div>
   );
