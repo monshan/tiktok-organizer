@@ -6,14 +6,14 @@ const App = () => {
     title: 'List 1',
     type: 'collection',
     urls: [
-      'https://www.tiktok.com/@diogoramos180/video/6946607853092343046?lang=en&is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6925894707823576582',
-      'https://www.tiktok.com/@krisfire98/video/6954138999200009477?lang=en&is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6925894707823576582'
+      'https://www.tiktok.com/@diogoramos180/video/6946607853092343046?lang=en',
+      'https://www.tiktok.com/@krisfire98/video/6954138999200009477?lang=en'
     ]
   },
   {
     title: null,
     type: 'single',
-    urls: ['https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en&is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6925894707823576582']
+    urls: ['https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en']
   }]);
 
   const renderAllCollections = () => {
@@ -30,7 +30,8 @@ const App = () => {
   return (
     <div className="App">
       <main>
-        <input type="url" placeholder="Paste any tiktok link here!" size="100" pattern="https://www.tiktok.com/*" required/>
+        <input type="search" name="query" placeholder="search by collection, tiktok title, tiktok author, or sound" autoComplete="on"/>
+        <input type="url" name="input-url" placeholder="Paste any tiktok link here!" size="100" maxLength="59" pattern="https://www.tiktok.com/*" required/>
         <button>Open Form to Add TikTok</button>
           <section className="" >
             { renderAllCollections() }
