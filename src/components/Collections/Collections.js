@@ -1,36 +1,29 @@
 import { useEffect } from 'react';
 import { getOembed } from '../../api-calls';
 
-const Collections = ( props ) => {
-  const [cards, setCards] = useState([...props.toRender]);
-
-  const loopToRender = () => {
-    return cards.map(card => {
-      return (
-        <h2>{ card.author_name }</h2>
-      )
-    })
-  }
+const Collections = ({ collectionDet }) => {
+  const [cards, setCards] = useState([...collectionDet.urls]);
 
   const cleanGetReq = (singleUrl) => {
     getOembed(singleUrl)
-      .then(cleaned => {
-        if (!cleaned.ok) {
+      .then(clean => {
+        if (!clean.ok) {
           throw new Error('Couldn\'t retrieve that tiktok from the Oembed API' )
         } else {
-          setCards([...cards, cleaned]);
+          setCards([...cards, clean]);
         }
       })
       .catch(error => console.log(error))
   }
 
-  // useEffect(() => {
-
-  // }, [])
+  useEffect(() => {
+    cards.forEach(card => cleanGetReq(card))
+    // cleanGetReq(props.toRender[0].urls[0])
+  }, [])
 
   return (
     <section>
-      { cleanGetReq(props.toRender[0].urls[0]) }
+      { renderAllCards() }
     </section>
   )
 };
