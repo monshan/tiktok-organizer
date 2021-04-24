@@ -1,0 +1,11 @@
+%italic-body {
+  font-family: $body-font;
+  font-weight: 400;
+  font-style: italic;
+}
+
+%italic-light-body {
+  font-family: $body-font;
+  font-weight: 300;
+  font-style: italic;
+}
