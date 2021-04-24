@@ -30,8 +30,8 @@ const App = () => {
   return (
     <div className="App">
       <main>
-        <input type="text" />
-        <button>Open Modal</button>
+        <input type="url" placeholder="Paste any tiktok link here!" size="100" pattern="https://www.tiktok.com/*" required/>
+        <button>Open Form to Add TikTok</button>
           <section className="" >
             { renderAllCollections() }
           </section>
