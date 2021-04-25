@@ -1,20 +1,27 @@
+import { AppBar, IconButton, InputBase, Step, Stepper, StepLabel, Toolbar, Typography } from "@material-ui/core";
+import MenuIcon from '@material-ui/icons/Menu';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import SearchIcon from '@material-ui/icons/Search';
+import HelpIcon from '@material-ui/icons/Help';
 import { useState } from "react";
 import Collections from '../Collections/Collections';
+import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
 
 const App = () => {
   const [collections, setCollections] = useState([{ 
     title: 'List 1',
     type: 'collection',
     urls: [
-      'https://www.tiktok.com/@diogoramos180/video/6946607853092343046?lang=en&is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6925894707823576582',
-      'https://www.tiktok.com/@krisfire98/video/6954138999200009477?lang=en&is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6925894707823576582'
+      'https://www.tiktok.com/@diogoramos180/video/6946607853092343046?lang=en',
+      'https://www.tiktok.com/@krisfire98/video/6954138999200009477?lang=en'
     ]
   },
   {
     title: null,
     type: 'single',
-    urls: ['https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en&is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6925894707823576582']
+    urls: ['https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en']
   }]);
+  
 
   const renderAllCollections = () => {
     return collections.map(collection => {
@@ -27,11 +34,58 @@ const App = () => {
     })
   }
 
+  const [dialogOpen, setdialogOpen] = useState(false);
+
+  const openFormDialog = () => {
+    setdialogOpen(true);
+  }
+
+  const closeFormDialog = () => {
+    setdialogOpen(false);
+  }
+
+  const addTikTok = (url) => {
+    const newEntry = {
+      title: null,
+      type: 'single',
+      urls: [url]
+    }
+    setCollections([...collections, newEntry])
+    closeFormDialog();
+  }
+
   return (
     <div className="App">
       <main>
-        <input type="text" />
-        <button>Open Modal</button>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton>
+              <MenuIcon />
+            </IconButton>
+            <Typography>TTTracker</Typography>
+            <SearchIcon />
+            <InputBase
+              placeholder="Search collections..."
+            />
+            <IconButton
+              onClick={ openFormDialog }>
+              <AddBoxIcon />
+            </IconButton>
+            <IconButton>
+              <HelpIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <AddTikTokForm 
+          status={ dialogOpen }
+          addTikTok={ addTikTok }
+          closeForm={ closeFormDialog }
+        />
+        <Stepper>
+          <Step key="arbitrary-step">
+            <StepLabel>Just a test for Stepper</StepLabel>
+          </Step>
+        </Stepper>
           <section className="" >
             { renderAllCollections() }
           </section>
