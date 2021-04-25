@@ -1,4 +1,7 @@
-import { AppBar } from "@material-ui/core";
+import { AppBar, IconButton, InputBase, Step, Stepper, StepLabel, Toolbar, Typography } from "@material-ui/core";
+import MenuIcon from '@material-ui/icons/Menu';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import SearchIcon from '@material-ui/icons/Search';
 import { useState } from "react";
 import Collections from '../Collections/Collections';
 
@@ -32,10 +35,27 @@ const App = () => {
     <div className="App">
       <main>
         <AppBar position="static">
-          
+          <Toolbar>
+            <IconButton>
+              <MenuIcon />
+            </IconButton>
+            <Typography>TTTracker</Typography>
+            <SearchIcon />
+            <InputBase
+              placeholder="Search collections..."
+            />
+            <IconButton>
+              <AddBoxIcon />
+            </IconButton>
+          </Toolbar>
         </AppBar>
-        <input type="search" name="query" placeholder="search by collection, tiktok title, tiktok author, or sound" autoComplete="on"/>
+        {/* <input type="search" name="query" placeholder="search by collection, tiktok title, tiktok author, or sound" autoComplete="on"/> */}
         <input type="url" name="input-url" placeholder="Paste any tiktok link here!" size="70" maxLength="59" pattern="https://www.tiktok.com/*" required/>
+        <Stepper>
+          <Step key="arbitrary-step">
+            <StepLabel>Just a test for Stepper</StepLabel>
+          </Step>
+        </Stepper>
         <button>Open Form to Add TikTok</button>
           <section className="" >
             { renderAllCollections() }
