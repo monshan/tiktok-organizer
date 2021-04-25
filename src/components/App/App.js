@@ -1,4 +1,4 @@
-import { AppBar, IconButton, InputBase, Step, Stepper, StepLabel, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, IconButton, InputBase, Step, Stepper, StepLabel, Toolbar, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, FormControl, TextField } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import SearchIcon from '@material-ui/icons/Search';
@@ -19,6 +19,8 @@ const App = () => {
     type: 'single',
     urls: ['https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en']
   }]);
+  const [dialogOpen, setdialogOpen] = useState(false);
+  
 
   const renderAllCollections = () => {
     return collections.map(collection => {
@@ -29,6 +31,10 @@ const App = () => {
         />
       )
     })
+  }
+
+  const openFormDialog = () => {
+    setdialogOpen(true);
   }
 
   return (
@@ -44,19 +50,41 @@ const App = () => {
             <InputBase
               placeholder="Search collections..."
             />
-            <IconButton>
+            <IconButton
+              onClick={ openFormDialog }>
               <AddBoxIcon />
             </IconButton>
           </Toolbar>
         </AppBar>
+        <Dialog open={ dialogOpen }>
+          <DialogTitle>
+            Add a TikTok to your space
+          </DialogTitle>
+          <DialogContent>
+            <FormControl>
+              <TextField
+                fullWidth="true"
+                placeholder="https://www.tiktok.com/~"
+                type="string"
+                variant="filled"
+              />
+            </FormControl>
+            {/* <InputBase
+              placeholder="https://www.tiktok.com/~"
+            /> */}
+            <DialogContentText>
+              Paste any tiktok in the input above. No worries about formatting, we can handle it for you!
+            </DialogContentText>
+          </DialogContent>
+        </Dialog>
         {/* <input type="search" name="query" placeholder="search by collection, tiktok title, tiktok author, or sound" autoComplete="on"/> */}
-        <input type="url" name="input-url" placeholder="Paste any tiktok link here!" size="70" maxLength="59" pattern="https://www.tiktok.com/*" required/>
+        {/* <input type="url" name="input-url" placeholder="Paste any tiktok link here!" size="70" maxLength="59" pattern="https://www.tiktok.com/*" required/> */}
         <Stepper>
           <Step key="arbitrary-step">
             <StepLabel>Just a test for Stepper</StepLabel>
           </Step>
         </Stepper>
-        <button>Open Form to Add TikTok</button>
+        {/* <button>Open Form to Add TikTok</button> */}
           <section className="" >
             { renderAllCollections() }
           </section>
