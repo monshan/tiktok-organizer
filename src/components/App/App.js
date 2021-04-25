@@ -1,4 +1,4 @@
-import { AppBar, IconButton, InputBase, Step, Stepper, StepLabel, Toolbar, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, FormControl, TextField } from "@material-ui/core";
+import { AppBar, IconButton, InputBase, Step, Stepper, StepLabel, Toolbar, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, FormControl, TextField, DialogActions, Button } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import SearchIcon from '@material-ui/icons/Search';
@@ -63,22 +63,26 @@ const App = () => {
           <DialogContent>
             <FormControl>
               <TextField
-                fullWidth="true"
                 placeholder="https://www.tiktok.com/~"
                 type="string"
                 variant="filled"
+                autoFocus
+                fullWidth
               />
             </FormControl>
-            {/* <InputBase
-              placeholder="https://www.tiktok.com/~"
-            /> */}
             <DialogContentText>
               Paste any tiktok in the input above. No worries about formatting, we can handle it for you!
             </DialogContentText>
           </DialogContent>
+          <DialogActions>
+            <Button onClick={}>
+              Submit
+            </Button>
+            <Button onClick={}>
+              Cancel
+            </Button>
+          </DialogActions>
         </Dialog>
-        {/* <input type="search" name="query" placeholder="search by collection, tiktok title, tiktok author, or sound" autoComplete="on"/> */}
-        {/* <input type="url" name="input-url" placeholder="Paste any tiktok link here!" size="70" maxLength="59" pattern="https://www.tiktok.com/*" required/> */}
         <Stepper>
           <Step key="arbitrary-step">
             <StepLabel>Just a test for Stepper</StepLabel>
