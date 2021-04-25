@@ -4,6 +4,7 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import SearchIcon from '@material-ui/icons/Search';
 import { useState } from "react";
 import Collections from '../Collections/Collections';
+import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
 
 const App = () => {
   const [collections, setCollections] = useState([{ 
@@ -19,7 +20,6 @@ const App = () => {
     type: 'single',
     urls: ['https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en']
   }]);
-  const [dialogOpen, setdialogOpen] = useState(false);
   
 
   const renderAllCollections = () => {
@@ -33,8 +33,14 @@ const App = () => {
     })
   }
 
+  const [dialogOpen, setdialogOpen] = useState(false);
+
   const openFormDialog = () => {
     setdialogOpen(true);
+  }
+
+  const closeFormDialog = () => {
+    setdialogOpen(false);
   }
 
   return (
@@ -56,33 +62,10 @@ const App = () => {
             </IconButton>
           </Toolbar>
         </AppBar>
-        <Dialog open={ dialogOpen }>
-          <DialogTitle>
-            Add a TikTok to your space
-          </DialogTitle>
-          <DialogContent>
-            <FormControl>
-              <TextField
-                placeholder="https://www.tiktok.com/~"
-                type="string"
-                variant="filled"
-                autoFocus
-                fullWidth
-              />
-            </FormControl>
-            <DialogContentText>
-              Paste any tiktok in the input above. No worries about formatting, we can handle it for you!
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={}>
-              Submit
-            </Button>
-            <Button onClick={}>
-              Cancel
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <AddTikTokForm 
+          status={ dialogOpen }
+          closeForm={ closeFormDialog }
+        />
         <Stepper>
           <Step key="arbitrary-step">
             <StepLabel>Just a test for Stepper</StepLabel>
