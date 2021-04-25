@@ -1,10 +1,11 @@
-import { AppBar, IconButton, InputBase, Step, Stepper, StepLabel, Toolbar, Typography } from "@material-ui/core";
-import MenuIcon from '@material-ui/icons/Menu';
-import AddBoxIcon from '@material-ui/icons/AddBox';
-import SearchIcon from '@material-ui/icons/Search';
-import HelpIcon from '@material-ui/icons/Help';
+import { Step, Stepper, StepLabel } from "@material-ui/core";
+// import MenuIcon from '@material-ui/icons/Menu';
+// import AddBoxIcon from '@material-ui/icons/AddBox';
+// import SearchIcon from '@material-ui/icons/Search';
+// import HelpIcon from '@material-ui/icons/Help';
 import { useState } from "react";
 import Collections from '../Collections/Collections';
+import NavBar from '../NavBar/NavBar'; 
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
 
 const App = () => {
@@ -57,25 +58,9 @@ const App = () => {
   return (
     <div className="App">
       <main>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton>
-              <MenuIcon />
-            </IconButton>
-            <Typography>TTTracker</Typography>
-            <SearchIcon />
-            <InputBase
-              placeholder="Search collections..."
-            />
-            <IconButton
-              onClick={ openFormDialog }>
-              <AddBoxIcon />
-            </IconButton>
-            <IconButton>
-              <HelpIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
+        <NavBar 
+          openForm={ openFormDialog }
+        />
         <AddTikTokForm 
           status={ dialogOpen }
           addTikTok={ addTikTok }
