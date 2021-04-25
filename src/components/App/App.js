@@ -1,12 +1,9 @@
 import { Step, Stepper, StepLabel } from "@material-ui/core";
-// import MenuIcon from '@material-ui/icons/Menu';
-// import AddBoxIcon from '@material-ui/icons/AddBox';
-// import SearchIcon from '@material-ui/icons/Search';
-// import HelpIcon from '@material-ui/icons/Help';
 import { useState } from "react";
 import Collections from '../Collections/Collections';
 import NavBar from '../NavBar/NavBar'; 
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
+import { Route, Switch } from "react-router";
 
 const App = () => {
   const [collections, setCollections] = useState([{ 
@@ -66,14 +63,21 @@ const App = () => {
           addTikTok={ addTikTok }
           closeForm={ closeFormDialog }
         />
-        <Stepper>
+        <Switch>
+          <Route exact path="/">
+
+          </Route>
+          <Route path="/mycollections">
+            <section className="" >
+              { renderAllCollections() }
+            </section>
+          </Route>
+        </Switch>
+        {/* <Stepper>
           <Step key="arbitrary-step">
             <StepLabel>Just a test for Stepper</StepLabel>
           </Step>
-        </Stepper>
-          <section className="" >
-            { renderAllCollections() }
-          </section>
+        </Stepper> */}
       </main>
     </div>
   );
