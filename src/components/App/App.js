@@ -3,6 +3,7 @@ import { useState } from "react";
 import Collections from '../Collections/Collections';
 import NavBar from '../NavBar/NavBar'; 
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
+import Home from '../Home/Home';
 import { Route, Switch } from "react-router";
 
 const App = () => {
@@ -20,7 +21,6 @@ const App = () => {
     urls: ['https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en']
   }]);
   
-
   const renderAllCollections = () => {
     return collections.map(collection => {
       return (
@@ -31,6 +31,12 @@ const App = () => {
       )
     })
   }
+
+  const [initTikToks, setInitTikToks] = useState([
+    'https://www.tiktok.com/@diogoramos180/video/6946607853092343046?lang=en',
+    'https://www.tiktok.com/@krisfire98/video/6954138999200009477?lang=en',
+    'https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en'
+  ])
 
   const [dialogOpen, setdialogOpen] = useState(false);
 
@@ -65,7 +71,7 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
-
+            <Home initTikToks={ initTikToks } />
           </Route>
           <Route path="/mycollections">
             <section className="" >
