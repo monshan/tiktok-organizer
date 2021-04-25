@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, FormControl, TextField, DialogActions, Button } from "@material-ui/core";
 
-const AddTikTokForm = ({ status, closeForm }) => {
+const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
+  const [tikTokInput, setTikTokInput] = useState('');
+
   return (
     <Dialog open={ status }>
       <DialogTitle>
@@ -12,6 +15,8 @@ const AddTikTokForm = ({ status, closeForm }) => {
             placeholder="https://www.tiktok.com/~"
             type="string"
             variant="filled"
+            name="userTikTokInput"
+            onChange={event => setTikTokInput(event.target.value) }
             autoFocus
             fullWidth
           />
@@ -21,7 +26,7 @@ const AddTikTokForm = ({ status, closeForm }) => {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={ closeForm }>
+        <Button onClick={ () => addTikTok(tikTokInput) }>
           Submit
         </Button>
         <Button onClick={ closeForm }>

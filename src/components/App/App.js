@@ -1,7 +1,8 @@
-import { AppBar, IconButton, InputBase, Step, Stepper, StepLabel, Toolbar, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, FormControl, TextField, DialogActions, Button } from "@material-ui/core";
+import { AppBar, IconButton, InputBase, Step, Stepper, StepLabel, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import SearchIcon from '@material-ui/icons/Search';
+import HelpIcon from '@material-ui/icons/Help';
 import { useState } from "react";
 import Collections from '../Collections/Collections';
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
@@ -43,6 +44,16 @@ const App = () => {
     setdialogOpen(false);
   }
 
+  const addTikTok = (url) => {
+    const newEntry = {
+      title: null,
+      type: 'single',
+      urls: [url]
+    }
+    setCollections([...collections, newEntry])
+    closeFormDialog();
+  }
+
   return (
     <div className="App">
       <main>
@@ -60,10 +71,14 @@ const App = () => {
               onClick={ openFormDialog }>
               <AddBoxIcon />
             </IconButton>
+            <IconButton>
+              <HelpIcon />
+            </IconButton>
           </Toolbar>
         </AppBar>
         <AddTikTokForm 
           status={ dialogOpen }
+          addTikTok={ addTikTok }
           closeForm={ closeFormDialog }
         />
         <Stepper>
@@ -71,7 +86,6 @@ const App = () => {
             <StepLabel>Just a test for Stepper</StepLabel>
           </Step>
         </Stepper>
-        {/* <button>Open Form to Add TikTok</button> */}
           <section className="" >
             { renderAllCollections() }
           </section>
