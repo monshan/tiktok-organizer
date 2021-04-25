@@ -49,12 +49,13 @@ const App = () => {
   }
 
   const addTikTok = (url) => {
-    const newEntry = {
-      title: null,
-      type: 'single',
-      urls: [url]
-    }
-    setCollections([...collections, newEntry])
+    // const newEntry = {
+    //   title: null,
+    //   type: 'single',
+    //   urls: [url]
+    // }
+    // setCollections([...collections, newEntry])
+    setInitTikToks([...initTikToks, url])
     closeFormDialog();
   }
 

@@ -1,4 +1,5 @@
 import Independent from '../Independent/Independent';
+import { Grid } from '@material-ui/core';
 
 const Home = ({ initTikToks }) => {
   const renderAsCards = () => {
@@ -13,9 +14,13 @@ const Home = ({ initTikToks }) => {
   }
 
   return (
-    <section>
-      { renderAsCards() }
-    </section>
+    <Grid
+      container
+      spacing={1}
+      justify="center"
+      alignItems="center"
+      children={ renderAsCards() }
+    />
   )
 }
 

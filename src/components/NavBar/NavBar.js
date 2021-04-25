@@ -14,6 +14,7 @@ const NavBar = ({ openForm }) => {
           <MenuIcon />
         </IconButton>
         <Typography>TTTracker</Typography>
+        <SearchIcon />
         <TextField 
           placeholder="search tiktoks or collections..."
         />

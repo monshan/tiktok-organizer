@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { Grid, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { getOembed } from '../../api-calls';
 
@@ -19,18 +19,21 @@ const Independent = ({ tiktoksrc }) => {
   }, [tiktoksrc, title, author, thumbnail, error])
 
   return (
-    <Card>
-      <CardMedia image={ thumbnail } component="img"/>
-      <CardContent>
-        {error && <Typography variant="h3">{ error }</Typography> }
-        <Typography variant="h5">
-          { title }
-        </Typography>
-        <Typography variant="subtitle1">
-          { author }
-        </Typography>
-      </CardContent>
-    </Card>
+    <Grid item>
+      <Card>
+        <CardMedia image={ thumbnail } component="img"/>
+        <CardContent>
+          {error && <Typography variant="h3">{ error }</Typography> }
+          <Typography variant="h5">
+            { title }
+          </Typography>
+          <Typography variant="subtitle1">
+            { author }
+          </Typography>
+        </CardContent>
+      </Card>
+    </Grid>
+
   )
 }
 
