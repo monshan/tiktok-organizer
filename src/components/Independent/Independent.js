@@ -19,7 +19,13 @@ const Independent = ({ tiktoksrc }) => {
   }, [tiktoksrc, title, author, thumbnail, error])
 
   return (
-    <Grid item>
+    <Grid
+      item
+      lg={2}
+      md={4}
+      sm={6}
+      xs={12}
+    >
       <Card>
         <CardMedia image={ thumbnail } component="img"/>
         <CardContent>
@@ -33,7 +39,6 @@ const Independent = ({ tiktoksrc }) => {
         </CardContent>
       </Card>
     </Grid>
-
   )
 }
 

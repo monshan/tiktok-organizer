@@ -16,7 +16,7 @@ const Home = ({ initTikToks }) => {
   return (
     <Grid
       container
-      spacing={1}
+      spacing={2}
       justify="center"
       alignItems="center"
       children={ renderAsCards() }
