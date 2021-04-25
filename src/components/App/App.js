@@ -1,3 +1,4 @@
+import { AppBar } from "@material-ui/core";
 import { useState } from "react";
 import Collections from '../Collections/Collections';
 
@@ -30,8 +31,11 @@ const App = () => {
   return (
     <div className="App">
       <main>
+        <AppBar position="static">
+          
+        </AppBar>
         <input type="search" name="query" placeholder="search by collection, tiktok title, tiktok author, or sound" autoComplete="on"/>
-        <input type="url" name="input-url" placeholder="Paste any tiktok link here!" size="100" maxLength="59" pattern="https://www.tiktok.com/*" required/>
+        <input type="url" name="input-url" placeholder="Paste any tiktok link here!" size="70" maxLength="59" pattern="https://www.tiktok.com/*" required/>
         <button>Open Form to Add TikTok</button>
           <section className="" >
             { renderAllCollections() }
