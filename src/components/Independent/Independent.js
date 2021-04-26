@@ -4,12 +4,10 @@ import {
   CardContent,
   CardMedia,
   CardActions,
-  // Typography,
   IconButton
 } from '@material-ui/core';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import { useEffect, useState } from 'react';
 import { getOembed } from '../../api-calls';
 import PropTypes from 'prop-types';
@@ -56,13 +54,15 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
         forCypress="card"
         >
         {error && <CardContent forCypress="card-error">Cannot retrieve from TikTok!</CardContent>}
-        <CardMedia image={ thumbnail } component="img"/>
+        <CardMedia 
+          image={ thumbnail }
+          component="img"
+          forCypress="card-thumbnail"
+        />
         <CardActions>
-          <IconButton>
-            <LibraryAddIcon />
-          </IconButton>
           <IconButton
             onClick={() => togglePin()}
+            forCypress="card-bookmark"
           >
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
