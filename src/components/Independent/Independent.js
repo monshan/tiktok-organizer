@@ -46,6 +46,7 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
       sm={4}
       xs={6}
     >
+      {error }
       <Card
         elevation={6}
       >

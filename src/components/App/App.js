@@ -4,6 +4,7 @@ import NavBar from '../NavBar/NavBar';
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
 import Home from '../Home/Home';
 import { Route, Switch } from "react-router";
+import { Alert } from '@material-ui/lab';
 
 const App = () => {
   const [initTikToks, setInitTikToks] = useState([
@@ -56,6 +57,14 @@ const App = () => {
             <Home
               initTikToks={ initTikToks }
             />
+          </Route>
+          <Route path="*">
+            <Alert 
+              variant="filled"
+              severity="error"
+            >
+              This page doesn't exist! Please navigate back to Home with the Home tab above~
+            </Alert>
           </Route>
         </Switch>
       </main>
