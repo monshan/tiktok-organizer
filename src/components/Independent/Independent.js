@@ -22,39 +22,19 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
     if (isPinned) {
       setPin(false);
       return removePin(tiktoksrc);
-    } else {
+    }
+
+    if (!isPinned) {
       setPin(true);
       return addPin(tiktoksrc);
     }
   }
-
-  const adjustHomeRender = () => {
-    if (isPinned) {
-      return addPin(tiktoksrc);
-    }
-
-    if (!isPinned) {
-      return removePin(tiktoksrc);
-    }
-  }
-
-  const handleBookmark = () => {
-    togglePin();
-    // adjustHomeRender();
-  }
-
-  // const determinePin = () => {
-  //   isPinned ? addPin(tiktoksrc) : removePin(tiktoksrc)
-  // }
 
   useEffect(() => {
     getOembed(tiktoksrc)
       .then(oembed => {
         setThumbnail(oembed.thumbnail_url);
       })
-      // .then(() => {
-      //   adjustHomeRender();
-      // })
       .catch(error => setError(error))
   }, [tiktoksrc, error])
 
