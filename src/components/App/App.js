@@ -66,20 +66,6 @@ const App = () => {
     closeFormDialog();
   }
 
-  const renderHomeWithProps = (children) => {
-    return (
-      <Home 
-        initTikToks={ children }
-      />
-    )
-  }
-
-  // let renderHome = renderHomeWithProps(initTikToks);
-
-  useEffect(() => {
-    // renderHome = renderHomeWithProps(initTikToks);
-  }, [initTikToks])
-
   return (
     <div className="App">
       <main>
@@ -93,10 +79,9 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
-            {/* <Home
+            <Home
               initTikToks={ initTikToks }
-            /> */}
-            { renderHomeWithProps(initTikToks) }
+            />
           </Route>
           {/* <Route path="/mycollections">
             <section className="" >

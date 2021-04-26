@@ -51,7 +51,7 @@ const Home = ({ initTikToks }) => {
   }
 
   useEffect(() => {
-    
+    setOrder([...convertToPinObjects])
   }, [order])
 
   return (
