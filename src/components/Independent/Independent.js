@@ -1,7 +1,7 @@
 import { 
   Grid,
   Card,
-  // CardContent,
+  CardContent,
   CardMedia,
   CardActions,
   // Typography,
@@ -33,6 +33,9 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
   useEffect(() => {
     getOembed(tiktoksrc)
       .then(oembed => {
+        if (oembed.status_msg) {
+          throw Error(oembed.status_msg);
+        }
         setThumbnail(oembed.thumbnail_url);
       })
       .catch(error => setError(error))
@@ -46,6 +49,7 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
       sm={4}
       xs={6}
     >
+      {error && <CardContent>Cannot retrieve from TikTok!</CardContent>}
       <Card
         elevation={6}
       >

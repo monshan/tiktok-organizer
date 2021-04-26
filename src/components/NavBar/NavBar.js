@@ -22,9 +22,6 @@ const NavBar = ({ openForm }) => {
           <Link to="/">
             <Tab label="home" />
           </Link>
-          <Link to="/mycollections">
-            <Tab label="collections" />
-          </Link>
         </Tabs>
         <IconButton
           onClick={ openForm }>

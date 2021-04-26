@@ -1,37 +1,12 @@
 // import { Step, Stepper, StepLabel } from "@material-ui/core";
-import { useEffect, useState } from "react";
-import Collections from '../Collections/Collections';
+import { useState } from "react";
 import NavBar from '../NavBar/NavBar'; 
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
 import Home from '../Home/Home';
 import { Route, Switch } from "react-router";
+import { Alert } from '@material-ui/lab';
 
 const App = () => {
-  // const [collections, setCollections] = useState([{ 
-  //   title: 'List 1',
-  //   type: 'collection',
-  //   urls: [
-  //     'https://www.tiktok.com/@diogoramos180/video/6946607853092343046?lang=en',
-  //     'https://www.tiktok.com/@krisfire98/video/6954138999200009477?lang=en'
-  //   ]
-  // },
-  // {
-  //   title: null,
-  //   type: 'single',
-  //   urls: ['https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en']
-  // }]);
-  
-  // const renderAllCollections = () => {
-  //   return collections.map(collection => {
-  //     return (
-  //       <Collections
-  //       key={ collection.title ? collection.title : `single-${ collection.urls[0].substring(23, 63) }` } 
-  //       collectionDet={ collection }
-  //       />
-  //     )
-  //   })
-  // }
-
   const [initTikToks, setInitTikToks] = useState([
     'https://www.tiktok.com/@diogoramos180/video/6946607853092343046?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0',
     'https://www.tiktok.com/@krisfire98/video/6954138999200009477?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0',
@@ -83,17 +58,15 @@ const App = () => {
               initTikToks={ initTikToks }
             />
           </Route>
-          {/* <Route path="/mycollections">
-            <section className="" >
-              { renderAllCollections() }
-            </section>
-          </Route> */}
+          <Route path="*">
+            <Alert 
+              variant="filled"
+              severity="error"
+            >
+              This page doesn't exist! Please navigate back to Home with the Home tab above~
+            </Alert>
+          </Route>
         </Switch>
-        {/* <Stepper>
-          <Step key="arbitrary-step">
-            <StepLabel>Just a test for Stepper</StepLabel>
-          </Step>
-        </Stepper> */}
       </main>
     </div>
   );
