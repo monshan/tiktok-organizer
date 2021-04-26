@@ -19,7 +19,13 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
   const [error, setError] = useState('');
 
   const togglePin = () => {
-    isPinned ? setPin(false) : setPin(true);
+    if (isPinned) {
+      setPin(false);
+      return removePin(tiktoksrc);
+    } else {
+      setPin(true);
+      return addPin(tiktoksrc);
+    }
   }
 
   const adjustHomeRender = () => {
@@ -34,7 +40,7 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
 
   const handleBookmark = () => {
     togglePin();
-    adjustHomeRender();
+    // adjustHomeRender();
   }
 
   // const determinePin = () => {
@@ -69,7 +75,7 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
             <LibraryAddIcon />
           </IconButton>
           <IconButton
-            onClick={() => handleBookmark()}
+            onClick={() => togglePin()}
           >
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
