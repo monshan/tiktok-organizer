@@ -1,4 +1,12 @@
-import { Grid, Card, CardContent, CardMedia, CardActions, Typography, IconButton } from '@material-ui/core';
+import { 
+  Grid,
+  Card,
+  // CardContent,
+  CardMedia,
+  CardActions,
+  // Typography,
+  IconButton
+} from '@material-ui/core';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
@@ -6,15 +14,24 @@ import { useEffect, useState } from 'react';
 import { getOembed } from '../../api-calls';
 
 const Independent = ({ tiktoksrc, addPin, removePin }) => {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
+  // const [title, setTitle] = useState('');
+  // const [author, setAuthor] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
   const [error, setError] = useState('');
 
   const togglePin = () => {
     isPinned ? setPin(false) : setPin(true)
-    isPinned ? addPin(tiktoksrc) : removePin(tiktoksrc);
+  }
+
+  const adjustHomeRender = () => {
+    if (isPinned) {
+      addPin(tiktoksrc);
+    }
+  }
+
+  const handleBookmark = () => {
+    togglePin();
   }
 
   // const determinePin = () => {
@@ -24,12 +41,13 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
   useEffect(() => {
     getOembed(tiktoksrc)
       .then(oembed => {
-        setTitle(oembed.title);
-        setAuthor(oembed.author_name);
+        // setTitle(oembed.title);
+        // setAuthor(oembed.author_name);
         setThumbnail(oembed.thumbnail_url);
+        adjustHomeRender();
       })
       .catch(error => setError(error))
-  }, [tiktoksrc, isPinned, title, author, thumbnail, error])
+  }, [tiktoksrc, isPinned, error])
 
   return (
     <Grid
@@ -57,7 +75,7 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
             <LibraryAddIcon />
           </IconButton>
           <IconButton
-            onClick={() => togglePin()}
+            onClick={() => handleBookmark()}
           >
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>

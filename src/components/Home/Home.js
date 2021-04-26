@@ -3,22 +3,25 @@ import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
 const Home = ({ initTikToks }) => {
-  const [order, setOrder] = useState([...initTikToks]);
+  const convertToPinObjects = initTikToks.map(tiktok => {
+    return {
+      url: tiktok,
+      isPinned: false
+    }
+  })
+  
+  const [order, setOrder] = useState([...convertToPinObjects]);
 
   const addPin = (url) => {
-    console.log(url)
-    console.log(order)
-    console.log(order.find(tiktok => tiktok.url === url))
-    // order[order.indexOf(tiktok => tiktok.url === url)].isPinned = true;
+    // console.log(url)
+    // console.log(order)
+    // console.log(order.findIndex((tiktok) => tiktok.url === url))
+    // const replace = order[order.findIndex((tiktok) => tiktok.url === url)]
+    // replace.isPinned = true;
+    order[order.findIndex((tiktok) => tiktok.url === url)].isPinned = true
+    // console.log(replace);
+    sortIfPinned();
     // setOrder([...order]);
-  }
-
-  const removePin = (url) => {
-    console.log(url)
-    console.log(order)
-    console.log(order.find((tiktok => tiktok.url === url))
-    // order[order.indexOf(tiktok => tiktok.url === url)].isPinned = false;
-    // setOrder([...order])
   }
 
   const sortIfPinned = () => {
@@ -43,7 +46,7 @@ const Home = ({ initTikToks }) => {
           key={ tiktok.url.substring(23, 63) }
           tiktoksrc={ tiktok.url }
           addPin={ addPin }
-          removePin={ removePin }
+          // removePin={ removePin }
           // sortIfPinned={ sortIfPinned }
         />
       )
