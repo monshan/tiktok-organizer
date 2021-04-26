@@ -1,11 +1,10 @@
-import { AppBar, IconButton, InputBase, Step, Stepper, StepLabel, Toolbar, Typography } from "@material-ui/core";
-import MenuIcon from '@material-ui/icons/Menu';
-import AddBoxIcon from '@material-ui/icons/AddBox';
-import SearchIcon from '@material-ui/icons/Search';
-import HelpIcon from '@material-ui/icons/Help';
+import { Step, Stepper, StepLabel } from "@material-ui/core";
 import { useState } from "react";
 import Collections from '../Collections/Collections';
+import NavBar from '../NavBar/NavBar'; 
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
+import Home from '../Home/Home';
+import { Route, Switch } from "react-router";
 
 const App = () => {
   const [collections, setCollections] = useState([{ 
@@ -22,7 +21,6 @@ const App = () => {
     urls: ['https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en']
   }]);
   
-
   const renderAllCollections = () => {
     return collections.map(collection => {
       return (
@@ -33,6 +31,12 @@ const App = () => {
       )
     })
   }
+
+  const [initTikToks, setInitTikToks] = useState([
+    'https://www.tiktok.com/@diogoramos180/video/6946607853092343046?lang=en',
+    'https://www.tiktok.com/@krisfire98/video/6954138999200009477?lang=en',
+    'https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en'
+  ])
 
   const [dialogOpen, setdialogOpen] = useState(false);
 
@@ -45,50 +49,42 @@ const App = () => {
   }
 
   const addTikTok = (url) => {
-    const newEntry = {
-      title: null,
-      type: 'single',
-      urls: [url]
-    }
-    setCollections([...collections, newEntry])
+    // const newEntry = {
+    //   title: null,
+    //   type: 'single',
+    //   urls: [url]
+    // }
+    // setCollections([...collections, newEntry])
+    setInitTikToks([...initTikToks, url])
     closeFormDialog();
   }
 
   return (
     <div className="App">
       <main>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton>
-              <MenuIcon />
-            </IconButton>
-            <Typography>TTTracker</Typography>
-            <SearchIcon />
-            <InputBase
-              placeholder="Search collections..."
-            />
-            <IconButton
-              onClick={ openFormDialog }>
-              <AddBoxIcon />
-            </IconButton>
-            <IconButton>
-              <HelpIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
+        <NavBar 
+          openForm={ openFormDialog }
+        />
         <AddTikTokForm 
           status={ dialogOpen }
           addTikTok={ addTikTok }
           closeForm={ closeFormDialog }
         />
-        <Stepper>
+        <Switch>
+          <Route exact path="/">
+            <Home initTikToks={ initTikToks } />
+          </Route>
+          <Route path="/mycollections">
+            <section className="" >
+              { renderAllCollections() }
+            </section>
+          </Route>
+        </Switch>
+        {/* <Stepper>
           <Step key="arbitrary-step">
             <StepLabel>Just a test for Stepper</StepLabel>
           </Step>
-        </Stepper>
-          <section className="" >
-            { renderAllCollections() }
-          </section>
+        </Stepper> */}
       </main>
     </div>
   );

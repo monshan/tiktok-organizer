@@ -2,17 +2,7 @@
 import Independent from '../Independent/Independent';
 
 const Collections = ({ collectionDet }) => {
-  // const [cardUrls, setCardUrls] = useState([]);
-
-  // const cleanGetReq = async (singleUrl) => {
-  //   try {
-  //     const response = await fetch(`https://www.tiktok.com/oembed?url=${singleUrl}`);
-  //     const cardDetails = response.json();
-  //     setCards([...cards, cardDetails])
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  
 
   const renderAllCards = () => {
     return collectionDet.urls.map(url => {
@@ -24,10 +14,6 @@ const Collections = ({ collectionDet }) => {
       )
     })
   }
-
-  // useEffect(() => {
-    
-  // }, [cardUrls])
 
   return (
     <section className="collection">
