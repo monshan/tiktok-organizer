@@ -9,6 +9,7 @@ const Independent = ({ tiktoksrc }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [thumbnail, setThumbnail] = useState('');
+  
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -25,15 +26,15 @@ const Independent = ({ tiktoksrc }) => {
     <Grid
       item
       lg={2}
-      md={4}
-      sm={6}
-      xs={12}
+      md={3}
+      sm={4}
+      xs={6}
     >
       <Card
         elevation={6}
       >
         <CardMedia image={ thumbnail } component="img"/>
-        <CardContent>
+        {/* <CardContent>
           {error && <Typography variant="h3">{ error }</Typography> }
           <Typography variant="h5">
             { title }
@@ -41,7 +42,7 @@ const Independent = ({ tiktoksrc }) => {
           <Typography variant="subtitle1">
             { author }
           </Typography>
-        </CardContent>
+        </CardContent> */}
         <CardActions>
           <IconButton>
             <LibraryAddIcon />
