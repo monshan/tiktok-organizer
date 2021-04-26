@@ -66,3 +66,7 @@ const Home = ({ initTikToks }) => {
 }
 
 export default Home;
+
+Home.propTypes = {
+  initTikToks: PropTypes.array.isRequired
+}
