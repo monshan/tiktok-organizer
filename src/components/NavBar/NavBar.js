@@ -20,10 +20,10 @@ const NavBar = ({ openForm }) => {
         />
         <Tabs>
           <Link to="/">
-            <Tab label="home" value={0} />
+            <Tab label="home" />
           </Link>
           <Link to="/mycollections">
-            <Tab label="collections" value={1} />
+            <Tab label="collections" />
           </Link>
         </Tabs>
         <IconButton
