@@ -13,15 +13,13 @@ const Home = ({ initTikToks }) => {
   const [order, setOrder] = useState([...convertToPinObjects]);
 
   const addPin = (url) => {
-    // console.log(url)
-    // console.log(order)
-    // console.log(order.findIndex((tiktok) => tiktok.url === url))
-    // const replace = order[order.findIndex((tiktok) => tiktok.url === url)]
-    // replace.isPinned = true;
-    order[order.findIndex((tiktok) => tiktok.url === url)].isPinned = true
-    // console.log(replace);
+    order[order.findIndex((tiktok) => tiktok.url === url)].isPinned = true;
     sortIfPinned();
-    // setOrder([...order]);
+  }
+
+  const removePin = (url) => {
+    order[order.findIndex((tiktok) => tiktok.url === url)].isPinned = false;
+    sortIfPinned();
   }
 
   const sortIfPinned = () => {
@@ -46,8 +44,7 @@ const Home = ({ initTikToks }) => {
           key={ tiktok.url.substring(23, 63) }
           tiktoksrc={ tiktok.url }
           addPin={ addPin }
-          // removePin={ removePin }
-          // sortIfPinned={ sortIfPinned }
+          removePin={ removePin }
         />
       )
     })

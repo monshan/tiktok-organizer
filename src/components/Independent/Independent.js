@@ -21,14 +21,20 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
   const [error, setError] = useState('');
 
   const togglePin = () => {
-    isPinned ? setPin(false) : setPin(true)
+    isPinned ? setPin(false) : setPin(true);
   }
 
-  const adjustHomeRender = () => {
-    if (isPinned) {
-      addPin(tiktoksrc);
-    }
-  }
+  // const adjustHomeRender = () => {
+  //   if (isPinned) {
+  //     return addPin(tiktoksrc);
+  //   }
+
+  //   if (!isPinned) {
+  //     return removePin(tiktoksrc);
+  //   }
+
+  //   // isPinned ? addPin(tiktoksrc) : removePin(tiktoksrc);
+  // }
 
   const handleBookmark = () => {
     togglePin();
@@ -44,7 +50,7 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
         // setTitle(oembed.title);
         // setAuthor(oembed.author_name);
         setThumbnail(oembed.thumbnail_url);
-        adjustHomeRender();
+        // adjustHomeRender();
       })
       .catch(error => setError(error))
   }, [tiktoksrc, isPinned, error])
