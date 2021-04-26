@@ -14,8 +14,6 @@ import { useEffect, useState } from 'react';
 import { getOembed } from '../../api-calls';
 
 const Independent = ({ tiktoksrc, addPin, removePin }) => {
-  // const [title, setTitle] = useState('');
-  // const [author, setAuthor] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
   const [error, setError] = useState('');
@@ -24,20 +22,19 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
     isPinned ? setPin(false) : setPin(true);
   }
 
-  // const adjustHomeRender = () => {
-  //   if (isPinned) {
-  //     return addPin(tiktoksrc);
-  //   }
+  const adjustHomeRender = () => {
+    if (isPinned) {
+      return addPin(tiktoksrc);
+    }
 
-  //   if (!isPinned) {
-  //     return removePin(tiktoksrc);
-  //   }
-
-  //   // isPinned ? addPin(tiktoksrc) : removePin(tiktoksrc);
-  // }
+    if (!isPinned) {
+      return removePin(tiktoksrc);
+    }
+  }
 
   const handleBookmark = () => {
     togglePin();
+    adjustHomeRender();
   }
 
   // const determinePin = () => {
@@ -47,13 +44,13 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
   useEffect(() => {
     getOembed(tiktoksrc)
       .then(oembed => {
-        // setTitle(oembed.title);
-        // setAuthor(oembed.author_name);
         setThumbnail(oembed.thumbnail_url);
-        // adjustHomeRender();
       })
+      // .then(() => {
+      //   adjustHomeRender();
+      // })
       .catch(error => setError(error))
-  }, [tiktoksrc, isPinned, error])
+  }, [tiktoksrc, error])
 
   return (
     <Grid
@@ -67,15 +64,6 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
         elevation={6}
       >
         <CardMedia image={ thumbnail } component="img"/>
-        {/* <CardContent>
-          {error && <Typography variant="h3">{ error }</Typography> }
-          <Typography variant="h5">
-            { title }
-          </Typography>
-          <Typography variant="subtitle1">
-            { author }
-          </Typography>
-        </CardContent> */}
         <CardActions>
           <IconButton>
             <LibraryAddIcon />

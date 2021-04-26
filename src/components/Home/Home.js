@@ -52,7 +52,7 @@ const Home = ({ initTikToks }) => {
 
   useEffect(() => {
     setOrder([...convertToPinObjects])
-  }, [order])
+  }, [initTikToks, order])
 
   return (
     <Grid
