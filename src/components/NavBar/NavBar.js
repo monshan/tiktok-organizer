@@ -3,6 +3,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import SearchIcon from '@material-ui/icons/Search';
 import HelpIcon from '@material-ui/icons/Help';
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 
@@ -36,3 +37,7 @@ const NavBar = ({ openForm }) => {
 }
 
 export default NavBar;
+
+NavBar.propTypes = {
+  openForm: PropTypes.func.isRequired
+}
