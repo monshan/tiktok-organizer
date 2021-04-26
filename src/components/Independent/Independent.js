@@ -1,7 +1,7 @@
 import { 
   Grid,
   Card,
-  // CardContent,
+  CardContent,
   CardMedia,
   CardActions,
   // Typography,
@@ -49,7 +49,7 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
       sm={4}
       xs={6}
     >
-      {error && }
+      {error && <CardContent>Cannot retrieve from TikTok!</CardContent>}
       <Card
         elevation={6}
       >
