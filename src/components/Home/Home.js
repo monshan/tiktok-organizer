@@ -50,6 +50,10 @@ const Home = ({ initTikToks }) => {
     })
   }
 
+  useEffect(() => {
+    
+  }, [order])
+
   return (
     <Grid
       container
