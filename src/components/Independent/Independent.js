@@ -1,4 +1,5 @@
-import { Grid, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { Grid, Card, CardContent, CardMedia, CardActions, Typography, IconButton } from '@material-ui/core';
+import TurnedInNotIcon from '@material-ui/icons/TurnedInNot';
 import { useEffect, useState } from 'react';
 import { getOembed } from '../../api-calls';
 
@@ -26,8 +27,11 @@ const Independent = ({ tiktoksrc }) => {
       sm={6}
       xs={12}
     >
-      <Card>
+      <Card
+        elevation={6}
+      >
         <CardMedia image={ thumbnail } component="img"/>
+        
         <CardContent>
           {error && <Typography variant="h3">{ error }</Typography> }
           <Typography variant="h5">
@@ -37,6 +41,11 @@ const Independent = ({ tiktoksrc }) => {
             { author }
           </Typography>
         </CardContent>
+        <CardActions>
+          <IconButton>
+            <TurnedInNotIcon />
+          </IconButton>
+        </CardActions>
       </Card>
     </Grid>
   )
