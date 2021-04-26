@@ -5,16 +5,21 @@ import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import { useEffect, useState } from 'react';
 import { getOembed } from '../../api-calls';
 
-const Independent = ({ tiktoksrc }) => {
+const Independent = ({ tiktoksrc, addPin, removePin }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [thumbnail, setThumbnail] = useState('');
-  const [isPinned, setPin] = useState(false)
+  const [isPinned, setPin] = useState(false);
   const [error, setError] = useState('');
 
   const togglePin = () => {
-    setPin(!isPinned)
+    isPinned ? setPin(false) : setPin(true)
+    isPinned ? addPin(tiktoksrc) : removePin(tiktoksrc);
   }
+
+  // const determinePin = () => {
+  //   isPinned ? addPin(tiktoksrc) : removePin(tiktoksrc)
+  // }
 
   useEffect(() => {
     getOembed(tiktoksrc)
@@ -24,7 +29,7 @@ const Independent = ({ tiktoksrc }) => {
         setThumbnail(oembed.thumbnail_url);
       })
       .catch(error => setError(error))
-  }, [tiktoksrc, title, author, thumbnail, error])
+  }, [tiktoksrc, isPinned, title, author, thumbnail, error])
 
   return (
     <Grid
