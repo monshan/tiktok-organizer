@@ -12,6 +12,8 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import { useEffect, useState } from 'react';
 import { getOembed } from '../../api-calls';
+import PropTypes from 'prop-types';
+
 
 const Independent = ({ tiktoksrc, addPin, removePin }) => {
   const [thumbnail, setThumbnail] = useState('');
@@ -70,3 +72,9 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
 }
 
 export default Independent;
+
+Independent.propTypes = {
+  tiktoksrc: PropTypes.string.isRequired,
+  addPin: PropTypes.func.isRequired,
+  removePin: PropTypes.func.isRequired
+}

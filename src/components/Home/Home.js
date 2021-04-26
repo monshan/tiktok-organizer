@@ -1,4 +1,5 @@
 import Independent from '../Independent/Independent';
+import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
