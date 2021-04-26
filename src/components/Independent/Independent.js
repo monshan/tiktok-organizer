@@ -9,8 +9,12 @@ const Independent = ({ tiktoksrc }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [thumbnail, setThumbnail] = useState('');
-  
+  const [isPinned, setPin] = useState(false)
   const [error, setError] = useState('');
+
+  const togglePin = () => {
+    setPin(!isPinned)
+  }
 
   useEffect(() => {
     getOembed(tiktoksrc)
@@ -47,8 +51,10 @@ const Independent = ({ tiktoksrc }) => {
           <IconButton>
             <LibraryAddIcon />
           </IconButton>
-          <IconButton>
-            <BookmarkBorderIcon />
+          <IconButton
+            onClick={() => togglePin()}
+          >
+            { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
         </CardActions>
       </Card>
