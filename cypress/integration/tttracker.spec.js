@@ -1,13 +1,4 @@
 describe('TTTracker', () => {
-  // describe('Bad Paths', () => {
-  //   it('Should display incorrect path error', () => {
-  //     cy.visit('http://localhost:3000/any-invalid-route')
-  //     cy.get('[for-cypress=bad-route]')
-  //       .contains('This page doesn\'t exist! Please navigate back to Home with the Home tab above~')
-  //       .and('be.visible')
-  //   })
-  // })
-
   describe('CRUD Operations', () => {
     beforeEach(() => {
       cy.visit('http://localhost:3000');
