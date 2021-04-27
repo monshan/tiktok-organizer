@@ -1,12 +1,12 @@
 describe('TTTracker', () => {
-  describe('Bad Paths', () => {
-    it('Should display incorrect path error', () => {
-      cy.visit('http://localhost:3000/any-invalid-route')
-      cy.get('[for-cypress=bad-route]')
-        .contains('This page doesn\'t exist! Please navigate back to Home with the Home tab above~')
-        .and('be.visible')
-    })
-  })
+  // describe('Bad Paths', () => {
+  //   it('Should display incorrect path error', () => {
+  //     cy.visit('http://localhost:3000/any-invalid-route')
+  //     cy.get('[for-cypress=bad-route]')
+  //       .contains('This page doesn\'t exist! Please navigate back to Home with the Home tab above~')
+  //       .and('be.visible')
+  //   })
+  // })
 
   describe('CRUD Operations', () => {
     beforeEach(() => {
@@ -41,7 +41,7 @@ describe('TTTracker', () => {
         .should('have.attr', 'src', 'https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/e4fffc4a53704ceb8999bdf0a2c8a39d_1619136669~tplv-dmt-logom:tos-maliva-p-0000/06418759d39b47d3b28fa358debe468b.image?x-expires=1619575200&x-signature=SQibdmg43DNnSUBj4DxzEFRvU2c%3D')
     })
 
-    it('Can bookmark a tiktok card', () => {
+    it('Can bookmark a tiktok card that affects render order', () => {
       cy.get('#gridContainer')
         .children()
         .eq(2)
@@ -52,9 +52,26 @@ describe('TTTracker', () => {
         .should('have.attr', 'src', 'https://p16-sign-va.tiktokcdn.com/obj/tos-maliva-p-0068/0d51215c6d9846958e23daa010b21b47?x-expires=1619575200&x-signature=L8g1cbDaBFdKv3620ZVhegHBQe4%3D')
     })
 
-    // it('Can remove a bookmark from a tiktok card', () => {
-
-    // })
+    it('Can remove a bookmark from a tiktok card that affects render order', () => {
+      cy.get('#gridContainer')
+        .children()
+        .eq(1)
+        .find('.pin-icon').click()
+      cy.get('#gridContainer')
+        .children()
+        .eq(2)
+        .find('.pin-icon').click()
+      cy.get('#gridContainer')
+        .children()
+        .eq(0)
+        .find('.pin-icon').click()
+      
+      cy.get('#gridContainer div')
+        .first()
+        .find('img')
+        .should('have.attr', 'src', 'https://p16-sign-va.tiktokcdn.com/obj/tos-maliva-p-0068/0d51215c6d9846958e23daa010b21b47?x-expires=1619575200&x-signature=L8g1cbDaBFdKv3620ZVhegHBQe4%3D')
+      
+    })
   })
 
   describe('Indepenent Card', () => {
