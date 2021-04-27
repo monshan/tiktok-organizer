@@ -14,7 +14,10 @@ import { getOembed } from '../../api-calls';
 import PropTypes from 'prop-types';
 
 
-const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok, key }) => {
+const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [authorLink, setAuthorLink] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
   const [error, setError] = useState('');
@@ -37,6 +40,9 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok, key }) => {
         if (oembed.status_msg) {
           throw Error(oembed.status_msg);
         }
+        setTitle(oembed.title);
+        setAuthor(oembed.author_name);
+        setAuthorLink(oembed.author_url);
         setThumbnail(oembed.thumbnail_url);
       })
       .catch(error => setError(error))
@@ -58,17 +64,24 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok, key }) => {
         <CardMedia 
           image={ thumbnail }
           component="img"
+          aria-label={ `Thumbnail of ${ title }` }
         />
+        <CardContent>
+          <a href={ authorLink } className="author">@{ author }</a>
+          <p className="title">{ title }</p>
+        </CardContent>
         <CardActions>
           <IconButton
             onClick={() => togglePin()}
             className="pin-icon"
+            aria-label={ `${title} pin button` }
           >
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
           <IconButton
             onClick={() => removeTikTok(tiktoksrc)}
             className="trash-icon"
+            aria-label={ `${title} remove button` }
           >
             <DeleteIcon />
           </IconButton>
