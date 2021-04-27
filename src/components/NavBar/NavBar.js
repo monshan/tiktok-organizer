@@ -13,7 +13,7 @@ const NavBar = ({ openForm }) => {
         <IconButton
           aria-label="Back to home button link"
         >
-          <Link to="/">
+          <Link to="/" aria-label="link to home">
             <HomeTwoToneIcon />
           </Link>
         </IconButton>

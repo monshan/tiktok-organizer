@@ -64,6 +64,7 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
         <CardMedia 
           image={ thumbnail }
           component="img"
+          aria-label={ `Thumbnail of ${ title }` }
         />
         <CardContent>
           <a href={ authorLink } className="author">@{ author }</a>
