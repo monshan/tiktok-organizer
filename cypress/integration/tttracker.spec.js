@@ -26,5 +26,26 @@ describe('TTTracker', () => {
     cy.visit('http://localhost:3000');
    });
 
-   describe('Pre-Load some ')
+   describe('CRUD Operations', () => {
+     it('Can display accurate Cards from App state', () => {
+
+     })
+
+     it('Can use the controlled form to add a tiktok card to the home page', () => {
+
+     })
+     
+     it('Can remove a tiktok card from the home page', () => {
+
+     })
+
+     it('Can bookmark a tiktok card', () => {
+
+     })
+
+     it('Can remove a bookmark from a tiktok card', () => {
+
+     })
+
+   })
 })
