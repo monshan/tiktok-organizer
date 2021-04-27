@@ -15,10 +15,6 @@ const NavBar = ({ openForm }) => {
           <MenuIcon />
         </IconButton>
         <Typography>TTTracker</Typography>
-        <SearchIcon />
-        <TextField 
-          placeholder="search tiktoks or collections..."
-        />
         <Tabs value={0}>
           <Link to="/">
             <Tab label="home" />
@@ -27,9 +23,6 @@ const NavBar = ({ openForm }) => {
         <IconButton
           onClick={ openForm }>
           <AddBoxIcon />
-        </IconButton>
-        <IconButton>
-          <HelpIcon />
         </IconButton>
       </Toolbar>
     </AppBar>

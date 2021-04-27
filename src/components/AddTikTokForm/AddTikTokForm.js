@@ -18,7 +18,9 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
             type="string"
             variant="filled"
             fullWidth={true}
-            onChange={event => setTikTokInput(event.target.value) }
+            onChange={
+              event => setTikTokInput(event.target.value)
+            }
             autoFocus
           />
         </FormControl>
