@@ -8,12 +8,13 @@ import {
 } from '@material-ui/core';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { useEffect, useState } from 'react';
 import { getOembed } from '../../api-calls';
 import PropTypes from 'prop-types';
 
 
-const Independent = ({ tiktoksrc, addPin, removePin }) => {
+const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
   const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
   const [error, setError] = useState('');
@@ -65,6 +66,11 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
             for-cypress="card-bookmark"
           >
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+          </IconButton>
+          <IconButton
+            onClick={() => removeTikTok(tiktoksrc)}
+          >
+            <DeleteIcon />
           </IconButton>
         </CardActions>
       </Card>
