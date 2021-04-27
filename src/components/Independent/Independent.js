@@ -15,6 +15,8 @@ import PropTypes from 'prop-types';
 
 
 const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok, key }) => {
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
   const [error, setError] = useState('');
@@ -37,6 +39,8 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok, key }) => {
         if (oembed.status_msg) {
           throw Error(oembed.status_msg);
         }
+        setTitle(oembed.title);
+        setAuthor(oembed.author_name);
         setThumbnail(oembed.thumbnail_url);
       })
       .catch(error => setError(error))
@@ -59,6 +63,10 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok, key }) => {
           image={ thumbnail }
           component="img"
         />
+        <CardContent>
+          <p className="author">{ author }</p>
+          <p className="title">{ title }</p>
+        </CardContent>
         <CardActions>
           <IconButton
             onClick={() => togglePin()}
