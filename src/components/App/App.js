@@ -62,7 +62,7 @@ const App = () => {
             <Alert 
               variant="filled"
               severity="error"
-              forCypress="bad-route"
+              for-cypress="bad-route"
             >
               This page doesn't exist! Please navigate back to Home with the Home tab above~
             </Alert>

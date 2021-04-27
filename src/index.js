@@ -6,11 +6,9 @@ import './index.scss';
 import reportWebVitals from './reportWebVitals';
 
 const applyRouter = (
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 )
 
 ReactDOM.render(

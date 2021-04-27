@@ -51,18 +51,18 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
     >
       <Card
         elevation={6}
-        forCypress="card"
+        for-cypress="card"
         >
-        {error && <CardContent forCypress="card-error"> {error}, Cannot retrieve from TikTok!</CardContent>}
+        {error && <CardContent for-cypress="card-error"> {error}, Cannot retrieve from TikTok!</CardContent>}
         <CardMedia 
           image={ thumbnail }
           component="img"
-          forCypress="card-thumbnail"
+          for-cypress="card-thumbnail"
         />
         <CardActions>
           <IconButton
             onClick={() => togglePin()}
-            forCypress="card-bookmark"
+            for-cypress="card-bookmark"
           >
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
