@@ -45,6 +45,7 @@ const Home = ({ initTikToks, removeTikTok }) => {
         <Independent 
           key={ tiktok.url.substring(23, 63) }
           tiktoksrc={ tiktok.url }
+          removeTikTok={ removeTikTok }
           addPin={ addPin }
           removePin={ removePin }
         />

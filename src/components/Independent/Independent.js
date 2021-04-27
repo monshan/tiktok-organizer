@@ -13,7 +13,7 @@ import { getOembed } from '../../api-calls';
 import PropTypes from 'prop-types';
 
 
-const Independent = ({ tiktoksrc, addPin, removePin }) => {
+const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
   const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
   const [error, setError] = useState('');
@@ -65,6 +65,11 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
             for-cypress="card-bookmark"
           >
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+          </IconButton>
+          <IconButton
+            onClick={() => removeTikTok(tiktoksrc)}
+          >
+            
           </IconButton>
         </CardActions>
       </Card>
