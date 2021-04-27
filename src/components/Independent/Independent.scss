@@ -5,3 +5,7 @@
 .title {
   @extend %italic-light-body;
 }
+
+a {
+  color: $tiktok-red
+}

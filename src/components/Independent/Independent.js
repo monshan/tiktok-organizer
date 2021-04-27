@@ -14,9 +14,10 @@ import { getOembed } from '../../api-calls';
 import PropTypes from 'prop-types';
 
 
-const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok, key }) => {
+const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [authorLink, setAuthorLink] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
   const [error, setError] = useState('');
@@ -41,6 +42,7 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok, key }) => {
         }
         setTitle(oembed.title);
         setAuthor(oembed.author_name);
+        setAuthorLink(oembed.author_url);
         setThumbnail(oembed.thumbnail_url);
       })
       .catch(error => setError(error))
@@ -64,7 +66,7 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok, key }) => {
           component="img"
         />
         <CardContent>
-          <p className="author">{ author }</p>
+          <a href={ authorLink } className="author">@{ author }</a>
           <p className="title">{ title }</p>
         </CardContent>
         <CardActions>
