@@ -1,7 +1,7 @@
 <h1 align="left">TTTracker</h1>
 
 <p align="center">
-<!--     <img src="https://media.giphy.com/media/gHQxuYpgykXW5rxewl/giphy.gif" alt="Age of Empires II Cavalry Unit entering and exiting the screen" width="200" height='auto'> -->
+  <img src="https://media.giphy.com/media/l1mf95PBaJyxN9ju4K/giphy.gif" alt="Gameplay of two users sending tiktoks back and forth" width="auto" height='300'>
 </p>
 
 ## Table of Contents
@@ -9,7 +9,6 @@
 * [About the Project](#about-the-project)
 * [Installation](#installation)
 * [Functionality](#functionality)
-* [User Feedback](#user-feedback)
 * [Learning Goals](#learning-goals)
 * [Future Iterations](#future-iterations)
 * [Technologies Used](#technologies-used)
@@ -19,37 +18,73 @@
 
 ## About the Project
 
+The theme of this project was to solve a problem of a **niche community**, and in the case of TTTracker it is the lack of organizational capabilities of the popular social media application *TikTok*.
 
+The determined problem is that users cannot save tiktoks easy to keep track of them, even ones that they've liked and been able to save on their profile. They are easily buried under more and more likes and new posts that even if users have a clear idea of what the tiktok was it is impossible to relocate it within the app. 
+
+TTTracker the TikTokTracker addresses this by utilizing the oembed API provided by TikTok for developers to create an application that can essentially save and manage tiktoks outside the app while empowering users with extra features such as *pinning* or *adding any post* to their active home page.
 
 ## Installation
 
-
+1. Fork (optional) and clone down this repository to a directory of your choice
+2. <code>cd</code> into the repo
+3. Run <code>npm i</code> to install dependencies
+4. Run the command <code>npm run start</code> to run the application in your browser
+5. Begin interacting!
 
 
 ## Functionality
-* [Main Page View](#main-page-view)
-* [Civilization Info](#civilization-info)
+* [Home Page](#home-page)
+* [Add Your Own TikToks](#add-your-own-tiktoks)
+* [Pinning or Bookmarking](#pinning-or-bookmarking)
 * [Responsive Design](#responsive-design)
 * [Accessibility](#accessibility)
 
-#### Main Page View
-  - When a user visits the site they should be able to see all civilizations on the main screen.
+
+#### Home Page
+
+- Upon opening the app a user will observe a set of pre-loaded tiktok cards to get them started. If desired, users can click on the author handle shown in bold on the card to be taken to that author's profile on tiktok desktop version.
+
+#### Add Your Own TikToks
+
+- Don't see a tiktok card that you like or care to organize? Users can add any titkok of choice as long as they have the link to the original. Clicking the Add button on the top menu bar opens a form to add your tiktok. Copy & paste the link into the field and click <code>Submit</code> to see it on the home page
+- Changed your mind? Users can click <code>Cancel</code> to close the form and return ot the home page
+
+<img src="https://media.giphy.com/media/9L9qDhz9fJtLKBfJDn/giphy.gif" width="500" align="center">
+
+- Removing cards is just as easy, simply click the trash can icon to delete it off the home page
+
+<img src="https://media.giphy.com/media/kdyDKW7cSKamllkC7s/giphy.gif" width="500" align="center">
+
+#### Pinning or Bookmarking
+
+- When a user opens the application they should be able to see a pre-made collection of tiktoks on the home page. On clicking the outlined ribbon icon, the card will become 'pinned' and move to the top of the page flowing left to right, top to bottom
+
+<img src="https://media.giphy.com/media/WaJEOJJ7ZPPJvIAGbY/giphy.gif" width="500" align="center">
 
 #### Responsive Design
- - Responsiveness was a consideration while designing this application. Our application viewed from a mobile device:
- <img src="https://media.giphy.com/media/PrwNn7IMm077NX31Lm/giphy.gif" width="500" align="center">
+
+- This application was built with accessibility for multiple devices and screen sizes in mind. As demonstrated here, it is responsive down to a 360 pixel width (smallest mobile device available):
+
+<img src="https://media.giphy.com/media/o1COYEDuLy1i9oXU1j/giphy.gif" width="500" align="center">
 
 #### Accessibility
 
-We made accessibility a priority in our application. Planet Party recieved a 100% acecessibility audit from Chrome's Lighthouse tool. Also using the Wave extension, our application has zero errors and zero contrast errors.
-<img src="https://media.giphy.com/media/CKTb0GiOBvIIzuja6v/giphy.gif" width="500" align="center">
-
+TTTracker achieves a 100 Lighthouse Report for accessibility and 0 WAVE errors.
 
 ## Learning Goals
 
+The goal of this particular project was to solve a problem of a **niche community** using our current skills as developers and not necessarily as a stretch to learn new technologies. Therefore, learning goals for this project took a backseat over constructing the application with quality and good practice.
+
+However one topic that was introduced and asked of development was to write *User Personas* to better reflect the intention behind the application. This would also aid with narrowing the MVP features that are prioritized in development and if they would eventually be included in production.
+
+You can read both of the user stories written with respect to this project below.
 
 ## Future Iterations
 
+Due to the time constrainsts of this project, several further features were proposed but not able to come to fruition. The following features will be the most supportive to MVP:
+  - Search Bar: Let user search all cards by title or author, potentially tags & sounds could also be included
+  - Create another page view with a feature for creating collections or 'decks' of cards that the user can customize with their own titles 
 
 ## Technologies Used
 
