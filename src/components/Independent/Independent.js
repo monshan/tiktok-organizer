@@ -53,7 +53,7 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
         elevation={6}
         forCypress="card"
         >
-        {error && <CardContent forCypress="card-error">Cannot retrieve from TikTok!</CardContent>}
+        {error && <CardContent forCypress="card-error"> {error}, Cannot retrieve from TikTok!</CardContent>}
         <CardMedia 
           image={ thumbnail }
           component="img"

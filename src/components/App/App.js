@@ -62,6 +62,7 @@ const App = () => {
             <Alert 
               variant="filled"
               severity="error"
+              forCypres="bad-route"
             >
               This page doesn't exist! Please navigate back to Home with the Home tab above~
             </Alert>
