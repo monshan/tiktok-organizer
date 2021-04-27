@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { useEffect, useState } from 'react';
 import { getOembed } from '../../api-calls';
 import PropTypes from 'prop-types';
@@ -69,7 +70,7 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
           <IconButton
             onClick={() => removeTikTok(tiktoksrc)}
           >
-            
+            <DeleteIcon />
           </IconButton>
         </CardActions>
       </Card>
