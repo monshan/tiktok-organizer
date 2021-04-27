@@ -17,9 +17,9 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
             placeholder="https://www.tiktok.com/~"
             type="string"
             variant="filled"
+            fullWidth={true}
             onChange={event => setTikTokInput(event.target.value) }
             autoFocus
-            fillwidth
           />
         </FormControl>
         <DialogContentText>

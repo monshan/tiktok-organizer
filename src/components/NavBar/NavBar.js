@@ -19,7 +19,7 @@ const NavBar = ({ openForm }) => {
         <TextField 
           placeholder="search tiktoks or collections..."
         />
-        <Tabs>
+        <Tabs value={0}>
           <Link to="/">
             <Tab label="home" />
           </Link>
