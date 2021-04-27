@@ -34,6 +34,7 @@ const Home = ({ initTikToks }) => {
       if (a.isPinned && !b.isPinned) {
         return (-1);
       }
+      return 0;
     });
     setOrder([...inOrder]);
   }
