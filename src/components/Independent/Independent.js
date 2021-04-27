@@ -14,7 +14,7 @@ import { getOembed } from '../../api-calls';
 import PropTypes from 'prop-types';
 
 
-const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
+const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok, key }) => {
   const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
   const [error, setError] = useState('');
@@ -52,23 +52,23 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
     >
       <Card
         elevation={6}
-        for-cypress="card"
+        id={ tiktoksrc.substring(23, 63) }
         >
-        {error && <CardContent for-cypress="card-error"> {error}, Cannot retrieve from TikTok!</CardContent>}
+        {error && <CardContent className="error"> {error}, Cannot retrieve from TikTok!</CardContent>}
         <CardMedia 
           image={ thumbnail }
           component="img"
-          for-cypress="card-thumbnail"
         />
         <CardActions>
           <IconButton
             onClick={() => togglePin()}
-            for-cypress="card-bookmark"
+            className="pin-icon"
           >
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
           <IconButton
             onClick={() => removeTikTok(tiktoksrc)}
+            className="trash-icon"
           >
             <DeleteIcon />
           </IconButton>
