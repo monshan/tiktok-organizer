@@ -73,12 +73,14 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
           <IconButton
             onClick={() => togglePin()}
             className="pin-icon"
+            aria-label={ `${title} pin button` }
           >
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
           <IconButton
             onClick={() => removeTikTok(tiktoksrc)}
             className="trash-icon"
+            aria-label={ `${title} remove button` }
           >
             <DeleteIcon />
           </IconButton>
