@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
-const Home = ({ initTikToks }) => {
+const Home = ({ initTikToks, removeTikTok }) => {
   const convertToPinObjects = initTikToks.map(tiktok => {
     return {
       url: tiktok,
@@ -34,6 +34,7 @@ const Home = ({ initTikToks }) => {
       if (a.isPinned && !b.isPinned) {
         return (-1);
       }
+      return 0;
     });
     setOrder([...inOrder]);
   }
@@ -44,6 +45,7 @@ const Home = ({ initTikToks }) => {
         <Independent 
           key={ tiktok.url.substring(23, 63) }
           tiktoksrc={ tiktok.url }
+          removeTikTok={ removeTikTok }
           addPin={ addPin }
           removePin={ removePin }
         />

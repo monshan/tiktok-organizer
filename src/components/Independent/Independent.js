@@ -4,18 +4,17 @@ import {
   CardContent,
   CardMedia,
   CardActions,
-  // Typography,
   IconButton
 } from '@material-ui/core';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { useEffect, useState } from 'react';
 import { getOembed } from '../../api-calls';
 import PropTypes from 'prop-types';
 
 
-const Independent = ({ tiktoksrc, addPin, removePin }) => {
+const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
   const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
   const [error, setError] = useState('');
@@ -51,19 +50,27 @@ const Independent = ({ tiktoksrc, addPin, removePin }) => {
       sm={4}
       xs={6}
     >
-      {error && <CardContent>Cannot retrieve from TikTok!</CardContent>}
       <Card
         elevation={6}
-      >
-        <CardMedia image={ thumbnail } component="img"/>
+        for-cypress="card"
+        >
+        {error && <CardContent for-cypress="card-error"> {error}, Cannot retrieve from TikTok!</CardContent>}
+        <CardMedia 
+          image={ thumbnail }
+          component="img"
+          for-cypress="card-thumbnail"
+        />
         <CardActions>
-          <IconButton>
-            <LibraryAddIcon />
-          </IconButton>
           <IconButton
             onClick={() => togglePin()}
+            for-cypress="card-bookmark"
           >
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+          </IconButton>
+          <IconButton
+            onClick={() => removeTikTok(tiktoksrc)}
+          >
+            <DeleteIcon />
           </IconButton>
         </CardActions>
       </Card>
