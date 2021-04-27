@@ -21,6 +21,7 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
             onChange={
               event => setTikTokInput(event.target.value)
             }
+            id="inputTikTok"
             autoFocus
           />
         </FormControl>
@@ -29,7 +30,10 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={ () => addTikTok(tikTokInput) }>
+        <Button 
+          onClick={ () => addTikTok(tikTokInput) }
+          id="submit"
+        >
           Submit
         </Button>
         <Button onClick={ closeForm }>

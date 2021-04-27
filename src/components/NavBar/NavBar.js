@@ -21,7 +21,9 @@ const NavBar = ({ openForm }) => {
           </Link>
         </Tabs>
         <IconButton
-          onClick={ openForm }>
+          onClick={ openForm }
+          id="openForm"
+        >
           <AddBoxIcon />
         </IconButton>
       </Toolbar>
