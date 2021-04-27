@@ -64,6 +64,7 @@ const Home = ({ initTikToks, removeTikTok }) => {
       justify="center"
       alignItems="center"
       children={ renderAsCards() }
+      for-cypress="home-grid"
     />
   )
 }
