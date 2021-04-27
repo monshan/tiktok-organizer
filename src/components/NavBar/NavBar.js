@@ -1,8 +1,6 @@
 import { AppBar, IconButton, TextField, Tabs, Tab, Toolbar, Typography } from "@material-ui/core";
-import MenuIcon from '@material-ui/icons/Menu';
+import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import AddBoxIcon from '@material-ui/icons/AddBox';
-import SearchIcon from '@material-ui/icons/Search';
-import HelpIcon from '@material-ui/icons/Help';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
@@ -11,15 +9,12 @@ const NavBar = ({ openForm }) => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <IconButton>
-          <MenuIcon />
-        </IconButton>
         <Typography>TTTracker</Typography>
-        <Tabs value={0}>
+        <IconButton>
           <Link to="/">
-            <Tab label="home" />
+            <HomeTwoToneIcon />
           </Link>
-        </Tabs>
+        </IconButton>
         <IconButton
           onClick={ openForm }
           id="openForm"
