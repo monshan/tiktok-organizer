@@ -1,0 +1,7 @@
+.author {
+  font-family: $header-font;
+}
+
+.title {
+  @extend %italic-light-body;
+}
