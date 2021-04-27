@@ -1,20 +1,5 @@
 describe('TTTracker', () => {
   describe('Bad Paths', () => {
-    // it('Should display server error', () => {
-    //   cy.intercept({
-    //     method: 'GET',
-    //     url: '/'
-    //   },
-    //   { headers: {
-    //     "content-type": 'text/html',
-    //     fixture: "serverError.json"
-    //   }
-    //   })
-    //   cy.visit('http://localhost:3000')
-    //   cy.get('[for-cypress=card-error]').should('exist')
-    //     .contains('Something went wrong, Cannot retrieve from TikTok!').and('be.visible')
-    // })
-  
     it('Should display incorrect path error', () => {
       cy.visit('http://localhost:3000/any-invalid-route')
       cy.get('[for-cypress=bad-route]')
@@ -67,9 +52,9 @@ describe('TTTracker', () => {
         .should('have.attr', 'src', 'https://p16-sign-va.tiktokcdn.com/obj/tos-maliva-p-0068/0d51215c6d9846958e23daa010b21b47?x-expires=1619575200&x-signature=L8g1cbDaBFdKv3620ZVhegHBQe4%3D')
     })
 
-    it('Can remove a bookmark from a tiktok card', () => {
+    // it('Can remove a bookmark from a tiktok card', () => {
 
-    })
+    // })
   })
 
   describe('Indepenent Card', () => {
@@ -79,11 +64,31 @@ describe('TTTracker', () => {
         method: 'GET',
         url: "https://www.tiktok.com/oembed?url=https://www.tiktok.com/@str0ngzer0/video/6954499899572505862?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0"
       }, {
-        fixture: "forIndepedent.json"
+        fixture: 'forIndependent.json'
       })
     });
-    it('Should have an image and two action buttons', () => {
 
+
+    it('Should have an image and two action buttons', () => {
+      cy.get('#gridContainer')
+        .children()
+        .eq(3)
+        .find('.pin-icon')
+        .should('exist')
+        .and('be.visible')
+      
+      cy.get('#gridContainer')
+        .children()
+        .eq(3)
+        .find('.trash-icon')
+        .should('exist')
+        .and('be.visible')
+
+      cy.get('#gridContainer')
+        .children()
+        .eq(3)
+        .find('img')
+        .should('have.attr', 'src', 'https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/789ef91e8ae5437bbadac64918903652~tplv-dmt-logom:tos-maliva-p-0000/7935e17a2e554f888f1d3b67a160be04.image?x-expires=1619575200&x-signature=8xY7Kkl2RQWydWlLBnt6RWRiQYU%3D')
     })
   })
 })
