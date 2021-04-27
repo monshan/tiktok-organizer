@@ -41,6 +41,11 @@ const App = () => {
     closeFormDialog();
   }
 
+  const removeTikTok = (url) => {
+    const updated = initTikToks.filter(tiktok => tiktok !== url);
+    setInitTikToks([...updated]);
+  }
+
   return (
     <div className="App">
       <main>
@@ -56,6 +61,7 @@ const App = () => {
           <Route exact path="/">
             <Home
               initTikToks={ initTikToks }
+              removeTikTok={ removeTikTok }
             />
           </Route>
           <Route path="*">
