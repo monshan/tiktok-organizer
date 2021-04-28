@@ -72,6 +72,10 @@ TTTracker the TikTokTracker addresses this by utilizing the oembed API provided 
 
 TTTracker achieves a 100 Lighthouse Report for accessibility and 0 WAVE errors.
 
+![Screen Shot 2021-04-27 at 4 18 31 PM (2)](https://user-images.githubusercontent.com/54310614/116327083-2ea43580-a783-11eb-9c02-14274de4824d.png)
+![Screen Shot 2021-04-27 at 5 11 03 PM (2)](https://user-images.githubusercontent.com/54310614/116327112-3ebc1500-a783-11eb-8197-62e76b71918b.png)
+
+
 ## Learning Goals
 
 The goal of this particular project was to solve a problem of a **niche community** using our current skills as developers and not necessarily as a stretch to learn new technologies. Therefore, learning goals for this project took a backseat over constructing the application with quality and good practice.
@@ -79,6 +83,10 @@ The goal of this particular project was to solve a problem of a **niche communit
 However one topic that was introduced and asked of development was to write *User Personas* to better reflect the intention behind the application. This would also aid with narrowing the MVP features that are prioritized in development and if they would eventually be included in production.
 
 You can read both of the user stories written with respect to this project below.
+
+![tttracker persona1](https://user-images.githubusercontent.com/54310614/116326857-b89fce80-a782-11eb-91d8-98d41a0dc02b.png)
+![tttracker persona2](https://user-images.githubusercontent.com/54310614/116327003-03b9e180-a783-11eb-8e70-bad784160cb1.png)
+
 
 ## Future Iterations
 
@@ -102,7 +110,5 @@ Due to the time constrainsts of this project, several further features were prop
 
 ## Contact
 
-<!-- Personal Definitions  -->
-
-[linkedin1]: https://www.linkedin.com/in/marika-shanahan
-[github1]: https://github.com/monshan
+[linkedin](https://www.linkedin.com/in/marika-shanahan)
+[github](https://github.com/monshan)
