@@ -77,6 +77,7 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
+            {error && <h1>We cannot seem to load your tiktoks, many apologies</h1>}
             <Home
               initTikToks={ initTikToks }
               removeTikTok={ removeTikTok }
