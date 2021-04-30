@@ -76,7 +76,7 @@ const Independent = ({
           aria-label={ `Thumbnail of ${ title }` }
         />
         <CardContent>
-          {/* <a href={  } className="author">@{ author_name }</a> */}
+          <a href={ author_url } className="author">@{ author_name }</a>
           <p className="title">{ title }</p>
         </CardContent>
         <CardActions>
@@ -88,7 +88,7 @@ const Independent = ({
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
           <IconButton
-            // onClick={() => removeTikTok(tiktoksrc)}
+            onClick={() => removeTikTok(data_video_id)}
             className="trash-icon"
             aria-label={ `${title} remove button` }
           >

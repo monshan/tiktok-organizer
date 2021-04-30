@@ -63,16 +63,6 @@ const Home = ({ fetchedTTS, removeTikTok }) => {
           addPin={ addPin }
           removePin={ removePin }
         />
-
-        // cleaned = {
-        //   cite: tiktok,
-        //   title: oembed.title,
-        //   author_url: oembed.author_url,
-        //   author_name: oembed.author_name,
-        //   html: oembed.html,
-        //   data_video_id: video_id,
-        //   thumbnail_url: oembed.thumbnail_url
-        // }
       )
     })
   }
