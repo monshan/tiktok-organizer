@@ -58,7 +58,15 @@ const App = () => {
           if (oembed.status_msg) {
             throw Error(oembed.status_msg);
           }
-          setFetchedTTS([...fetchedTTS, oembed]);
+          const cleaned = {
+            title: oembed.title,
+            author_url: oembed.author_url,
+            author_name: oembed.author_name,
+            html: oembed.html,
+            data_video_id: oembed.html.substring(oembed.html.search(/data-video-id="/g), oembed.html.search(/data-video-id="/g) + 19),
+            thumbnail_url: oembed.thumbnail_url
+          }
+          setFetchedTTS([...fetchedTTS, cleaned]);
         })
         .catch(error => setError(error))
     })
@@ -79,7 +87,7 @@ const App = () => {
           <Route exact path="/">
             {error && <h1>We cannot seem to load your tiktoks, many apologies</h1>}
             <Home
-              initTikToks={ initTikToks }
+              fetchedTTS={ fetchedTTS }
               removeTikTok={ removeTikTok }
             />
           </Route>

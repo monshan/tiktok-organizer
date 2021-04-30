@@ -2,8 +2,6 @@ import { AppBar, IconButton, Toolbar, Typography, TextField } from "@material-ui
 import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
-
 
 const NavBar = ({ openForm }) => {
   return (
@@ -21,10 +19,12 @@ const NavBar = ({ openForm }) => {
         />
         <IconButton
           aria-label="Back to home button link"
+          onClick={ e => {
+            e.preventDefault();
+            window.location = "http://localhost:3000/"
+          } }
         >
-          <Link to="/" aria-label="link to home">
-            <HomeTwoToneIcon />
-          </Link>
+          <HomeTwoToneIcon />
         </IconButton>
         <IconButton
           onClick={ openForm }

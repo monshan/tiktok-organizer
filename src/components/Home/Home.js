@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
-const Home = ({ initTikToks, removeTikTok }) => {
-  const convertToPinObjects = initTikToks.map(tiktok => {
+const Home = ({ fetchedTTS, removeTikTok }) => {
+  const convertToPinObjects = fetchedTTS.map(tiktok => {
     return {
-      url: tiktok,
+      ...tiktok,
       isPinned: false
     }
   })
@@ -40,22 +40,27 @@ const Home = ({ initTikToks, removeTikTok }) => {
   }
 
   const renderAsCards = () => {
-    return order.map(tiktok => {
+    return order.map(tt => {
       return (
-        <Independent 
-          key={ tiktok.url.substring(23, 63) }
-          tiktoksrc={ tiktok.url }
-          removeTikTok={ removeTikTok }
-          addPin={ addPin }
-          removePin={ removePin }
-        />
+        <div></div>
+
+        // <Independent 
+        //   key={ tt.title }
+        //   title={ tt.title }
+        //   author_name={ tt.author_name }
+        //   html={ tt.html }
+        //   thumbnail_url={ tt.thumbnail_url }
+        //   removeTikTok={ removeTikTok }
+        //   addPin={ addPin }
+        //   removePin={ removePin }
+        // />
       )
     })
   }
 
   useEffect(() => {
     setOrder([...convertToPinObjects])
-  }, [initTikToks])
+  }, [fetchedTTS]);
 
   return (
     <Grid

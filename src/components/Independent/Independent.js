@@ -14,13 +14,13 @@ import { getOembed } from '../../api-calls';
 import PropTypes from 'prop-types';
 
 
-const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [authorLink, setAuthorLink] = useState('');
-  const [thumbnail, setThumbnail] = useState('');
+const Independent = ({ title, author_name, html, thumbnail_url, addPin, removePin, removeTikTok }) => {
+  // const [title, setTitle] = useState('');
+  // const [author, setAuthor] = useState('');
+  // const [authorLink, setAuthorLink] = useState('');
+  // const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
 
   const togglePin = () => {
     if (isPinned) {
@@ -34,19 +34,19 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
     }
   }
 
-  useEffect(() => {
-    getOembed(tiktoksrc)
-      .then(oembed => {
-        if (oembed.status_msg) {
-          throw Error(oembed.status_msg);
-        }
-        setTitle(oembed.title);
-        setAuthor(oembed.author_name);
-        setAuthorLink(oembed.author_url);
-        setThumbnail(oembed.thumbnail_url);
-      })
-      .catch(error => setError(error))
-  }, [tiktoksrc, error])
+  // useEffect(() => {
+  //   getOembed(tiktoksrc)
+  //     .then(oembed => {
+  //       if (oembed.status_msg) {
+  //         throw Error(oembed.status_msg);
+  //       }
+  //       setTitle(oembed.title);
+  //       setAuthor(oembed.author_name);
+  //       setAuthorLink(oembed.author_url);
+  //       setThumbnail(oembed.thumbnail_url);
+  //     })
+  //     .catch(error => setError(error))
+  // }, [tiktoksrc, error])
 
   return (
     <Grid
@@ -58,16 +58,15 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
     >
       <Card
         elevation={6}
-        id={ tiktoksrc.substring(23, 63) }
         >
         {error && <CardContent className="error"> {error}, Cannot retrieve from TikTok!</CardContent>}
         <CardMedia 
-          image={ thumbnail }
+          image={ thumbnail_url }
           component="img"
           aria-label={ `Thumbnail of ${ title }` }
         />
         <CardContent>
-          <a href={ authorLink } className="author">@{ author }</a>
+          {/* <a href={  } className="author">@{ author_name }</a> */}
           <p className="title">{ title }</p>
         </CardContent>
         <CardActions>
@@ -79,7 +78,7 @@ const Independent = ({ tiktoksrc, addPin, removePin, removeTikTok }) => {
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
           <IconButton
-            onClick={() => removeTikTok(tiktoksrc)}
+            // onClick={() => removeTikTok(tiktoksrc)}
             className="trash-icon"
             aria-label={ `${title} remove button` }
           >
