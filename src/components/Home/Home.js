@@ -18,8 +18,8 @@ const Home = ({ fetchedTTS, removeTikTok }) => {
     sortIfPinned();
   }
 
-  const removePin = (url) => {
-    order[order.findIndex((tiktok) => tiktok.url === url)].isPinned = false;
+  const removePin = (id) => {
+    order[order.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = false;
     sortIfPinned();
   }
 
@@ -40,20 +40,36 @@ const Home = ({ fetchedTTS, removeTikTok }) => {
   }
 
   const renderAsCards = () => {
-    return order.map(tt => {
+    return order.map(({
+      cite,
+      title,
+      author_url,
+      author_name,
+      html,
+      data_video_id,
+      thumbnail_url
+    }) => {
       return (
-        <div></div>
+        <Independent 
+          key={ data_video_id }
+          title={ title }
+          author_name={ author_name }
+          html={ html }
+          thumbnail_url={ thumbnail_url }
+          removeTikTok={ removeTikTok }
+          addPin={ addPin }
+          removePin={ removePin }
+        />
 
-        // <Independent 
-        //   key={ tt.title }
-        //   title={ tt.title }
-        //   author_name={ tt.author_name }
-        //   html={ tt.html }
-        //   thumbnail_url={ tt.thumbnail_url }
-        //   removeTikTok={ removeTikTok }
-        //   addPin={ addPin }
-        //   removePin={ removePin }
-        // />
+        // cleaned = {
+        //   cite: tiktok,
+        //   title: oembed.title,
+        //   author_url: oembed.author_url,
+        //   author_name: oembed.author_name,
+        //   html: oembed.html,
+        //   data_video_id: video_id,
+        //   thumbnail_url: oembed.thumbnail_url
+        // }
       )
     })
   }
@@ -76,6 +92,6 @@ const Home = ({ fetchedTTS, removeTikTok }) => {
 
 export default Home;
 
-Home.propTypes = {
-  initTikToks: PropTypes.array.isRequired
-}
+// Home.propTypes = {
+//   initTikToks: PropTypes.array.isRequired
+// }

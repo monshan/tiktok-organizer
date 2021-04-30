@@ -92,8 +92,8 @@ const Independent = ({ title, author_name, html, thumbnail_url, addPin, removePi
 
 export default Independent;
 
-Independent.propTypes = {
-  tiktoksrc: PropTypes.string.isRequired,
-  addPin: PropTypes.func.isRequired,
-  removePin: PropTypes.func.isRequired
-}
+// Independent.propTypes = {
+//   tiktoksrc: PropTypes.string.isRequired,
+//   addPin: PropTypes.func.isRequired,
+//   removePin: PropTypes.func.isRequired
+// }

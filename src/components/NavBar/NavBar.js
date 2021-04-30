@@ -40,6 +40,6 @@ const NavBar = ({ openForm }) => {
 
 export default NavBar;
 
-NavBar.propTypes = {
-  openForm: PropTypes.func.isRequired
-}
+// NavBar.propTypes = {
+//   openForm: PropTypes.func.isRequired
+// }
