@@ -58,12 +58,14 @@ const App = () => {
           if (oembed.status_msg) {
             throw Error(oembed.status_msg);
           }
+          const video_id = oembed.html.substring(oembed.html.search(/data-video-id="/g) + 15, oembed.html.search(/data-video-id="/g) + 34);
           const cleaned = {
+            cite: tiktok,
             title: oembed.title,
             author_url: oembed.author_url,
             author_name: oembed.author_name,
             html: oembed.html,
-            data_video_id: oembed.html.substring(oembed.html.search(/data-video-id="/g), oembed.html.search(/data-video-id="/g) + 19),
+            data_video_id: video_id,
             thumbnail_url: oembed.thumbnail_url
           }
           setFetchedTTS([...fetchedTTS, cleaned]);

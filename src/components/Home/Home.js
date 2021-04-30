@@ -13,8 +13,8 @@ const Home = ({ fetchedTTS, removeTikTok }) => {
   
   const [order, setOrder] = useState([...convertToPinObjects]);
 
-  const addPin = (url) => {
-    order[order.findIndex((tiktok) => tiktok.url === url)].isPinned = true;
+  const addPin = (id) => {
+    order[order.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = true;
     sortIfPinned();
   }
 
