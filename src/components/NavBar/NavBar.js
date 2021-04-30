@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Typography, TextField } from "@material-ui/core";
 import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
 import PropTypes from 'prop-types';
@@ -14,6 +14,11 @@ const NavBar = ({ openForm }) => {
         >
           TTTracker
         </Typography>
+        <TextField
+          placeholder="Search..."
+          variant="outlined"
+          autoFocus={true}
+        />
         <IconButton
           aria-label="Back to home button link"
         >
