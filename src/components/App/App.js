@@ -72,7 +72,7 @@ const App = () => {
         })
         .catch(error => setError(error))
     })
-  }, [])
+  }, [initTikToks])
 
   return (
     <div className="App">

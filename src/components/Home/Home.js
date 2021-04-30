@@ -52,8 +52,11 @@ const Home = ({ fetchedTTS, removeTikTok }) => {
       return (
         <Independent 
           key={ data_video_id }
+          cite={ cite }
+          data_video_id={ data_video_id }
           title={ title }
           author_name={ author_name }
+          author_url={ author_url }
           html={ html }
           thumbnail_url={ thumbnail_url }
           removeTikTok={ removeTikTok }

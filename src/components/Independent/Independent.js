@@ -14,7 +14,18 @@ import { getOembed } from '../../api-calls';
 import PropTypes from 'prop-types';
 
 
-const Independent = ({ title, author_name, html, thumbnail_url, addPin, removePin, removeTikTok }) => {
+const Independent = ({
+  cite,
+  title,
+  author_url,
+  author_name,
+  html,
+  data_video_id,
+  thumbnail_url,
+  removeTikTok,
+  addPin,
+  removePin
+  }) => {
   // const [title, setTitle] = useState('');
   // const [author, setAuthor] = useState('');
   // const [authorLink, setAuthorLink] = useState('');
@@ -25,12 +36,12 @@ const Independent = ({ title, author_name, html, thumbnail_url, addPin, removePi
   const togglePin = () => {
     if (isPinned) {
       setPin(false);
-      return removePin(tiktoksrc);
+      return removePin(data_video_id);
     }
 
     if (!isPinned) {
       setPin(true);
-      return addPin(tiktoksrc);
+      return addPin(data_video_id);
     }
   }
 
@@ -59,7 +70,6 @@ const Independent = ({ title, author_name, html, thumbnail_url, addPin, removePi
       <Card
         elevation={6}
         >
-        {error && <CardContent className="error"> {error}, Cannot retrieve from TikTok!</CardContent>}
         <CardMedia 
           image={ thumbnail_url }
           component="img"
