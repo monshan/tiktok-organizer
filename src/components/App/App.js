@@ -26,11 +26,8 @@ const App = () => {
     'https://www.tiktok.com/@carejeffcounty/video/6943239331855355142?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0',
     'https://www.tiktok.com/@goldenretrieverlife/video/6954103546321161478?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0'
   ])
-
   const [fetchedTTS, setFetchedTTS] = useState([]);
   const [error, setError] = useState('');
-
-
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const openFormDialog = () => {
@@ -51,27 +48,36 @@ const App = () => {
     setInitTikToks([...updated]);
   }
 
-  useEffect(() => {
-    initTikToks.forEach(tiktok => {
-      getOembed(tiktok)
-        .then(oembed => {
-          if (oembed.status_msg) {
-            throw Error(oembed.status_msg);
-          }
-          const video_id = oembed.html.substring(oembed.html.search(/data-video-id="/g) + 15, oembed.html.search(/data-video-id="/g) + 34);
-          const cleaned = {
-            cite: tiktok,
-            title: oembed.title,
-            author_url: oembed.author_url,
-            author_name: oembed.author_name,
-            html: oembed.html,
-            data_video_id: video_id,
-            thumbnail_url: oembed.thumbnail_url
-          }
-          setFetchedTTS([...fetchedTTS, cleaned]);
-        })
-        .catch(error => setError(error))
+  const loadAll = async () => {
+    const ttPromises = initTikToks.map(tt => {
+      return getOembed(tt);
     })
+    const allOembeds = await Promise.all(ttPromises)
+    return setFetchedTTS([...allOembeds]);
+  }
+
+  useEffect(() => {
+    loadAll();
+    // initTikToks.forEach(tiktok => {
+    //   getOembed(tiktok)
+    //     .then(oembed => {
+    //       if (oembed.status_msg) {
+    //         throw Error(oembed.status_msg);
+    //       }
+    //       const video_id = oembed.html.substring(oembed.html.search(/data-video-id="/g) + 15, oembed.html.search(/data-video-id="/g) + 34);
+    //       const cleaned = {
+    //         cite: tiktok,
+    //         title: oembed.title,
+    //         author_url: oembed.author_url,
+    //         author_name: oembed.author_name,
+    //         html: oembed.html,
+    //         data_video_id: video_id,
+    //         thumbnail_url: oembed.thumbnail_url
+    //       }
+    //       setFetchedTTS([...fetchedTTS, cleaned]);
+    //     })
+    //     .catch(error => setError(error))
+    // })
   }, [initTikToks])
 
   return (
