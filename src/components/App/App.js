@@ -1,8 +1,9 @@
 // import { Step, Stepper, StepLabel } from "@material-ui/core";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from '../NavBar/NavBar'; 
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
 import Home from '../Home/Home';
+import { getOembed } from '../../api-calls';
 import { Route, Switch } from "react-router";
 import { Alert } from '@material-ui/lab';
 
@@ -27,6 +28,8 @@ const App = () => {
   ])
 
   const [fetchedTTS, setFetchedTTS] = useState([]);
+  const [error, setError] = useState('');
+
 
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -47,6 +50,19 @@ const App = () => {
     const updated = initTikToks.filter(tiktok => tiktok !== url);
     setInitTikToks([...updated]);
   }
+
+  useEffect(() => {
+    initTikToks.forEach(tiktok => {
+      getOembed(tiktok)
+        .then(oembed => {
+          if (oembed.status_msg) {
+            throw Error(oembed.status_msg);
+          }
+          setFetchedTTS([...fetchedTTS, oembed]);
+        })
+        .catch(error => setError(error))
+    })
+  }, [])
 
   return (
     <div className="App">
