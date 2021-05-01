@@ -3,7 +3,10 @@ export const getOembed = (desiredClip) => {
     .then(result => result.json())
     .then(oembed => {
       if (oembed.status_msg) {
-        return oembed;
+        return {
+          cite: desiredClip,
+          status_msg: oembed.status_msg
+        };
       }
       const video_id = oembed.html.substring(oembed.html.search(/data-video-id="/g) + 15, oembed.html.search(/data-video-id="/g) + 34);
       return {

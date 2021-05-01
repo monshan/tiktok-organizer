@@ -4,7 +4,8 @@ import {
   CardContent,
   CardMedia,
   CardActions,
-  IconButton
+  IconButton,
+  Typography
 } from '@material-ui/core';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
@@ -22,12 +23,12 @@ const Independent = ({
   html,
   data_video_id,
   thumbnail_url,
+  status_msg,
   removeTikTok,
   addPin,
   removePin
   }) => {
   const [isPinned, setPin] = useState(false);
-  const []
 
   const togglePin = () => {
     if (isPinned) {
@@ -52,15 +53,26 @@ const Independent = ({
       <Card
         elevation={6}
         >
-        {thumbnail_url && <CardMedia 
+        {status_msg 
+        ? <CardContent>
+            <p>Not able to load this tiktok, please check your path url</p>
+            <p>{ cite }</p>
+            {/* <Typography noWrap={true}> 
+              { cite }
+            </Typography> */}
+          </CardContent>
+        : <>
+            <CardMedia 
               image={ thumbnail_url }
               component="img"
               aria-label={ `Thumbnail of ${ title }` }
-            />}
-        <CardContent>
-          {author_name && <p className="author">@{ author_name }</p>}
-          {title && <p className="title">{ title }</p>}
-        </CardContent>
+            />
+            <CardContent>
+              {author_name && <p className="author">@{ author_name }</p>}
+              {title && <p className="title">{ title }</p>}
+            </CardContent>
+          </>
+        }
         <CardActions>
           <IconButton
             onClick={() => togglePin()}
