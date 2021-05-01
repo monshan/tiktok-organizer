@@ -28,6 +28,7 @@ const App = () => {
     'https://www.tiktok.com/@goldenretrieverlife/video/6954103546321161478?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0'
   ])
   const [fetchedTTS, setFetchedTTS] = useState([]);
+  const [searchHome, setSearchHome] = useState([...fetchedTTS]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [error, setError] = useState('');
 
@@ -49,10 +50,26 @@ const App = () => {
     setInitTikToks([...updated]);
   }
 
+  const search = (query) => {
+    const formatQuery = query.toUpperCase();
+    const filtered = fetchedTTS.reduce((final, tt) => {
+      if (tt.status_msg) return final;
+      if (
+        tt.author_name.toUpperCase().includes(formatQuery) ||
+        tt.title.toUpperCase().includes(formatQuery)
+        ) {
+        final.push(tt);
+      }
+      return final;
+    }, [])
+    setSearchHome([...filtered]);
+  }
+
   const loadAll = async () => {
     const ttPromises = initTikToks.map(tt => getOembed(tt));
-    const allOembeds = await Promise.all(ttPromises)
+    const allOembeds = await Promise.all(ttPromises);
     setFetchedTTS([...allOembeds]);
+    setSearchHome([...allOembeds]);
   }
 
   useEffect(() => {
@@ -64,6 +81,7 @@ const App = () => {
       <main>
         <NavBar 
           openForm={ openFormDialog }
+          search={ search }
         />
         <AddTikTokForm 
           status={ dialogOpen }
@@ -74,7 +92,7 @@ const App = () => {
           <Route exact path="/">
             {error && <h1>There's been an error loading some of your tiktoks</h1>}
             <Home
-              fetchedTTS={ fetchedTTS }
+              searchHome={ searchHome }
               removeTikTok={ removeTikTok }
             />
           </Route>

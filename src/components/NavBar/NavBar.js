@@ -1,9 +1,20 @@
-import { AppBar, IconButton, Toolbar, Typography, TextField } from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Typography, TextField, Button } from "@material-ui/core";
 import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
 import PropTypes from 'prop-types';
 
-const NavBar = ({ openForm }) => {
+const NavBar = ({ search, openForm }) => {
+  const searchOnEnter = event => {
+    if (event.keyCode === 13) {
+      search(event.target.value)
+    }
+  }
+
+  const clearSearch = () => {
+    document.querySelector('#searchField').value = '';
+    search('');
+  }
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -13,10 +24,20 @@ const NavBar = ({ openForm }) => {
           TTTracker
         </Typography>
         <TextField
+          id="searchField"
           placeholder="Search..."
-          variant="outlined"
+          variant="filled"
           autoFocus={true}
+          defaultValue=""
+          onChange={e => search(e.target.value)}
+          // onKeyDown={e => searchOnEnter(e)}
         />
+        <Button
+          variant="contained"
+          onClick={() => clearSearch()}
+        >
+          Clear
+        </Button>
         <IconButton
           aria-label="Back to home button link"
           onClick={ e => {
