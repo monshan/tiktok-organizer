@@ -51,20 +51,20 @@ const App = () => {
   }
 
   const search = (query) => {
-    const filtered = fetchedTTS.filter(({ title, author_name }) => {
-      if (title.includes(query) || author_name.includes(query)) {
-        return true;
-      }
-      return false;
-    })
-    setSearchHome([...filtered]);
+    // const filtered = fetchedTTS.filter(({ title, author_name }) => {
+    //   if (title.includes(query) || author_name.includes(query)) {
+    //     return true;
+    //   }
+    //   return false;
+    // })
+    // setSearchHome([...filtered]);
   }
 
   const loadAll = async () => {
     const ttPromises = initTikToks.map(tt => getOembed(tt));
-    const allOembeds = await Promise.all(ttPromises)
+    const allOembeds = await Promise.all(ttPromises);
     setFetchedTTS([...allOembeds]);
-    setSearchHome([...fetchedTTS]);
+    setSearchHome([...allOembeds]);
   }
 
   useEffect(() => {

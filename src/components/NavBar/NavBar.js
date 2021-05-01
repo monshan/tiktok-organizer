@@ -4,6 +4,12 @@ import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
 import PropTypes from 'prop-types';
 
 const NavBar = ({ search, openForm }) => {
+  const searchOnEnter = event => {
+    if (event.keyCode === 13) {
+      search(event.target.value)
+    }
+  }
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -16,8 +22,9 @@ const NavBar = ({ search, openForm }) => {
           placeholder="Search..."
           variant="filled"
           autoFocus={true}
-          onChange={e => search(e.target.value)}
-          // onKeyPress={}
+          defaultValue=""
+          // onChange={e => search(e.target.value)}
+          // onKeyDown={e => searchOnEnter(e)}
         />
         <Button
           variant="contained"
