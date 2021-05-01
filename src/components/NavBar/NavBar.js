@@ -3,7 +3,7 @@ import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
 import PropTypes from 'prop-types';
 
-const NavBar = ({ openForm }) => {
+const NavBar = ({ search, openForm }) => {
   return (
     <AppBar position="static">
       <Toolbar>
@@ -16,7 +16,7 @@ const NavBar = ({ openForm }) => {
           placeholder="Search..."
           variant="filled"
           autoFocus={true}
-          // onChange={}
+          onChange={e => search(e.target.value)}
           // onKeyPress={}
         />
         <Button

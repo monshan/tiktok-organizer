@@ -76,6 +76,7 @@ const App = () => {
       <main>
         <NavBar 
           openForm={ openFormDialog }
+          search={ search }
         />
         <AddTikTokForm 
           status={ dialogOpen }
