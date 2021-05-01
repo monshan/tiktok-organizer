@@ -4,43 +4,19 @@ import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
 const Home = ({ searchHome, removeTikTok }) => {
-  const convertToPinObjects = searchHome.map(tiktok => {
-    return {
-      ...tiktok,
-      isPinned: false
-    }
-  })
+  // const convertToPinObjects = searchHome.map(tiktok => {
+  //   return {
+  //     ...tiktok,
+  //     isPinned: false
+  //   }
+  // })
   
-  const [order, setOrder] = useState([...convertToPinObjects]);
+  // const [order, setOrder] = useState([...convertToPinObjects]);
 
-  const addPin = (id) => {
-    order[order.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = true;
-    sortIfPinned();
-  }
-
-  const removePin = (id) => {
-    order[order.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = false;
-    sortIfPinned();
-  }
-
-  const sortIfPinned = () => {
-    const inOrder = order.sort((a, b) => {
-      if (a.isPinned === b.isPinned) {
-        return 0;
-      }
-      if (!a.isPinned && b.isPinned) {
-        return 1;
-      }
-      if (a.isPinned && !b.isPinned) {
-        return (-1);
-      }
-      return 0;
-    });
-    setOrder([...inOrder]);
-  }
+  
 
   const renderAsCards = () => {
-    return order.map(({
+    return searchHome.map(({
       cite,
       title,
       author_url,
@@ -69,9 +45,9 @@ const Home = ({ searchHome, removeTikTok }) => {
     })
   }
 
-  useEffect(() => {
-    setOrder([...convertToPinObjects])
-  }, [searchHome]);
+  // useEffect(() => {
+  //   setOrder([...convertToPinObjects])
+  // }, [searchHome]);
 
   return (
     <Grid

@@ -65,6 +65,32 @@ const App = () => {
     setSearchHome([...filtered]);
   }
 
+  const addPin = (id) => {
+    order[order.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = true;
+    sortIfPinned();
+  }
+
+  const removePin = (id) => {
+    order[order.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = false;
+    sortIfPinned();
+  }
+
+  const sortIfPinned = () => {
+    const inOrder = order.sort((a, b) => {
+      if (a.isPinned === b.isPinned) {
+        return 0;
+      }
+      if (!a.isPinned && b.isPinned) {
+        return 1;
+      }
+      if (a.isPinned && !b.isPinned) {
+        return (-1);
+      }
+      return 0;
+    });
+    setOrder([...inOrder]);
+  }
+
   const loadAll = async () => {
     const ttPromises = initTikToks.map(tt => getOembed(tt));
     const allOembeds = await Promise.all(ttPromises);
