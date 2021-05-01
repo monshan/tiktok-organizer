@@ -16,7 +16,8 @@ export const getOembed = (desiredClip) => {
         author_name: oembed.author_name,
         html: oembed.html,
         data_video_id: video_id,
-        thumbnail_url: oembed.thumbnail_url
+        thumbnail_url: oembed.thumbnail_url,
+        isPinned: false
       }
     })
 };
