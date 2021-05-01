@@ -28,19 +28,16 @@ const Independent = ({
   addPin,
   removePin
   }) => {
-  // const [isPinned, setPin] = useState(isPinned);
 
   const togglePin = () => {
     isPinned ? handleRemovePin() : handleAddPin()
   }
 
   const handleAddPin = () => {
-    // setPin(true);
     addPin(data_video_id);
   }
 
   const handleRemovePin = () => {
-    // setPin(false);
     removePin(data_video_id);
   }
 

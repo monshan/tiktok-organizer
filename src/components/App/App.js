@@ -61,18 +61,6 @@ const App = () => {
       }
       return final;
     }, [])
-    // filtered.sort((a, b) => {
-    //   if (a.isPinned === b.isPinned) {
-    //     return 0;
-    //   }
-    //   if (!a.isPinned && b.isPinned) {
-    //     return 1;
-    //   }
-    //   if (a.isPinned && !b.isPinned) {
-    //     return (-1);
-    //   }
-    //   return 0;
-    // });
     setSearchHome([...sortIfPinned(filtered)]);
   }
 
