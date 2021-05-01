@@ -27,7 +27,7 @@ const Independent = ({
   removePin
   }) => {
   const [isPinned, setPin] = useState(false);
-  const [error, setError] = useState('');
+  const []
 
   const togglePin = () => {
     if (isPinned) {
@@ -41,20 +41,6 @@ const Independent = ({
     }
   }
 
-  // useEffect(() => {
-  //   getOembed(tiktoksrc)
-  //     .then(oembed => {
-  //       if (oembed.status_msg) {
-  //         throw Error(oembed.status_msg);
-  //       }
-  //       setTitle(oembed.title);
-  //       setAuthor(oembed.author_name);
-  //       setAuthorLink(oembed.author_url);
-  //       setThumbnail(oembed.thumbnail_url);
-  //     })
-  //     .catch(error => setError(error))
-  // }, [tiktoksrc, error])
-
   return (
     <Grid
       item
@@ -66,14 +52,14 @@ const Independent = ({
       <Card
         elevation={6}
         >
-        <CardMedia 
-          image={ thumbnail_url }
-          component="img"
-          aria-label={ `Thumbnail of ${ title }` }
-        />
+        {thumbnail_url && <CardMedia 
+              image={ thumbnail_url }
+              component="img"
+              aria-label={ `Thumbnail of ${ title }` }
+            />}
         <CardContent>
-          <a href={ author_url } className="author">@{ author_name }</a>
-          <p className="title">{ title }</p>
+          {author_name && <p className="author">@{ author_name }</p>}
+          {title && <p className="title">{ title }</p>}
         </CardContent>
         <CardActions>
           <IconButton
