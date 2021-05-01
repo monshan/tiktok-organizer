@@ -61,29 +61,30 @@ const App = () => {
       }
       return final;
     }, [])
-    filtered.sort((a, b) => {
-      if (a.isPinned === b.isPinned) {
-        return 0;
-      }
-      if (!a.isPinned && b.isPinned) {
-        return 1;
-      }
-      if (a.isPinned && !b.isPinned) {
-        return (-1);
-      }
-      return 0;
-    });
-    setSearchHome([...filtered]);
+    // filtered.sort((a, b) => {
+    //   if (a.isPinned === b.isPinned) {
+    //     return 0;
+    //   }
+    //   if (!a.isPinned && b.isPinned) {
+    //     return 1;
+    //   }
+    //   if (a.isPinned && !b.isPinned) {
+    //     return (-1);
+    //   }
+    //   return 0;
+    // });
+    setSearchHome([...sortIfPinned(filtered)]);
   }
 
   const addPin = (id) => {
     searchHome[searchHome.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = true;
-    sortIfPinned();
+    setSearchHome([...sortIfPinned(searchHome)]);
   }
 
   const removePin = (id) => {
     searchHome[searchHome.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = false;
-    sortIfPinned();
+    setSearchHome([...sortIfPinned(searchHome)]);
+
   }
 
   const sortIfPinned = (toBeSorted) => {
@@ -99,7 +100,6 @@ const App = () => {
       }
       return 0;
     });
-    // setSearchHome([...inOrder]);
   }
 
   const loadAll = async () => {
