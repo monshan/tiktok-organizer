@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
-const Home = ({ initTikToks, removeTikTok }) => {
-  const convertToPinObjects = initTikToks.map(tiktok => {
+const Home = ({ fetchedTTS, removeTikTok }) => {
+  const convertToPinObjects = fetchedTTS.map(tiktok => {
     return {
-      url: tiktok,
+      ...tiktok,
       isPinned: false
     }
   })
   
   const [order, setOrder] = useState([...convertToPinObjects]);
 
-  const addPin = (url) => {
-    order[order.findIndex((tiktok) => tiktok.url === url)].isPinned = true;
+  const addPin = (id) => {
+    order[order.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = true;
     sortIfPinned();
   }
 
-  const removePin = (url) => {
-    order[order.findIndex((tiktok) => tiktok.url === url)].isPinned = false;
+  const removePin = (id) => {
+    order[order.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = false;
     sortIfPinned();
   }
 
@@ -40,11 +40,27 @@ const Home = ({ initTikToks, removeTikTok }) => {
   }
 
   const renderAsCards = () => {
-    return order.map(tiktok => {
+    return order.map(({
+      cite,
+      title,
+      author_url,
+      author_name,
+      html,
+      data_video_id,
+      thumbnail_url,
+      status_msg
+    }) => {
       return (
         <Independent 
-          key={ tiktok.url.substring(23, 63) }
-          tiktoksrc={ tiktok.url }
+          key={ data_video_id }
+          cite={ cite }
+          data_video_id={ data_video_id }
+          title={ title }
+          author_name={ author_name }
+          author_url={ author_url }
+          html={ html }
+          thumbnail_url={ thumbnail_url }
+          status_msg={ status_msg }
           removeTikTok={ removeTikTok }
           addPin={ addPin }
           removePin={ removePin }
@@ -55,7 +71,7 @@ const Home = ({ initTikToks, removeTikTok }) => {
 
   useEffect(() => {
     setOrder([...convertToPinObjects])
-  }, [initTikToks])
+  }, [fetchedTTS]);
 
   return (
     <Grid
@@ -71,6 +87,6 @@ const Home = ({ initTikToks, removeTikTok }) => {
 
 export default Home;
 
-Home.propTypes = {
-  initTikToks: PropTypes.array.isRequired
-}
+// Home.propTypes = {
+//   initTikToks: PropTypes.array.isRequired
+// }

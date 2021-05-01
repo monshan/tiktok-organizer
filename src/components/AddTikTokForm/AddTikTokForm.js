@@ -12,12 +12,13 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
         Add a TikTok to your space
       </DialogTitle>
       <DialogContent>
-        <FormControl>
+        <FormControl
+          fullWidth={true}
+        >
           <TextField
             placeholder="https://www.tiktok.com/~"
             type="string"
             variant="filled"
-            fullWidth={true}
             onChange={
               event => setTikTokInput(event.target.value)
             }

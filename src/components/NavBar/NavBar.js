@@ -1,21 +1,30 @@
-import { AppBar, IconButton, Toolbar } from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Typography, TextField } from "@material-ui/core";
 import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
-
 
 const NavBar = ({ openForm }) => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <h1>TTTRACKER</h1>
+        <Typography
+          variant="h1"
+        >
+          TTTracker
+        </Typography>
+        <TextField
+          placeholder="Search..."
+          variant="outlined"
+          autoFocus={true}
+        />
         <IconButton
           aria-label="Back to home button link"
+          onClick={ e => {
+            e.preventDefault();
+            window.location = "http://localhost:3000/"
+          } }
         >
-          <Link to="/" aria-label="link to home">
-            <HomeTwoToneIcon />
-          </Link>
+          <HomeTwoToneIcon />
         </IconButton>
         <IconButton
           onClick={ openForm }
@@ -31,6 +40,6 @@ const NavBar = ({ openForm }) => {
 
 export default NavBar;
 
-NavBar.propTypes = {
-  openForm: PropTypes.func.isRequired
-}
+// NavBar.propTypes = {
+//   openForm: PropTypes.func.isRequired
+// }

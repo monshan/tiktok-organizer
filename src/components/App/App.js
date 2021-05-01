@@ -1,13 +1,15 @@
 // import { Step, Stepper, StepLabel } from "@material-ui/core";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from '../NavBar/NavBar'; 
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
 import Home from '../Home/Home';
+import { getOembed } from '../../api-calls';
 import { Route, Switch } from "react-router";
 import { Alert } from '@material-ui/lab';
 
 const App = () => {
   const [initTikToks, setInitTikToks] = useState([
+    'https://www.tiktok.com/576582&is_from_webapp=v1&is_copy_url=0',
     'https://www.tiktok.com/@diogoramos180/video/6946607853092343046?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0',
     'https://www.tiktok.com/@krisfire98/video/6954138999200009477?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0',
     'https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en&is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6925894707823576582',
@@ -24,16 +26,17 @@ const App = () => {
     'https://www.tiktok.com/@abz248/video/6951099476664716550?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0',
     'https://www.tiktok.com/@carejeffcounty/video/6943239331855355142?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0',
     'https://www.tiktok.com/@goldenretrieverlife/video/6954103546321161478?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0'
-])
-
-  const [dialogOpen, setdialogOpen] = useState(false);
+  ])
+  const [fetchedTTS, setFetchedTTS] = useState([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [error, setError] = useState('');
 
   const openFormDialog = () => {
-    setdialogOpen(true);
+    setDialogOpen(true);
   }
 
   const closeFormDialog = () => {
-    setdialogOpen(false);
+    setDialogOpen(false);
   }
 
   const addTikTok = (url) => {
@@ -45,6 +48,16 @@ const App = () => {
     const updated = initTikToks.filter(tiktok => tiktok !== url);
     setInitTikToks([...updated]);
   }
+
+  const loadAll = async () => {
+    const ttPromises = initTikToks.map(tt => getOembed(tt));
+    const allOembeds = await Promise.all(ttPromises)
+    setFetchedTTS([...allOembeds]);
+  }
+
+  useEffect(() => {
+    loadAll();
+  }, [initTikToks])
 
   return (
     <div className="App">
@@ -59,8 +72,9 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
+            {error && <h1>There's been an error loading some of your tiktoks</h1>}
             <Home
-              initTikToks={ initTikToks }
+              fetchedTTS={ fetchedTTS }
               removeTikTok={ removeTikTok }
             />
           </Route>
