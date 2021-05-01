@@ -10,6 +10,11 @@ const NavBar = ({ search, openForm }) => {
     }
   }
 
+  const clearSearch = () => {
+    document.querySelector('#searchField').value = '';
+    search('');
+  }
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -19,6 +24,7 @@ const NavBar = ({ search, openForm }) => {
           TTTracker
         </Typography>
         <TextField
+          id="searchField"
           placeholder="Search..."
           variant="filled"
           autoFocus={true}
@@ -28,6 +34,7 @@ const NavBar = ({ search, openForm }) => {
         />
         <Button
           variant="contained"
+          onClick={() => clearSearch()}
         >
           Clear
         </Button>
