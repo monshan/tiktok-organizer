@@ -51,13 +51,13 @@ const App = () => {
   }
 
   const search = (query) => {
-    console.log(query);
-    const filtered = fetchedTTS.filter(tiktok => {
-      if (tiktok.title.includes(query) || tiktok.author_name.includes(query)) {
-        return true;
+    const filtered = fetchedTTS.reduce((final, tt) => {
+      if (tt.status_msg) return final;
+      if (tt.author_name.includes(query)) {
+        final.push(tt);
       }
-      return false;
-    })
+      return final;
+    }, [])
     setSearchHome([...filtered]);
   }
 
