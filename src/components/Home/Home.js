@@ -47,7 +47,8 @@ const Home = ({ fetchedTTS, removeTikTok }) => {
       author_name,
       html,
       data_video_id,
-      thumbnail_url
+      thumbnail_url,
+      status_msg
     }) => {
       return (
         <Independent 
@@ -59,6 +60,7 @@ const Home = ({ fetchedTTS, removeTikTok }) => {
           author_url={ author_url }
           html={ html }
           thumbnail_url={ thumbnail_url }
+          status_msg={ status_msg }
           removeTikTok={ removeTikTok }
           addPin={ addPin }
           removePin={ removePin }

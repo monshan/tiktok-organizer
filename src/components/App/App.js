@@ -9,6 +9,7 @@ import { Alert } from '@material-ui/lab';
 
 const App = () => {
   const [initTikToks, setInitTikToks] = useState([
+    'https://www.tiktok.com/576582&is_from_webapp=v1&is_copy_url=0',
     'https://www.tiktok.com/@diogoramos180/video/6946607853092343046?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0',
     'https://www.tiktok.com/@krisfire98/video/6954138999200009477?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0',
     'https://www.tiktok.com/@icedbrock/video/6954098959128300806?lang=en&is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=6925894707823576582',
@@ -27,8 +28,8 @@ const App = () => {
     'https://www.tiktok.com/@goldenretrieverlife/video/6954103546321161478?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0'
   ])
   const [fetchedTTS, setFetchedTTS] = useState([]);
-  const [error, setError] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [error, setError] = useState('');
 
   const openFormDialog = () => {
     setDialogOpen(true);
@@ -49,55 +50,13 @@ const App = () => {
   }
 
   const loadAll = async () => {
-    const ttPromises = initTikToks.map(tt => {
-      return getOembed(tt)
-      // .then(oembed => {
-      //   if (oembed.status_msg) {
-      //     throw Error(oembed.status_msg);
-      //   }
-      //   const video_id = oembed.html.substring(oembed.html.search(/data-video-id="/g) + 15, oembed.html.search(/data-video-id="/g) + 34);
-      //   return {
-      //     cite: tiktok,
-      //     title: oembed.title,
-      //     author_url: oembed.author_url,
-      //     author_name: oembed.author_name,
-      //     html: oembed.html,
-      //     data_video_id: video_id,
-      //     thumbnail_url: oembed.thumbnail_url
-      //   }
-      // })
-      // .catch(error => setError(error))
-    })
+    const ttPromises = initTikToks.map(tt => getOembed(tt));
     const allOembeds = await Promise.all(ttPromises)
-    return setFetchedTTS([...allOembeds]);
+    setFetchedTTS([...allOembeds]);
   }
 
   useEffect(() => {
-    try {
-      loadAll();
-    } catch (err) {
-      setError(err);
-    }
-    // initTikToks.forEach(tiktok => {
-    //   getOembed(tiktok)
-    //     .then(oembed => {
-    //       if (oembed.status_msg) {
-    //         throw Error(oembed.status_msg);
-    //       }
-    //       const video_id = oembed.html.substring(oembed.html.search(/data-video-id="/g) + 15, oembed.html.search(/data-video-id="/g) + 34);
-    //       const cleaned = {
-    //         cite: tiktok,
-    //         title: oembed.title,
-    //         author_url: oembed.author_url,
-    //         author_name: oembed.author_name,
-    //         html: oembed.html,
-    //         data_video_id: video_id,
-    //         thumbnail_url: oembed.thumbnail_url
-    //       }
-    //       setFetchedTTS([...fetchedTTS, cleaned]);
-    //     })
-    //     .catch(error => setError(error))
-    // })
+    loadAll();
   }, [initTikToks])
 
   return (
@@ -113,7 +72,7 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
-            {error && <h1>We cannot seem to load your tiktoks, many apologies</h1>}
+            {error && <h1>There's been an error loading some of your tiktoks</h1>}
             <Home
               fetchedTTS={ fetchedTTS }
               removeTikTok={ removeTikTok }

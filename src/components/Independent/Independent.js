@@ -26,12 +26,8 @@ const Independent = ({
   addPin,
   removePin
   }) => {
-  // const [title, setTitle] = useState('');
-  // const [author, setAuthor] = useState('');
-  // const [authorLink, setAuthorLink] = useState('');
-  // const [thumbnail, setThumbnail] = useState('');
   const [isPinned, setPin] = useState(false);
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
 
   const togglePin = () => {
     if (isPinned) {
