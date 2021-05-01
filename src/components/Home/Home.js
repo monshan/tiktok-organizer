@@ -71,7 +71,7 @@ const Home = ({ searchHome, removeTikTok }) => {
 
   useEffect(() => {
     setOrder([...convertToPinObjects])
-  }, [fetchedTTS]);
+  }, [searchHome]);
 
   return (
     <Grid
