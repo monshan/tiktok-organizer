@@ -30,7 +30,6 @@ const App = () => {
   const [fetchedTTS, setFetchedTTS] = useState([]);
   const [searchHome, setSearchHome] = useState([...fetchedTTS]);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [error, setError] = useState('');
 
   const openFormDialog = () => {
     setDialogOpen(true);
@@ -116,7 +115,6 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
-            {error && <h1>There's been an error loading some of your tiktoks</h1>}
             <Home
               searchHome={ searchHome }
               removeTikTok={ removeTikTok }
