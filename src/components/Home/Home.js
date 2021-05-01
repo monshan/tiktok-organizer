@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
-const Home = ({ fetchedTTS, removeTikTok }) => {
-  const convertToPinObjects = fetchedTTS.map(tiktok => {
+const Home = ({ searchHome, removeTikTok }) => {
+  const convertToPinObjects = searchHome.map(tiktok => {
     return {
       ...tiktok,
       isPinned: false
