@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Toolbar, Typography, TextField } from "@material-ui/core";
+import { AppBar, IconButton, Toolbar, Typography, TextField, Button } from "@material-ui/core";
 import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
 import PropTypes from 'prop-types';
@@ -14,9 +14,16 @@ const NavBar = ({ openForm }) => {
         </Typography>
         <TextField
           placeholder="Search..."
-          variant="outlined"
+          variant="filled"
           autoFocus={true}
+          // onChange={}
+          // onKeyPress={}
         />
+        <Button
+          variant="contained"
+        >
+          Clear
+        </Button>
         <IconButton
           aria-label="Back to home button link"
           onClick={ e => {

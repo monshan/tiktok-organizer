@@ -49,6 +49,12 @@ const App = () => {
     setInitTikToks([...updated]);
   }
 
+  // const search = (query) => {
+  //   if () {
+
+  //   }
+  // }
+
   const loadAll = async () => {
     const ttPromises = initTikToks.map(tt => getOembed(tt));
     const allOembeds = await Promise.all(ttPromises)
