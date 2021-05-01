@@ -51,9 +51,13 @@ const App = () => {
   }
 
   const search = (query) => {
+    const formatQuery = query.toUpperCase();
     const filtered = fetchedTTS.reduce((final, tt) => {
       if (tt.status_msg) return final;
-      if (tt.author_name.includes(query)) {
+      if (
+        tt.author_name.toUpperCase().includes(formatQuery) ||
+        tt.title.toUpperCase().includes(formatQuery)
+        ) {
         final.push(tt);
       }
       return final;
