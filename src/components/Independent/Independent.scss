@@ -6,6 +6,8 @@
   @extend %italic-light-body;
 }
 
-a {
-  color: $soft-black
+.error-address {
+  color: $tiktok-red;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }

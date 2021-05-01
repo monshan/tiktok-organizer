@@ -56,10 +56,7 @@ const Independent = ({
         {status_msg 
         ? <CardContent>
             <p>Not able to load this tiktok, please check your path url</p>
-            <p>{ cite }</p>
-            {/* <Typography noWrap={true}> 
-              { cite }
-            </Typography> */}
+            <p className="error-address">{ cite }</p>
           </CardContent>
         : <>
             <CardMedia 
