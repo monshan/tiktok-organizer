@@ -107,6 +107,7 @@ const App = () => {
         <NavBar 
           openForm={ openFormDialog }
           search={ search }
+          sortIfPinned={ sortIfPinned }
         />
         <AddTikTokForm 
           status={ dialogOpen }
@@ -118,6 +119,7 @@ const App = () => {
             <Home
               searchHome={ searchHome }
               removeTikTok={ removeTikTok }
+              sortIfPinned={ sortIfPinned }
               addPin={ addPin }
               removePin={ removePin }
             />

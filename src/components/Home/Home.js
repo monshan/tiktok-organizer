@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
-const Home = ({ searchHome, removeTikTok, addPin, removePin }) => {
+const Home = ({ searchHome, sortIfPinned, removeTikTok, addPin, removePin }) => {
   // const convertToPinObjects = searchHome.map(tiktok => {
   //   return {
   //     ...tiktok,
@@ -22,7 +22,8 @@ const Home = ({ searchHome, removeTikTok, addPin, removePin }) => {
       html,
       data_video_id,
       thumbnail_url,
-      status_msg
+      status_msg,
+      isPinned
     }) => {
       return (
         <Independent 
@@ -35,6 +36,7 @@ const Home = ({ searchHome, removeTikTok, addPin, removePin }) => {
           html={ html }
           thumbnail_url={ thumbnail_url }
           status_msg={ status_msg }
+          isPinned={ isPinned }
           removeTikTok={ removeTikTok }
           addPin={ addPin }
           removePin={ removePin }
@@ -44,8 +46,8 @@ const Home = ({ searchHome, removeTikTok, addPin, removePin }) => {
   }
 
   // useEffect(() => {
-  //   setOrder([...convertToPinObjects])
-  // }, [searchHome]);
+  //   sortIfPinned();
+  // }, []);
 
   return (
     <Grid

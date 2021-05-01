@@ -23,22 +23,25 @@ const Independent = ({
   data_video_id,
   thumbnail_url,
   status_msg,
+  isPinned,
   removeTikTok,
   addPin,
   removePin
   }) => {
-  const [isPinned, setPin] = useState(false);
+  // const [isPinned, setPin] = useState(isPinned);
 
   const togglePin = () => {
-    if (isPinned) {
-      setPin(false);
-      return removePin(data_video_id);
-    }
+    isPinned ? handleRemovePin() : handleAddPin()
+  }
 
-    if (!isPinned) {
-      setPin(true);
-      return addPin(data_video_id);
-    }
+  const handleAddPin = () => {
+    // setPin(true);
+    addPin(data_video_id);
+  }
+
+  const handleRemovePin = () => {
+    // setPin(false);
+    removePin(data_video_id);
   }
 
   return (
