@@ -86,8 +86,8 @@ const App = () => {
     sortIfPinned();
   }
 
-  const sortIfPinned = () => {
-    const inOrder = searchHome.sort((a, b) => {
+  const sortIfPinned = (toBeSorted) => {
+    return toBeSorted.sort((a, b) => {
       if (a.isPinned === b.isPinned) {
         return 0;
       }
@@ -99,7 +99,7 @@ const App = () => {
       }
       return 0;
     });
-    setSearchHome([...inOrder]);
+    // setSearchHome([...inOrder]);
   }
 
   const loadAll = async () => {
@@ -119,7 +119,6 @@ const App = () => {
         <NavBar 
           openForm={ openFormDialog }
           search={ search }
-          sortIfPinned={ sortIfPinned }
         />
         <AddTikTokForm 
           status={ dialogOpen }
@@ -131,7 +130,6 @@ const App = () => {
             <Home
               searchHome={ searchHome }
               removeTikTok={ removeTikTok }
-              sortIfPinned={ sortIfPinned }
               addPin={ addPin }
               removePin={ removePin }
             />

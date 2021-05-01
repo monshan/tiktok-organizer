@@ -3,7 +3,7 @@ import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
 import PropTypes from 'prop-types';
 
-const NavBar = ({ search, sortIfPinned, openForm }) => {
+const NavBar = ({ search, openForm }) => {
   const searchOnEnter = event => {
     if (event.keyCode === 13) {
       search(event.target.value)

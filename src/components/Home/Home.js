@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
-const Home = ({ searchHome, sortIfPinned, removeTikTok, addPin, removePin }) => {
-  // const convertToPinObjects = searchHome.map(tiktok => {
-  //   return {
-  //     ...tiktok,
-  //     isPinned: false
-  //   }
-  // })
-  
-  // const [order, setOrder] = useState([...convertToPinObjects]);
-
+const Home = ({ searchHome, removeTikTok, addPin, removePin }) => {
   const renderAsCards = () => {
     return searchHome.map(({
       cite,
@@ -44,10 +35,6 @@ const Home = ({ searchHome, sortIfPinned, removeTikTok, addPin, removePin }) => 
       )
     })
   }
-
-  // useEffect(() => {
-  //   sortIfPinned();
-  // }, []);
 
   return (
     <Grid
