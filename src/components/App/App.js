@@ -66,17 +66,17 @@ const App = () => {
   }
 
   const addPin = (id) => {
-    order[order.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = true;
+    searchHome[searchHome.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = true;
     sortIfPinned();
   }
 
   const removePin = (id) => {
-    order[order.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = false;
+    searchHome[searchHome.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = false;
     sortIfPinned();
   }
 
   const sortIfPinned = () => {
-    const inOrder = order.sort((a, b) => {
+    const inOrder = searchHome.sort((a, b) => {
       if (a.isPinned === b.isPinned) {
         return 0;
       }
@@ -88,7 +88,7 @@ const App = () => {
       }
       return 0;
     });
-    setOrder([...inOrder]);
+    setSearchHome([...inOrder]);
   }
 
   const loadAll = async () => {
@@ -120,6 +120,8 @@ const App = () => {
             <Home
               searchHome={ searchHome }
               removeTikTok={ removeTikTok }
+              addPin={ addPin }
+              removePin={ removePin }
             />
           </Route>
           <Route path="*">
