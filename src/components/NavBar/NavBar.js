@@ -13,7 +13,6 @@ const NavBar = ({ search, sortIfPinned, openForm }) => {
   const clearSearch = () => {
     document.querySelector('#searchField').value = '';
     search('');
-    sortIfPinned();
   }
 
   return (
