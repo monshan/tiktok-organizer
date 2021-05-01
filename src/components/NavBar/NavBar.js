@@ -23,7 +23,7 @@ const NavBar = ({ search, openForm }) => {
           variant="filled"
           autoFocus={true}
           defaultValue=""
-          // onChange={e => search(e.target.value)}
+          onChange={e => search(e.target.value)}
           // onKeyDown={e => searchOnEnter(e)}
         />
         <Button
