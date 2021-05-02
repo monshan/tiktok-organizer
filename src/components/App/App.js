@@ -2,9 +2,10 @@
 import { useState, useEffect } from "react";
 import NavBar from '../NavBar/NavBar'; 
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
-import Home from '../Home/Home';
+import Independent from '../Independent/Independent';
 import { getOembed } from '../../api-calls';
 import { Route, Switch } from "react-router";
+import { Grid } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 
 const App = () => {
@@ -28,9 +29,8 @@ const App = () => {
     'https://www.tiktok.com/@goldenretrieverlife/video/6954103546321161478?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0'
   ])
   const [fetchedTTS, setFetchedTTS] = useState([]);
-  const [searchHome, setSearchHome] = useState([...fetchedTTS]);
+  const [displayHome, setDisplayHome] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [error, setError] = useState('');
 
   const openFormDialog = () => {
     setDialogOpen(true);
@@ -62,14 +62,71 @@ const App = () => {
       }
       return final;
     }, [])
-    setSearchHome([...filtered]);
+    setDisplayHome([...sortIfPinned(filtered)]);
+  }
+
+  const addPin = (id) => {
+    fetchedTTS[fetchedTTS.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = true;
+    setDisplayHome([...sortIfPinned(fetchedTTS)]);
+  }
+
+  const removePin = (id) => {
+    fetchedTTS[fetchedTTS.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = false;
+    setDisplayHome([...sortIfPinned(fetchedTTS)]);
+  }
+
+  const sortIfPinned = (toBeSorted) => {
+    return toBeSorted.sort((a, b) => {
+      if (a.isPinned === b.isPinned) {
+        return 0;
+      }
+      if (!a.isPinned && b.isPinned) {
+        return 1;
+      }
+      if (a.isPinned && !b.isPinned) {
+        return (-1);
+      }
+      return 0;
+    });
+  }
+
+  const renderAsCards = () => {
+    return displayHome.map(({
+      cite,
+      title,
+      author_url,
+      author_name,
+      html,
+      data_video_id,
+      thumbnail_url,
+      status_msg,
+      isPinned
+    }) => {
+      return (
+        <Independent 
+          key={ data_video_id }
+          cite={ cite }
+          data_video_id={ data_video_id }
+          title={ title }
+          author_name={ author_name }
+          author_url={ author_url }
+          html={ html }
+          thumbnail_url={ thumbnail_url }
+          status_msg={ status_msg }
+          isPinned={ isPinned }
+          removeTikTok={ removeTikTok }
+          addPin={ addPin }
+          removePin={ removePin }
+        />
+      )
+    })
   }
 
   const loadAll = async () => {
     const ttPromises = initTikToks.map(tt => getOembed(tt));
     const allOembeds = await Promise.all(ttPromises);
     setFetchedTTS([...allOembeds]);
-    setSearchHome([...allOembeds]);
+    setDisplayHome([...allOembeds]);
   }
 
   useEffect(() => {
@@ -90,10 +147,13 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
-            {error && <h1>There's been an error loading some of your tiktoks</h1>}
-            <Home
-              searchHome={ searchHome }
-              removeTikTok={ removeTikTok }
+            <Grid
+              container
+              spacing={2}
+              justify="center"
+              alignItems="center"
+              children={ renderAsCards() }
+              id="gridContainer"
             />
           </Route>
           <Route path="*">
