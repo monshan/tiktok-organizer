@@ -29,7 +29,7 @@ const Independent = ({
   removePin
   }) => {
 
-  const togglePin = () => {
+  const changePin = () => {
     isPinned ? removePin(data_video_id) : addPin(data_video_id)
   }
 
@@ -63,7 +63,7 @@ const Independent = ({
         }
         <CardActions>
           <IconButton
-            onClick={() => togglePin()}
+            onClick={() => changePin()}
             className="pin-icon"
             aria-label={ `${title} pin button` }
           >
