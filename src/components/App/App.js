@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import NavBar from '../NavBar/NavBar'; 
 import AddTikTokForm from '../AddTikTokForm/AddTikTokForm';
-// import Home from '../Home/Home';
 import Independent from '../Independent/Independent';
 import { getOembed } from '../../api-calls';
 import { Route, Switch } from "react-router";
@@ -148,13 +147,6 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
-            {/* <Home
-              searchHome={ searchHome }
-              removeTikTok={ removeTikTok }
-              addPin={ addPin }
-              removePin={ removePin }
-            /> */}
-
             <Grid
               container
               spacing={2}
