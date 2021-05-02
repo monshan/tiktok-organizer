@@ -48,16 +48,6 @@ const App = () => {
     setDisplayHome([...sortIfPinned(filtered)]);
   }
 
-  // const addPin = (id) => {
-  //   fetchedTTS[fetchedTTS.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = true;
-  //   setDisplayHome([...sortIfPinned(fetchedTTS)]);
-  // }
-
-  // const removePin = (id) => {
-  //   fetchedTTS[fetchedTTS.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = false;
-  //   setDisplayHome([...sortIfPinned(fetchedTTS)]);
-  // }
-
   const togglePin = (id) => {
     const position = fetchedTTS.findIndex(tiktok => tiktok.data_video_id === id);
     fetchedTTS[position].isPinned = !fetchedTTS[position].isPinned;
@@ -105,8 +95,6 @@ const App = () => {
           isPinned={ isPinned }
           removeTikTok={ removeTikTok }
           togglePin={ togglePin }
-          // addPin={ addPin }
-          // removePin={ removePin }
         />
       )
     })

@@ -26,13 +26,7 @@ const Independent = ({
   isPinned,
   removeTikTok,
   togglePin
-  // addPin,
-  // removePin
   }) => {
-
-  // const changePin = () => {
-  //   isPinned ? removePin(data_video_id) : addPin(data_video_id)
-  // }
 
   return (
     <Grid
