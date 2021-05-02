@@ -28,6 +28,30 @@ const Independent = ({
   togglePin
   }) => {
 
+  const determineErrorRender = () => {
+    if (status_msg) {
+      return (
+        <CardContent>
+          <p>Not able to load this tiktok, please check your path url</p>
+          <p className="error-address">{ cite }</p>
+        </CardContent>
+      )
+    }
+    return (
+      <>
+        <CardMedia 
+          image={ thumbnail_url }
+          component="img"
+          aria-label={ `Thumbnail of ${ title }` }
+        />
+        <CardContent>
+          <p className="author">@{ author_name }</p>
+          <p className="title">{ title }</p>
+        </CardContent>
+      </>
+    )
+  }
+
   return (
     <Grid
       item
@@ -39,7 +63,8 @@ const Independent = ({
       <Card
         elevation={6}
         >
-        {status_msg 
+        { determineErrorRender() }
+        {/* {status_msg 
         ? <CardContent>
             <p>Not able to load this tiktok, please check your path url</p>
             <p className="error-address">{ cite }</p>
@@ -55,7 +80,7 @@ const Independent = ({
               {title && <p className="title">{ title }</p>}
             </CardContent>
           </>
-        }
+        } */}
         <CardActions>
           <IconButton
             onClick={() => togglePin(data_video_id)}
