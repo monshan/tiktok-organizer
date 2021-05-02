@@ -33,14 +33,6 @@ const Independent = ({
     isPinned ? removePin(data_video_id) : addPin(data_video_id)
   }
 
-  // const handleAddPin = () => {
-  //   addPin(data_video_id);
-  // }
-
-  // const handleRemovePin = () => {
-  //   removePin(data_video_id);
-  // }
-
   return (
     <Grid
       item
