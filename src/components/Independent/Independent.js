@@ -64,23 +64,6 @@ const Independent = ({
         elevation={6}
         >
         { determineErrorRender() }
-        {/* {status_msg 
-        ? <CardContent>
-            <p>Not able to load this tiktok, please check your path url</p>
-            <p className="error-address">{ cite }</p>
-          </CardContent>
-        : <>
-            <CardMedia 
-              image={ thumbnail_url }
-              component="img"
-              aria-label={ `Thumbnail of ${ title }` }
-            />
-            <CardContent>
-              {author_name && <p className="author">@{ author_name }</p>}
-              {title && <p className="title">{ title }</p>}
-            </CardContent>
-          </>
-        } */}
         <CardActions>
           <IconButton
             onClick={() => togglePin(data_video_id)}
