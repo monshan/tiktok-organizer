@@ -104,8 +104,9 @@ const App = () => {
           status_msg={ status_msg }
           isPinned={ isPinned }
           removeTikTok={ removeTikTok }
-          addPin={ addPin }
-          removePin={ removePin }
+          togglePin={ togglePin }
+          // addPin={ addPin }
+          // removePin={ removePin }
         />
       )
     })

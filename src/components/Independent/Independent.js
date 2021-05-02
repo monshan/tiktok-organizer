@@ -25,13 +25,14 @@ const Independent = ({
   status_msg,
   isPinned,
   removeTikTok,
-  addPin,
-  removePin
+  togglePin
+  // addPin,
+  // removePin
   }) => {
 
-  const changePin = () => {
-    isPinned ? removePin(data_video_id) : addPin(data_video_id)
-  }
+  // const changePin = () => {
+  //   isPinned ? removePin(data_video_id) : addPin(data_video_id)
+  // }
 
   return (
     <Grid
@@ -63,7 +64,7 @@ const Independent = ({
         }
         <CardActions>
           <IconButton
-            onClick={() => changePin()}
+            onClick={() => togglePin(data_video_id)}
             className="pin-icon"
             aria-label={ `${title} pin button` }
           >
