@@ -30,16 +30,16 @@ const Independent = ({
   }) => {
 
   const togglePin = () => {
-    isPinned ? handleRemovePin() : handleAddPin()
+    isPinned ? removePin(data_video_id) : addPin(data_video_id)
   }
 
-  const handleAddPin = () => {
-    addPin(data_video_id);
-  }
+  // const handleAddPin = () => {
+  //   addPin(data_video_id);
+  // }
 
-  const handleRemovePin = () => {
-    removePin(data_video_id);
-  }
+  // const handleRemovePin = () => {
+  //   removePin(data_video_id);
+  // }
 
   return (
     <Grid
