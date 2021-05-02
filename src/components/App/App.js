@@ -30,7 +30,7 @@ const App = () => {
     'https://www.tiktok.com/@goldenretrieverlife/video/6954103546321161478?sender_device=pc&sender_web_id=6925894707823576582&is_from_webapp=v1&is_copy_url=0'
   ])
   const [fetchedTTS, setFetchedTTS] = useState([]);
-  // const [searchHome, setSearchHome] = useState([...fetchedTTS]);
+  const [displayHome, setDisplayHome] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const openFormDialog = () => {
@@ -63,17 +63,17 @@ const App = () => {
       }
       return final;
     }, [])
-    setFetchedTTS([...sortIfPinned(filtered)]);
+    setDisplayHome([...sortIfPinned(filtered)]);
   }
 
   const addPin = (id) => {
     fetchedTTS[fetchedTTS.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = true;
-    setFetchedTTS([...sortIfPinned(fetchedTTS)]);
+    setDisplayHome([...sortIfPinned(fetchedTTS)]);
   }
 
   const removePin = (id) => {
     fetchedTTS[fetchedTTS.findIndex((tiktok) => tiktok.data_video_id === id)].isPinned = false;
-    setFetchedTTS([...sortIfPinned(fetchedTTS)]);
+    setDisplayHome([...sortIfPinned(fetchedTTS)]);
   }
 
   const sortIfPinned = (toBeSorted) => {
@@ -92,7 +92,7 @@ const App = () => {
   }
 
   const renderAsCards = () => {
-    return fetchedTTS.map(({
+    return displayHome.map(({
       cite,
       title,
       author_url,
@@ -127,6 +127,7 @@ const App = () => {
     const ttPromises = initTikToks.map(tt => getOembed(tt));
     const allOembeds = await Promise.all(ttPromises);
     setFetchedTTS([...allOembeds]);
+    setDisplayHome([...allOembeds]);
   }
 
   useEffect(() => {
