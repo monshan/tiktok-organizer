@@ -104,6 +104,13 @@ const App = () => {
     })
   }
 
+  const retrieveAuthors = () => {
+    return fetchedTTS.reduce((authors, titkok) => {
+      authors.push(tiktok.author_name);
+      return authors;
+    }, [])
+  }
+
   const loadAll = async () => {
     const ttPromises = initTikToks.map(tt => getOembed(tt));
     const allOembeds = await Promise.all(ttPromises);
@@ -126,6 +133,7 @@ const App = () => {
           status={ dialogOpen }
           addTikTok={ addTikTok }
           closeForm={ closeFormDialog }
+          retrieveAuthors={ retrieveAuthors }
         />
         <Switch>
           <Route exact path="/">

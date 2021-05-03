@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, FormControl, TextField, DialogActions, Button } from "@material-ui/core";
 import PropTypes from 'prop-types';
 
-const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
+const AddTikTokForm = ({ status, addTikTok, closeForm, retrieveAuthors }) => {
   const [tikTokInput, setTikTokInput] = useState('');
 
   const writeDataListOptions = (arg) => {
