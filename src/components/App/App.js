@@ -75,6 +75,8 @@ const App = () => {
       title,
       author_url,
       author_name,
+      sound_title,
+      sound_url,
       html,
       data_video_id,
       thumbnail_url,
@@ -89,6 +91,8 @@ const App = () => {
           title={ title }
           author_name={ author_name }
           author_url={ author_url }
+          sound_title={ sound_title }
+          sound_url={ sound_url }
           html={ html }
           thumbnail_url={ thumbnail_url }
           status_msg={ status_msg }
