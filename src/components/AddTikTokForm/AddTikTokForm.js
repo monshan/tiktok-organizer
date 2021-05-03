@@ -9,7 +9,7 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
   return (
     <Dialog open={ status }>
       <DialogTitle>
-        Add a TikTok to your space
+        Add a TikTok
       </DialogTitle>
       <DialogContent>
         <FormControl
@@ -23,6 +23,7 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
               event => setTikTokInput(event.target.value)
             }
             id="inputTikTok"
+            label="TikTok url"
             autoFocus
           />
         </FormControl>
