@@ -50,6 +50,7 @@ const Independent = ({
           image={ thumbnail_url }
           component="img"
           aria-label={ `Thumbnail of ${ title }` }
+          onClick={ e => toggleDialog() }
         />
         <CardContent>
           <p className="author">@{ author_name }</p>
