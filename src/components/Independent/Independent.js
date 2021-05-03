@@ -82,6 +82,7 @@ const Independent = ({
         </CardActions>
       </Card>
     </Grid>
+
   )
 }
 
