@@ -105,7 +105,7 @@ const App = () => {
   }
 
   const retrieveAuthors = () => {
-    return fetchedTTS.reduce((authors, titkok) => {
+    return fetchedTTS.reduce((authors, tiktok) => {
       authors.push(tiktok.author_name);
       return authors;
     }, [])

@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, FormControl, TextField, DialogActions, Button } from "@material-ui/core";
+import { Autocomplete } from '@material-ui/lab';
 import PropTypes from 'prop-types';
 
 const AddTikTokForm = ({ status, addTikTok, closeForm, retrieveAuthors }) => {
   const [tikTokInput, setTikTokInput] = useState('');
 
-  const writeDataListOptions = (arg) => {
-    return arg.map(item => {
+  const writeDataListOptions = () => {
+    return retrieveAuthors().map(item => {
       return <option value={item}/>
     })
   }
@@ -32,7 +33,7 @@ const AddTikTokForm = ({ status, addTikTok, closeForm, retrieveAuthors }) => {
             autoFocus
           />
           <datalist id="authors">
-            {/* { writeDataListOptions() } */}
+            { writeDataListOptions() }
           </datalist>
         </FormControl>
         <DialogContentText>
