@@ -25,12 +25,31 @@ const Independent = ({
   status_msg,
   isPinned,
   removeTikTok,
-  addPin,
-  removePin
+  togglePin
   }) => {
 
-  const togglePin = () => {
-    isPinned ? removePin(data_video_id) : addPin(data_video_id)
+  const determineErrorRender = () => {
+    if (status_msg) {
+      return (
+        <CardContent>
+          <p>Not able to load this tiktok, please check your path url</p>
+          <p className="error-address">{ cite }</p>
+        </CardContent>
+      )
+    }
+    return (
+      <>
+        <CardMedia 
+          image={ thumbnail_url }
+          component="img"
+          aria-label={ `Thumbnail of ${ title }` }
+        />
+        <CardContent>
+          <p className="author">@{ author_name }</p>
+          <p className="title">{ title }</p>
+        </CardContent>
+      </>
+    )
   }
 
   return (
@@ -44,26 +63,10 @@ const Independent = ({
       <Card
         elevation={6}
         >
-        {status_msg 
-        ? <CardContent>
-            <p>Not able to load this tiktok, please check your path url</p>
-            <p className="error-address">{ cite }</p>
-          </CardContent>
-        : <>
-            <CardMedia 
-              image={ thumbnail_url }
-              component="img"
-              aria-label={ `Thumbnail of ${ title }` }
-            />
-            <CardContent>
-              {author_name && <p className="author">@{ author_name }</p>}
-              {title && <p className="title">{ title }</p>}
-            </CardContent>
-          </>
-        }
+        { determineErrorRender() }
         <CardActions>
           <IconButton
-            onClick={() => togglePin()}
+            onClick={() => togglePin(data_video_id)}
             className="pin-icon"
             aria-label={ `${title} pin button` }
           >
