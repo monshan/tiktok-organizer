@@ -48,12 +48,12 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
 
 export default AddTikTokForm;
 
-AddTikTokForm.propTypes = {
-  status: PropTypes.bool,
-  addTikTok: PropTypes.func.isRequired,
-  closeForm: PropTypes.func.isRequired
-}
+// AddTikTokForm.propTypes = {
+//   status: PropTypes.bool,
+//   addTikTok: PropTypes.func.isRequired,
+//   closeForm: PropTypes.func.isRequired
+// }
 
-AddTikTokForm.defaultProps = {
-  status: false
-}
+// AddTikTokForm.defaultProps = {
+//   status: false
+// }

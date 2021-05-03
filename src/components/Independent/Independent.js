@@ -69,7 +69,7 @@ const Independent = ({
       xs={6}
     >
       <OembedDialog 
-        status={ indDialog }
+        indDialog={ indDialog }
         toggleDialog={ toggleDialog }
       />
       <Card
