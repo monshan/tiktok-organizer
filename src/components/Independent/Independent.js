@@ -10,6 +10,7 @@ import {
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import DeleteIcon from '@material-ui/icons/Delete';
+import OembedDialog from '../OembedDialog/OembedDialog';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -27,6 +28,12 @@ const Independent = ({
   removeTikTok,
   togglePin
   }) => {
+  
+  const [indDialog, setIndDialog] = useState(false);
+
+  const toggleDialog = () => {
+    setIndDialog(!indDialog);
+  }
 
   const determineErrorRender = () => {
     if (status_msg) {
@@ -60,6 +67,10 @@ const Independent = ({
       sm={4}
       xs={6}
     >
+      <OembedDialog 
+        status={ indDialog }
+        toggleDialog={ toggleDialog }
+      />
       <Card
         elevation={6}
         >
@@ -82,7 +93,6 @@ const Independent = ({
         </CardActions>
       </Card>
     </Grid>
-
   )
 }
 
