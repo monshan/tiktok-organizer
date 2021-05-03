@@ -5,7 +5,10 @@ const OembedDialog = ({ indDialog, toggleDialog, content }) => {
   return (
     <Dialog open={ indDialog }>
       <DialogContent>
-        <p>{ content }</p>
+        <div
+          dangerouslySetInnerHTML={{__html: content}}        
+        >
+        </div>
       </DialogContent>
       <DialogActions>
         <Button

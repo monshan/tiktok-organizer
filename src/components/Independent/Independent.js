@@ -71,7 +71,7 @@ const Independent = ({
       <OembedDialog 
         indDialog={ indDialog }
         toggleDialog={ toggleDialog }
-        content={ title }
+        content={ html }
       />
       <Card
         elevation={6}
