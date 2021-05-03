@@ -47,10 +47,9 @@ const Independent = ({
           aria-label={ `Thumbnail of ${ title }` }
         />
         <CardContent>
-          {/* <a href={ author } */}
-          <p className="author">@{ author_name }</p>
+          <a href={ author_url } className="author">@{ author_name }</a>
           <p className="title">{ title }</p>
-          <p>{ sound_title }</p>
+          <a href={ sound_url }>{ sound_title }</a>
         </CardContent>
       </>
     )
