@@ -111,6 +111,13 @@ const App = () => {
     }, [])
   }
 
+  const retrieveSearchOptions = () => {
+    return fetchedTTS.reduce((options, { author_name, sound_title, title }) => {
+      options.push(author_name, sound_title, title);
+      return options;
+    }, [])
+  }
+
   const loadAll = async () => {
     const ttPromises = initTikToks.map(tt => getOembed(tt));
     const allOembeds = await Promise.all(ttPromises);
@@ -129,6 +136,7 @@ const App = () => {
           openForm={ openFormDialog }
           search={ search }
           retrieveAuthors={ retrieveAuthors }
+          retrieveSearchOptions={ retrieveSearchOptions }
         />
         <AddTikTokForm 
           status={ dialogOpen }

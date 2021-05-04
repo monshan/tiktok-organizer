@@ -3,10 +3,10 @@ import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
 import PropTypes from 'prop-types';
 
-const NavBar = ({ search, openForm, retrieveAuthors }) => {
+const NavBar = ({ search, openForm, retrieveAuthors, retrieveSearchOptions }) => {
 
   const writeDataListOptions = () => {
-    return retrieveAuthors().map(item => {
+    return retrieveSearchOptions().map(item => {
       return <option value={item}/>
     })
   }
