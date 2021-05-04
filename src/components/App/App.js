@@ -39,7 +39,8 @@ const App = () => {
       if (tt.status_msg) return final;
       if (
         tt.author_name.toUpperCase().includes(formatQuery) ||
-        tt.title.toUpperCase().includes(formatQuery)
+        tt.title.toUpperCase().includes(formatQuery) ||
+        tt.sound_title.toUpperCase().includes(formatQuery)
         ) {
         final.push(tt);
       }
@@ -104,13 +105,6 @@ const App = () => {
     })
   }
 
-  const retrieveAuthors = () => {
-    return fetchedTTS.reduce((authors, tiktok) => {
-      authors.push(tiktok.author_name);
-      return authors;
-    }, [])
-  }
-
   const retrieveSearchOptions = () => {
     return fetchedTTS.reduce((options, { author_name, sound_title, title }) => {
       options.push(author_name, sound_title, title);
@@ -135,7 +129,6 @@ const App = () => {
         <NavBar 
           openForm={ openFormDialog }
           search={ search }
-          retrieveAuthors={ retrieveAuthors }
           retrieveSearchOptions={ retrieveSearchOptions }
         />
         <AddTikTokForm 
