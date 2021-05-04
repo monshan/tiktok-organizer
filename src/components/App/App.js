@@ -128,12 +128,12 @@ const App = () => {
         <NavBar 
           openForm={ openFormDialog }
           search={ search }
+          retrieveAuthors={ retrieveAuthors }
         />
         <AddTikTokForm 
           status={ dialogOpen }
           addTikTok={ addTikTok }
           closeForm={ closeFormDialog }
-          retrieveAuthors={ retrieveAuthors }
         />
         <Switch>
           <Route exact path="/">

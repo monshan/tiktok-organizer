@@ -3,7 +3,14 @@ import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
 import PropTypes from 'prop-types';
 
-const NavBar = ({ search, openForm }) => {
+const NavBar = ({ search, openForm, retrieveAuthors }) => {
+
+  const writeDataListOptions = () => {
+    return retrieveAuthors().map(item => {
+      return <option value={item}/>
+    })
+  }
+
   const searchOnEnter = event => {
     if (event.keyCode === 13) {
       search(event.target.value)
@@ -29,9 +36,13 @@ const NavBar = ({ search, openForm }) => {
           variant="filled"
           autoFocus={true}
           defaultValue=""
+          inputProps={{list: "authors"}}
           onChange={e => search(e.target.value)}
           // onKeyDown={e => searchOnEnter(e)}
         />
+        <datalist id="authors">
+          { writeDataListOptions() }
+        </datalist>
         <Button
           variant="contained"
           onClick={() => clearSearch()}
