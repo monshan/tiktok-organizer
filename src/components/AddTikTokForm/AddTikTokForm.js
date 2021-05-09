@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, FormControl, TextField, DialogActions, Button } from "@material-ui/core";
 import PropTypes from 'prop-types';
 
-
 const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
   const [tikTokInput, setTikTokInput] = useState('');
+
 
   return (
     <Dialog open={ status }>
@@ -25,6 +25,7 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
             id="inputTikTok"
             autoFocus
           />
+          
         </FormControl>
         <DialogContentText>
           Paste any tiktok in the input above. No worries about formatting, we can handle it for you!

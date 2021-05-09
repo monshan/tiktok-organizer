@@ -17,6 +17,8 @@ import PropTypes from 'prop-types';
 const Independent = ({
   cite,
   title,
+  sound_title,
+  sound_url,
   author_url,
   author_name,
   html,
@@ -45,8 +47,9 @@ const Independent = ({
           aria-label={ `Thumbnail of ${ title }` }
         />
         <CardContent>
-          <p className="author">@{ author_name }</p>
+          <a href={ author_url } className="author">@{ author_name }</a>
           <p className="title">{ title }</p>
+          <a href={ sound_url }>{ sound_title }</a>
         </CardContent>
       </>
     )
