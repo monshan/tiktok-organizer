@@ -9,7 +9,7 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
   return (
     <Dialog open={ status }>
       <DialogTitle>
-        Add a TikTok to your space
+        Add a TikTok
       </DialogTitle>
       <DialogContent>
         <FormControl
@@ -23,6 +23,7 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
               event => setTikTokInput(event.target.value)
             }
             id="inputTikTok"
+            label="TikTok url"
             autoFocus
           />
           
@@ -48,12 +49,12 @@ const AddTikTokForm = ({ status, addTikTok, closeForm }) => {
 
 export default AddTikTokForm;
 
-AddTikTokForm.propTypes = {
-  status: PropTypes.bool,
-  addTikTok: PropTypes.func.isRequired,
-  closeForm: PropTypes.func.isRequired
-}
+// AddTikTokForm.propTypes = {
+//   status: PropTypes.bool,
+//   addTikTok: PropTypes.func.isRequired,
+//   closeForm: PropTypes.func.isRequired
+// }
 
-AddTikTokForm.defaultProps = {
-  status: false
-}
+// AddTikTokForm.defaultProps = {
+//   status: false
+// }
