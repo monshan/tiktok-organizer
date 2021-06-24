@@ -112,14 +112,14 @@ const App = () => {
     }, [])
   }
 
-  const loadAll = async () => {
-    const ttPromises = initTikToks.map(tt => getOembed(tt));
-    const allOembeds = await Promise.all(ttPromises);
-    setFetchedTTS([...allOembeds]);
-    setDisplayHome([...allOembeds]);
-  }
-
   useEffect(() => {
+    const loadAll = async () => {
+      const ttPromises = initTikToks.map(tt => getOembed(tt));
+      const allOembeds = await Promise.all(ttPromises);
+      setFetchedTTS([...allOembeds]);
+      setDisplayHome([...allOembeds]);
+    }
+
     loadAll();
   }, [initTikToks])
 
