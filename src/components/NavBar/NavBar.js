@@ -7,11 +7,8 @@ import {
   Button,
   Switch,
   FormControlLabel } from "@material-ui/core";
-import { useState } from "react";
-import { Brightness7Icon } from '@material-ui/icons';
-import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
-import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
-// import Brightness7Icon from '@material-ui/icons/Brightness7';
+  import { HomeTwoTone, LibraryAddTwoTone } from '@material-ui/icons';
+  import { useState } from "react";
 // import PropTypes from 'prop-types';
 
 const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
@@ -76,7 +73,8 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
           control={
           <Switch 
             checked={themeSwitch}
-            onChange={() => handleThemeSwitch()} 
+            onChange={() => handleThemeSwitch()}
+            disableRipple={true}
             name="checkTheme"
             id="themeSwitch"/>
           }
@@ -89,14 +87,14 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
             window.location = "http://localhost:3000/"
           } }
         >
-          <HomeTwoToneIcon />
+          <HomeTwoTone />
         </IconButton>
         <IconButton
           onClick={ openForm }
           id="openForm"
           aria-label="Open add tiktok form"
         >
-          <LibraryAddTwoToneIcon />
+          <LibraryAddTwoTone />
         </IconButton>
       </Toolbar>
     </AppBar>
