@@ -1,9 +1,22 @@
-import { AppBar, IconButton, Toolbar, Typography, TextField, Button } from "@material-ui/core";
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  Typography,
+  TextField,
+  Button,
+  Switch,
+  FormControlLabel } from "@material-ui/core";
+import { useState } from "react";
+import { Brightness7Icon } from '@material-ui/icons';
 import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
 import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
+// import Brightness7Icon from '@material-ui/icons/Brightness7';
 // import PropTypes from 'prop-types';
 
 const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
+
+  const [themeSwitch, setThemeSwitch] = useState(false);
 
   const writeDataListOptions = () => {
     return retrieveSearchOptions().map(item => {
@@ -20,6 +33,16 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
   const clearSearch = () => {
     document.querySelector('#searchField').value = '';
     search('');
+  }
+
+  const handleThemeSwitch = () => {
+    if (themeSwitch) {
+      setThemeSwitch(false);
+    }
+
+    if (!themeSwitch) {
+      setThemeSwitch(true);
+    }
   }
 
   return (
@@ -49,6 +72,16 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
         >
           Clear
         </Button>
+        <FormControlLabel
+          control={
+          <Switch 
+            checked={themeSwitch}
+            onChange={() => handleThemeSwitch()} 
+            name="checkTheme"
+            id="themeSwitch"/>
+          }
+          label="Light/Dark Mode"
+        />
         <IconButton
           aria-label="Back to home button link"
           onClick={ e => {
