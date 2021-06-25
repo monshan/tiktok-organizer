@@ -6,8 +6,17 @@ import Independent from '../Independent/Independent';
 import { getOembed } from '../../api-calls';
 import { Route, Switch } from "react-router";
 import mock from '../../mock';
-import { Grid } from '@material-ui/core';
+import { Grid, createMuiTheme } from '@material-ui/core';
+import { ThemeProvider } from "@material-ui/styles";
 import { Alert } from '@material-ui/lab';
+
+const theme = createMuiTheme({
+  palette: {
+
+    contrastThreshold: 3,
+    tonalOffset: 0.2
+  },
+});
 
 const App = () => {
   const [initTikToks, setInitTikToks] = useState(mock);
