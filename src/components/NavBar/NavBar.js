@@ -6,9 +6,11 @@ import {
   TextField,
   Button,
   Switch,
-  FormControlLabel } from "@material-ui/core";
-  import { HomeTwoTone, LibraryAddTwoTone } from '@material-ui/icons';
-  import { useState } from "react";
+  FormControlLabel
+} from "@material-ui/core";
+import { HomeTwoTone, LibraryAddTwoTone } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
+import { useState } from "react";
 // import PropTypes from 'prop-types';
 
 const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
@@ -64,7 +66,7 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
           { writeDataListOptions() }
         </datalist>
         <Button
-          variant="contained"
+          variant="outlined"
           onClick={() => clearSearch()}
         >
           Clear
@@ -80,15 +82,13 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
           }
           label="Light/Dark Mode"
         />
-        <IconButton
-          aria-label="Back to home button link"
-          onClick={ e => {
-            e.preventDefault();
-            window.location = "http://localhost:3000/"
-          } }
-        >
-          <HomeTwoTone />
-        </IconButton>
+        <Link to="/">
+          <IconButton
+            aria-label="Back to home button link"
+          >
+            <HomeTwoTone />
+          </IconButton>
+        </Link>
         <IconButton
           onClick={ openForm }
           id="openForm"

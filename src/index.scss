@@ -6,6 +6,10 @@
 './components/NavBar/NavBar.scss',
 './components/OembedDialog/OembedDialog.scss';
 
+:root {
+  font-size: 16px;
+}
+
 body {
   margin: 0;
   font-family: $body-font;
