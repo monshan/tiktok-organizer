@@ -10,12 +10,30 @@ import { Grid, createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from "@material-ui/styles";
 import { Alert } from '@material-ui/lab';
 
-const theme = createMuiTheme({
+const lightMode = createMuiTheme({
   palette: {
+    primary: {
+      main: '#F8F5FA'
+    },
+    secondary: {
+      main: '#1F1E1C'
+    },
+    text: {
+      primary: '#1F1E1C',
+      secondary: '#F8F5FA'
+    }
+  }
+});
 
-    contrastThreshold: 3,
-    tonalOffset: 0.2
-  },
+const darkMode = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#1F1E1C'
+    },
+    secondary: {
+      main: '#F8F5FA'
+    }
+  }
 });
 
 const App = () => {
@@ -133,41 +151,43 @@ const App = () => {
   }, [initTikToks])
 
   return (
-    <div className="App">
-      <main>
-        <NavBar 
-          openForm={ openFormDialog }
-          search={ search }
-          retrieveSearchOptions={ retrieveSearchOptions }
-        />
-        <AddTikTokForm 
-          status={ dialogOpen }
-          addTikTok={ addTikTok }
-          closeForm={ closeFormDialog }
-        />
-        <Switch>
-          <Route exact path="/">
-            <Grid
-              container
-              spacing={2}
-              justify="center"
-              alignItems="center"
-              children={ renderAsCards() }
-              id="gridContainer"
-            />
-          </Route>
-          <Route path="*">
-            <Alert 
-              variant="filled"
-              severity="error"
-              for-cypress="bad-route"
-            >
-              This page doesn't exist! Please navigate back to Home with the Home tab above~
-            </Alert>
-          </Route>
-        </Switch>
-      </main>
-    </div>
+    <ThemeProvider theme={lightMode}>
+      <div className="App">
+        <main>
+          <NavBar 
+            openForm={ openFormDialog }
+            search={ search }
+            retrieveSearchOptions={ retrieveSearchOptions }
+          />
+          <AddTikTokForm 
+            status={ dialogOpen }
+            addTikTok={ addTikTok }
+            closeForm={ closeFormDialog }
+          />
+          <Switch>
+            <Route exact path="/">
+              <Grid
+                container
+                spacing={2}
+                justify="center"
+                alignItems="center"
+                children={ renderAsCards() }
+                id="gridContainer"
+              />
+            </Route>
+            <Route path="*">
+              <Alert 
+                variant="filled"
+                severity="error"
+                for-cypress="bad-route"
+              >
+                This page doesn't exist! Please navigate back to Home with the Home tab above~
+              </Alert>
+            </Route>
+          </Switch>
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
 
