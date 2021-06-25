@@ -2,18 +2,22 @@
 './partials/extends',
 './partials/mixins',
 './components/App/App.scss',
-'./components/Independent/Independent.scss';
+'./components/Independent/Independent.scss',
+'./components/NavBar/NavBar.scss',
+'./components/OembedDialog/OembedDialog.scss';
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: $body-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font;
 }

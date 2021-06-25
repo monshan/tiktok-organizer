@@ -11,11 +11,11 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
     })
   }
 
-  // const searchOnEnter = event => {
-  //   if (event.keyCode === 13) {
-  //     search(event.target.value)
-  //   }
-  // }
+  const searchOnEnter = event => {
+    if (event.keyCode === 13) {
+      search(event.target.value)
+    }
+  }
 
   const clearSearch = () => {
     document.querySelector('#searchField').value = '';
@@ -38,7 +38,7 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
           defaultValue=""
           inputProps={{list: "authors"}}
           onChange={e => search(e.target.value)}
-          // onKeyDown={e => searchOnEnter(e)}
+          onKeyDown={e => searchOnEnter(e)}
         />
         <datalist id="authors">
           { writeDataListOptions() }

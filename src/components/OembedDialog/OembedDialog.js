@@ -10,7 +10,7 @@ const OembedDialog = ({ indDialog, toggleDialog, content }) => {
           dangerouslySetInnerHTML={{__html: content}}        
         >
         </div> */}
-        { parse(content) }
+        {/* { parse(content) } */}
       </DialogContent>
       <DialogActions>
         <Button
