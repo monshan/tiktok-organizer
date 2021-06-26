@@ -6,12 +6,13 @@ import Independent from '../Independent/Independent';
 import { getOembed } from '../../api-calls';
 import { Route, Switch } from "react-router";
 import mock from '../../mock';
-import { Grid, createMuiTheme } from '@material-ui/core';
+import { Grid, createMuiTheme, darken } from '@material-ui/core';
 import { ThemeProvider } from "@material-ui/styles";
 import { Alert } from '@material-ui/lab';
 
 const lightMode = createMuiTheme({
   palette: {
+    type: 'light',
     primary: {
       main: '#F8F5FA'
     },
@@ -21,18 +22,25 @@ const lightMode = createMuiTheme({
     text: {
       primary: '#1F1E1C',
       secondary: '#F8F5FA'
+    },
+    contrastThreshold: 3,
+    tonalOffset: 0.2
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920
     }
-  }
+  },
+  spacing: 8
 });
 
 const darkMode = createMuiTheme({
   palette: {
-    primary: {
-      main: '#1F1E1C'
-    },
-    secondary: {
-      main: '#F8F5FA'
-    }
+    type: 'dark'
   }
 });
 
@@ -149,10 +157,12 @@ const App = () => {
     }
 
     loadAll();
-  }, [initTikToks])
+  }, [initTikToks, isDarkMode])
 
-  return (
-    <ThemeProvider theme={lightMode}>
+  const determineMode = () => {
+    if (isDarkMode) {
+      return (
+        <ThemeProvider theme={darkMode}>
       <div className="App">
         <main>
           <NavBar 
@@ -191,7 +201,55 @@ const App = () => {
         </main>
       </div>
     </ThemeProvider>
-  );
+      )
+    }
+
+    if (!isDarkMode) {
+      return (
+        <ThemeProvider theme={lightMode}>
+          <div className="App">
+            <main>
+              <NavBar 
+                openForm={ openFormDialog }
+                search={ search }
+                retrieveSearchOptions={ retrieveSearchOptions }
+                isDarkMode={ isDarkMode }
+                setIsDarkMode={ setIsDarkMode }
+              />
+              <AddTikTokForm 
+                status={ dialogOpen }
+                addTikTok={ addTikTok }
+                closeForm={ closeFormDialog }
+              />
+              <Switch>
+                <Route exact path="/">
+                  <Grid
+                    container
+                    spacing={2}
+                    justify="center"
+                    alignItems="center"
+                    children={ renderAsCards() }
+                    id="gridContainer"
+                  />
+                </Route>
+                <Route path="*">
+                  <Alert 
+                    variant="filled"
+                    severity="error"
+                    for-cypress="bad-route"
+                  >
+                    This page doesn't exist! Please navigate back to Home with the Home tab above~
+                  </Alert>
+                </Route>
+              </Switch>
+            </main>
+          </div>
+        </ThemeProvider>
+      );
+    }
+  }
+
+  return determineMode();
 }
 
 export default App;
