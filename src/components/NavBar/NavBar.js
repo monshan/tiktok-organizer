@@ -71,7 +71,19 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
         >
           Clear
         </Button>
-        <FormControlLabel
+        <div className="theme-switch" onClick={() => 
+          {handleThemeSwitch()
+          console.log(themeSwitch)}
+          }>
+          <input
+            type="checkbox"
+            className="theme-switch__input"
+            checked={themeSwitch}
+          />
+          <span className="theme-switch__track" />
+          <span className="theme-switch__thumb" style={{checked: themeSwitch}} />
+        </div>
+        {/* <FormControlLabel
           control={
           <Switch 
             checked={themeSwitch}
@@ -81,7 +93,7 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
             id="themeSwitch"/>
           }
           label="Light/Dark Mode"
-        />
+        /> */}
         <Link to="/">
           <IconButton
             aria-label="Back to home button link"
