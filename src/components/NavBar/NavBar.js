@@ -5,8 +5,6 @@ import {
   Typography,
   TextField,
   Button,
-  Switch,
-  FormControlLabel
 } from "@material-ui/core";
 import { HomeTwoTone, LibraryAddTwoTone } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
@@ -71,9 +69,7 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
         >
           Clear
         </Button>
-        <div className="theme-switch" onClick={() => 
-          {handleThemeSwitch()
-          console.log(themeSwitch)}
+        <div className="theme-switch" onClick={() => handleThemeSwitch()
           }>
           <input
             type="checkbox"
@@ -81,19 +77,7 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
             checked={themeSwitch}
           />
           <span className="theme-switch__track" />
-          <span className="theme-switch__thumb" style={{checked: themeSwitch}} />
         </div>
-        {/* <FormControlLabel
-          control={
-          <Switch 
-            checked={themeSwitch}
-            onChange={() => handleThemeSwitch()}
-            disableRipple={true}
-            name="checkTheme"
-            id="themeSwitch"/>
-          }
-          label="Light/Dark Mode"
-        /> */}
         <Link to="/">
           <IconButton
             aria-label="Back to home button link"
