@@ -8,7 +8,6 @@ import {
 } from "@material-ui/core";
 import { HomeTwoTone, LibraryAddTwoTone } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import { useState } from "react";
 // import PropTypes from 'prop-types';
 
 const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDarkMode }) => {
