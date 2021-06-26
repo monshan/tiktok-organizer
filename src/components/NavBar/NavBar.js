@@ -1,9 +1,16 @@
-import { AppBar, IconButton, Toolbar, Typography, TextField, Button } from "@material-ui/core";
-import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
-import LibraryAddTwoToneIcon from '@material-ui/icons/LibraryAddTwoTone';
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  Typography,
+  TextField,
+  Button,
+} from "@material-ui/core";
+import { HomeTwoTone, LibraryAddTwoTone } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
+const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDarkMode }) => {
 
   const writeDataListOptions = () => {
     return retrieveSearchOptions().map(item => {
@@ -11,15 +18,25 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
     })
   }
 
-  // const searchOnEnter = event => {
-  //   if (event.keyCode === 13) {
-  //     search(event.target.value)
-  //   }
-  // }
+  const searchOnEnter = event => {
+    if (event.keyCode === 13) {
+      search(event.target.value)
+    }
+  }
 
   const clearSearch = () => {
     document.querySelector('#searchField').value = '';
     search('');
+  }
+
+  const toggleModes = () => {
+    if (isDarkMode) {
+      setIsDarkMode(false);
+    }
+
+    if (!isDarkMode) {
+      setIsDarkMode(true);
+    }
   }
 
   return (
@@ -38,33 +55,40 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
           defaultValue=""
           inputProps={{list: "authors"}}
           onChange={e => search(e.target.value)}
-          // onKeyDown={e => searchOnEnter(e)}
+          onKeyDown={e => searchOnEnter(e)}
         />
         <datalist id="authors">
           { writeDataListOptions() }
         </datalist>
         <Button
-          variant="contained"
+          variant="outlined"
           onClick={() => clearSearch()}
         >
           Clear
         </Button>
-        <IconButton
-          aria-label="Back to home button link"
-          onClick={ e => {
-            e.preventDefault();
-            window.location = "http://localhost:3000/"
-          } }
-        >
-          <HomeTwoToneIcon />
-        </IconButton>
+        <Link to="/">
+          <IconButton
+            aria-label="Back to home button link"
+          >
+            <HomeTwoTone />
+          </IconButton>
+        </Link>
         <IconButton
           onClick={ openForm }
           id="openForm"
           aria-label="Open add tiktok form"
         >
-          <LibraryAddTwoToneIcon />
+          <LibraryAddTwoTone />
         </IconButton>
+        <div className="theme-switch" onClick={() => toggleModes()
+          }>
+          <input
+            type="checkbox"
+            className="theme-switch__input"
+            checked={isDarkMode}
+          />
+          <span className="theme-switch__track" />
+        </div>
       </Toolbar>
     </AppBar>
   )

@@ -1,0 +1,40 @@
+.theme-switch {
+  height: 2rem;
+  width: 4rem;
+  position: relative;
+
+  &__input {
+    display: none;
+  }
+
+  &__track {
+    background-color: inherit;
+    position: absolute;
+    border-radius: 2rem;
+    border: 1px solid darkgray;
+    padding: 2px;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s ease-in-out;
+
+    &:before {
+      content: "☀️";
+      font-size: 1.5rem;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border-radius: 2rem;
+      border: 1px solid darkgray;
+      height: 1.9rem;
+      width: 1.9rem;
+      transition: 0.5s ease-in-out;
+    }
+  }
+
+  &__input:checked + &__track:before {
+    content: "🌙";
+    transform: translateX(100%);
+  }
+}
