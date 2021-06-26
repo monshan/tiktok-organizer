@@ -41,6 +41,7 @@ const App = () => {
   const [fetchedTTS, setFetchedTTS] = useState([]);
   const [displayHome, setDisplayHome] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const openFormDialog = () => {
     setDialogOpen(true);
@@ -158,6 +159,8 @@ const App = () => {
             openForm={ openFormDialog }
             search={ search }
             retrieveSearchOptions={ retrieveSearchOptions }
+            isDarkMode={ isDarkMode }
+            setIsDarkMode={ setIsDarkMode }
           />
           <AddTikTokForm 
             status={ dialogOpen }

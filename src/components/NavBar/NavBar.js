@@ -11,9 +11,7 @@ import { Link } from 'react-router-dom';
 import { useState } from "react";
 // import PropTypes from 'prop-types';
 
-const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
-
-  const [themeSwitch, setThemeSwitch] = useState(false);
+const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDarkMode }) => {
 
   const writeDataListOptions = () => {
     return retrieveSearchOptions().map(item => {
@@ -32,13 +30,13 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
     search('');
   }
 
-  const handleThemeSwitch = () => {
-    if (themeSwitch) {
-      setThemeSwitch(false);
+  const toggleModes = () => {
+    if (isDarkMode) {
+      setIsDarkMode(false);
     }
 
-    if (!themeSwitch) {
-      setThemeSwitch(true);
+    if (!isDarkMode) {
+      setIsDarkMode(true);
     }
   }
 
@@ -69,12 +67,12 @@ const NavBar = ({ search, openForm, retrieveSearchOptions }) => {
         >
           Clear
         </Button>
-        <div className="theme-switch" onClick={() => handleThemeSwitch()
+        <div className="theme-switch" onClick={() => toggleModes()
           }>
           <input
             type="checkbox"
             className="theme-switch__input"
-            checked={themeSwitch}
+            checked={isDarkMode}
           />
           <span className="theme-switch__track" />
         </div>
