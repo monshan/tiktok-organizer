@@ -67,15 +67,6 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
         >
           Clear
         </Button>
-        <div className="theme-switch" onClick={() => toggleModes()
-          }>
-          <input
-            type="checkbox"
-            className="theme-switch__input"
-            checked={isDarkMode}
-          />
-          <span className="theme-switch__track" />
-        </div>
         <Link to="/">
           <IconButton
             aria-label="Back to home button link"
@@ -90,6 +81,15 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
         >
           <LibraryAddTwoTone />
         </IconButton>
+        <div className="theme-switch" onClick={() => toggleModes()
+          }>
+          <input
+            type="checkbox"
+            className="theme-switch__input"
+            checked={isDarkMode}
+          />
+          <span className="theme-switch__track" />
+        </div>
       </Toolbar>
     </AppBar>
   )

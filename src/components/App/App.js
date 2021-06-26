@@ -6,7 +6,7 @@ import Independent from '../Independent/Independent';
 import { getOembed } from '../../api-calls';
 import { Route, Switch } from "react-router";
 import mock from '../../mock';
-import { Grid, createMuiTheme, darken } from '@material-ui/core';
+import { Grid, createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from "@material-ui/styles";
 import { Alert } from '@material-ui/lab';
 
@@ -40,7 +40,17 @@ const lightMode = createMuiTheme({
 
 const darkMode = createMuiTheme({
   palette: {
-    type: 'dark'
+    type: 'dark',
+    primary: {
+      main: "#1F1E1C"
+    },
+    secondary: {
+      main: "#8F8F8E"
+    },
+    text: {
+      primary: '#8F8F8E',
+      secondary: '#1F1E1C'
+    }
   }
 });
 
@@ -185,6 +195,7 @@ const App = () => {
                 justify="center"
                 alignItems="center"
                 children={ renderAsCards() }
+                isDarkMode={ isDarkMode }
                 id="gridContainer"
               />
             </Route>
@@ -229,6 +240,7 @@ const App = () => {
                     justify="center"
                     alignItems="center"
                     children={ renderAsCards() }
+                    isDarkMode={ isDarkMode }
                     id="gridContainer"
                   />
                 </Route>

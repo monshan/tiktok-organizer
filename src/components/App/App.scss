@@ -1,0 +1,16 @@
+a {
+ text-decoration: none;
+}
+
+@mixin checkDarkMode($isDark) {
+  @if $isDark {
+  } @else {
+    background-color: #F8F5FA;
+  }
+}
+
+.MuiGrid-root {
+  background-color: #1F1E1C;
+  padding: 0 1rem;
+  @include checkDarkMode(isDarkMode);
+}
