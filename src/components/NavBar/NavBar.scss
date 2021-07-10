@@ -1,8 +1,8 @@
 nav {
   position: sticky;
-  position: -webkit-sticky;
+  grid-area: nav;
   top: 0;
-  background-color: whitesmoke;
+  background-color: white;
   display: grid;
   gap: 0.5rem;
   grid-template-columns: 4rem 4rem 4rem 4rem auto 8rem;

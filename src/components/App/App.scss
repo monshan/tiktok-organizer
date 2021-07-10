@@ -1,9 +1,12 @@
 .App {
   min-height: 100vh;
+  min-width: 100vw;
+  display: grid;
+  grid-template-areas: "nav" "main";
 }
 
 main {
-  min-height: 100vh;
+  grid-area: main;
 }
 
 a {
@@ -19,7 +22,8 @@ a {
 
 .MuiGrid-root {
   background-color: #1F1E1C;
-  min-height: 100vh;
+  max-height: 100%;
+  max-width: 100%;
   padding: 0 1rem;
   @include checkDarkMode(isDarkMode);
 }
