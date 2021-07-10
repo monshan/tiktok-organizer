@@ -1,6 +1,62 @@
+nav {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(4, 4rem) auto 8rem;
+  max-width: 100%;
+  height: auto;
+  padding: 0 1rem;
+  z-index: 1;
+  overflow: hidden;
+}
+
+nav > * {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__active {
+  background-color: #1F1E1C;
+  fill: white;
+  margin-top: 1rem;
+  border-radius: 1rem 1rem 0 0;
+  overflow: hidden;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &__input {
+    height: 2.5rem;
+    width: inherit;
+    border-radius: 0.5rem;
+    border: 1px solid darkgray;
+    padding: 0 7rem 0 1rem;
+  }
+
+  &__clear-btn {
+    position: absolute;
+    width: 5rem;
+    height: 2rem;
+    right: 1rem;
+    background-color: transparent;
+    border: 1px solid darkgray;
+    border-radius: 1rem;
+    padding: 5px
+  }
+
+}
+
 .theme-switch {
-  height: 2rem;
-  width: 4rem;
+  height: 2.5rem;
+  width: 5rem;
   position: relative;
 
   &__input {
@@ -19,7 +75,7 @@
 
     &:before {
       content: "☀️";
-      font-size: 1.5rem;
+      font-size: 2rem;
       position: absolute;
       display: flex;
       align-items: center;
@@ -27,8 +83,8 @@
       background-color: transparent;
       border-radius: 2rem;
       border: 1px solid darkgray;
-      height: 1.9rem;
-      width: 1.9rem;
+      height: 2.3rem;
+      width: 2.3rem;
       transition: 0.5s ease-in-out;
     }
   }
@@ -37,4 +93,8 @@
     content: "🌙";
     transform: translateX(100%);
   }
+}
+
+.authors {
+  display: none;
 }

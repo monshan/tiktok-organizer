@@ -5,7 +5,6 @@ import {
   CardMedia,
   CardActions,
   IconButton,
-  // Typography
 } from '@material-ui/core';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
@@ -13,7 +12,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import OembedDialog from '../OembedDialog/OembedDialog';
 import { useState } from 'react';
 // import PropTypes from 'prop-types';
-
 
 const Independent = ({
   cite,
@@ -89,7 +87,7 @@ const Independent = ({
             { isPinned ? <BookmarkIcon /> : <BookmarkBorderIcon />}
           </IconButton>
           <IconButton
-            onClick={() => removeTikTok(data_video_id)}
+            onClick={() => removeTikTok(cite)}
             className="trash-icon"
             aria-label={ `${title} remove button` }
           >

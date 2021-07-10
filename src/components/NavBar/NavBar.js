@@ -1,13 +1,8 @@
 import {
-  AppBar,
   IconButton,
-  Toolbar,
-  Typography,
-  TextField,
-  Button,
 } from "@material-ui/core";
-import { HomeTwoTone, LibraryAddTwoTone } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
+import { HomeTwoTone, LibraryAddTwoTone, Bookmarks } from '@material-ui/icons';
+import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDarkMode }) => {
@@ -40,39 +35,17 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
   }
 
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography
-          variant="h1"
-        >
-          TTTracker
-        </Typography>
-        <TextField
-          id="searchField"
-          placeholder="Search..."
-          variant="filled"
-          autoFocus={true}
-          defaultValue=""
-          inputProps={{list: "authors"}}
-          onChange={e => search(e.target.value)}
-          onKeyDown={e => searchOnEnter(e)}
-        />
-        <datalist id="authors">
-          { writeDataListOptions() }
-        </datalist>
-        <Button
-          variant="outlined"
-          onClick={() => clearSearch()}
-        >
-          Clear
-        </Button>
-        <Link to="/">
-          <IconButton
-            aria-label="Back to home button link"
-          >
-            <HomeTwoTone />
-          </IconButton>
-        </Link>
+    <nav>
+      <div>
+        <h1>TTT</h1>
+      </div>
+      <NavLink exact to="/" activeClassName="nav__active">
+        <HomeTwoTone style={{fill: "darkgrey"}} />
+      </NavLink>
+      <NavLink to="/pins" activeClassName="nav__active">
+        <Bookmarks style={{fill: "darkgrey"}} />
+      </NavLink>
+      <div>
         <IconButton
           onClick={ openForm }
           id="openForm"
@@ -80,17 +53,40 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
         >
           <LibraryAddTwoTone />
         </IconButton>
-        <div className="theme-switch" onClick={() => toggleModes()
-          }>
-          <input
-            type="checkbox"
-            className="theme-switch__input"
-            checked={isDarkMode}
-          />
-          <span className="theme-switch__track" />
-        </div>
-      </Toolbar>
-    </AppBar>
+      </div>
+      <div className="search">
+        <input type="text"
+          defaultValue=""
+          id="searchField"
+          className="search__input"
+          list="authors"
+          placeholder="Search..."
+          onChange={e => search(e.target.value)}
+          onKeyDown={e => searchOnEnter(e)}
+        />
+        <button
+          className="search__clear-btn"
+          onClick={ e => clearSearch() }
+        >
+          Clear
+        </button>
+      </div>
+      <datalist id="authors" className="authors">
+        { writeDataListOptions() }
+      </datalist>
+      <div>
+
+      <div className="theme-switch" onClick={() => toggleModes()
+        }>
+        <input
+          type="checkbox"
+          className="theme-switch__input"
+          checked={isDarkMode}
+        />
+        <span className="theme-switch__track" />
+      </div>
+      </div>
+    </nav>
   )
 }
 

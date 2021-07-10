@@ -1,6 +1,15 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 5rem auto;
+}
+
 a {
  text-decoration: none;
 }
+
+
 
 @mixin checkDarkMode($isDark) {
   @if $isDark {
@@ -11,6 +20,8 @@ a {
 
 .MuiGrid-root {
   background-color: #1F1E1C;
+  min-height: 100%;
+  max-width: 100%;
   padding: 0 1rem;
   @include checkDarkMode(isDarkMode);
 }

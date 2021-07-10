@@ -75,8 +75,8 @@ const App = () => {
   }
 
   const removeTikTok = (url) => {
-    const updated = initTikToks.filter(tiktok => tiktok !== url);
-    setInitTikToks([...updated]);
+    const updatedInit = initTikToks.filter(tiktok => tiktok !== url);
+    setInitTikToks([...updatedInit]);
   }
 
   const search = (query) => {
@@ -116,8 +116,15 @@ const App = () => {
     });
   }
 
-  const renderAsCards = () => {
-    return displayHome.map(({
+  const filterPins = () => {
+    return fetchedTTS.filter(tt => {
+      if (tt.isPinned) return true;
+      return false;
+    })
+  }
+
+  const renderAsCards = (desired) => {
+    return desired.map(({
       cite,
       title,
       author_url,
@@ -174,7 +181,6 @@ const App = () => {
       return (
         <ThemeProvider theme={darkMode}>
       <div className="App">
-        <main>
           <NavBar 
             openForm={ openFormDialog }
             search={ search }
@@ -182,6 +188,7 @@ const App = () => {
             isDarkMode={ isDarkMode }
             setIsDarkMode={ setIsDarkMode }
           />
+        <main>
           <AddTikTokForm 
             status={ dialogOpen }
             addTikTok={ addTikTok }
@@ -194,7 +201,18 @@ const App = () => {
                 spacing={2}
                 justify="center"
                 alignItems="center"
-                children={ renderAsCards() }
+                children={ renderAsCards(displayHome) }
+                isDarkMode={ isDarkMode }
+                id="gridContainer"
+              />
+            </Route>
+            <Route path="/pins">
+            <Grid
+                container
+                spacing={2}
+                justify="center"
+                alignItems="center"
+                children={ renderAsCards(filterPins()) }
                 isDarkMode={ isDarkMode }
                 id="gridContainer"
               />
@@ -219,7 +237,6 @@ const App = () => {
       return (
         <ThemeProvider theme={lightMode}>
           <div className="App">
-            <main>
               <NavBar 
                 openForm={ openFormDialog }
                 search={ search }
@@ -227,6 +244,7 @@ const App = () => {
                 isDarkMode={ isDarkMode }
                 setIsDarkMode={ setIsDarkMode }
               />
+            <main>
               <AddTikTokForm 
                 status={ dialogOpen }
                 addTikTok={ addTikTok }
@@ -239,7 +257,18 @@ const App = () => {
                     spacing={2}
                     justify="center"
                     alignItems="center"
-                    children={ renderAsCards() }
+                    children={ renderAsCards(displayHome) }
+                    isDarkMode={ isDarkMode }
+                    id="gridContainer"
+                  />
+                </Route>
+                <Route path="/pins">
+                  <Grid
+                    container
+                    spacing={2}
+                    justify="center"
+                    alignItems="center"
+                    children={ renderAsCards(filterPins()) }
                     isDarkMode={ isDarkMode }
                     id="gridContainer"
                   />
