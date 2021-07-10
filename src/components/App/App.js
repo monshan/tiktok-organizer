@@ -75,8 +75,8 @@ const App = () => {
   }
 
   const removeTikTok = (url) => {
-    const updated = initTikToks.filter(tiktok => tiktok !== url);
-    setInitTikToks([...updated]);
+    const updatedInit = initTikToks.filter(tiktok => tiktok !== url);
+    setInitTikToks([...updatedInit]);
   }
 
   const search = (query) => {
