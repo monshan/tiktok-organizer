@@ -47,25 +47,6 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
         >
           TTT
         </Typography>
-        <TextField
-          id="searchField"
-          placeholder="Search..."
-          variant="filled"
-          autoFocus={true}
-          defaultValue=""
-          inputProps={{list: "authors"}}
-          onChange={e => search(e.target.value)}
-          onKeyDown={e => searchOnEnter(e)}
-        />
-        <datalist id="authors">
-          { writeDataListOptions() }
-        </datalist>
-        <Button
-          variant="outlined"
-          onClick={() => clearSearch()}
-        >
-          Clear
-        </Button>
         <Link to="/">
           <IconButton
             aria-label="Back to home button link"
@@ -87,6 +68,25 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
         >
           <LibraryAddTwoTone />
         </IconButton>
+        <TextField
+          id="searchField"
+          placeholder="Search..."
+          variant="filled"
+          autoFocus={true}
+          defaultValue=""
+          inputProps={{list: "authors"}}
+          onChange={e => search(e.target.value)}
+          onKeyDown={e => searchOnEnter(e)}
+        />
+        <datalist id="authors">
+          { writeDataListOptions() }
+        </datalist>
+        <Button
+          variant="outlined"
+          onClick={() => clearSearch()}
+        >
+          Clear
+        </Button>
         <div className="theme-switch" onClick={() => toggleModes()
           }>
           <input
