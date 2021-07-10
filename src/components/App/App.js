@@ -119,6 +119,7 @@ const App = () => {
   const filterPins = () => {
     return fetchedTTS.filter(tt => {
       if (tt.isPinned) return true;
+      return false;
     })
   }
 
