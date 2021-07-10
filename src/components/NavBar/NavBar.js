@@ -36,7 +36,9 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
 
   return (
     <nav>
-      <h1>TTT</h1>
+      <div>
+        <h1>TTT</h1>
+      </div>
       <Link to="/">
         <IconButton
           aria-label="Back to home button link"
@@ -77,9 +79,11 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
           Clear
         </button>
       </div>
-      <datalist id="authors">
+      <datalist id="authors" className="authors">
         { writeDataListOptions() }
       </datalist>
+      <div>
+
       <div className="theme-switch" onClick={() => toggleModes()
         }>
         <input
@@ -88,6 +92,7 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
           checked={isDarkMode}
         />
         <span className="theme-switch__track" />
+      </div>
       </div>
     </nav>
   )

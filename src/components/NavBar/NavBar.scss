@@ -1,18 +1,26 @@
 nav {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background-color: whitesmoke;
   display: grid;
+  gap: 0.5rem;
   grid-template-columns: 4rem 4rem 4rem 4rem auto 8rem;
-  width: 100%;
-  height: 4rem;
-  padding: 0.5rem 1rem;
+  max-width: 100vw;
+  height: auto;
+  padding: 0 1rem;
+  z-index: 1;
 }
 
 nav > * {
-  align-self: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search {
-  height: 100%;
-  width: 100%;
   display: flex;
   align-items: center;
   position: relative;
@@ -38,7 +46,6 @@ nav > * {
 .theme-switch {
   height: 2rem;
   width: 4rem;
-  // right: 2rem;
   position: relative;
 
   &__input {
@@ -75,4 +82,8 @@ nav > * {
     content: "🌙";
     transform: translateX(100%);
   }
+}
+
+.authors {
+  display: none;
 }

@@ -174,7 +174,6 @@ const App = () => {
       return (
         <ThemeProvider theme={darkMode}>
       <div className="App">
-        <main>
           <NavBar 
             openForm={ openFormDialog }
             search={ search }
@@ -182,6 +181,7 @@ const App = () => {
             isDarkMode={ isDarkMode }
             setIsDarkMode={ setIsDarkMode }
           />
+        <main>
           <AddTikTokForm 
             status={ dialogOpen }
             addTikTok={ addTikTok }
@@ -219,7 +219,6 @@ const App = () => {
       return (
         <ThemeProvider theme={lightMode}>
           <div className="App">
-            <main>
               <NavBar 
                 openForm={ openFormDialog }
                 search={ search }
@@ -227,6 +226,7 @@ const App = () => {
                 isDarkMode={ isDarkMode }
                 setIsDarkMode={ setIsDarkMode }
               />
+            <main>
               <AddTikTokForm 
                 status={ dialogOpen }
                 addTikTok={ addTikTok }
