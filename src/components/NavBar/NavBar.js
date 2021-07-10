@@ -6,7 +6,7 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
-import { HomeTwoTone, LibraryAddTwoTone } from '@material-ui/icons';
+import { HomeTwoTone, LibraryAddTwoTone, Bookmark } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
@@ -43,9 +43,9 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
     <AppBar position="static">
       <Toolbar>
         <Typography
-          variant="h1"
+          variant="h2"
         >
-          TTTracker
+          TTT
         </Typography>
         <TextField
           id="searchField"
@@ -71,6 +71,13 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
             aria-label="Back to home button link"
           >
             <HomeTwoTone />
+          </IconButton>
+        </Link>
+        <Link to="/pins">
+        <IconButton
+            aria-label="My pins button link"
+          >
+            <Bookmark />
           </IconButton>
         </Link>
         <IconButton
