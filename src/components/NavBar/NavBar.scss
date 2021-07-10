@@ -1,6 +1,17 @@
+.MuiToolbar-root {
+  display: flex;
+
+  position: relative;
+}
+
+.search-field {
+  width: max-content;
+}
+
 .theme-switch {
   height: 2rem;
   width: 4rem;
+  // right: 2rem;
   position: relative;
 
   &__input {

@@ -68,8 +68,17 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
         >
           <LibraryAddTwoTone />
         </IconButton>
-        <TextField
+        <input type="text"
+          defaultValue=""
           id="searchField"
+          list="authors"
+          placeholder="Search..."
+          onChange={e => search(e.target.value)}
+          onKeyDown={e => searchOnEnter(e)}
+        />
+        {/* <TextField
+          id="searchField"
+          className="search-field"
           placeholder="Search..."
           variant="filled"
           autoFocus={true}
@@ -77,7 +86,7 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
           inputProps={{list: "authors"}}
           onChange={e => search(e.target.value)}
           onKeyDown={e => searchOnEnter(e)}
-        />
+        /> */}
         <datalist id="authors">
           { writeDataListOptions() }
         </datalist>

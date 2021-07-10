@@ -1,3 +1,11 @@
+.App {
+  min-height: 100vh;
+}
+
+main {
+  min-height: 100vh;
+}
+
 a {
  text-decoration: none;
 }
@@ -11,6 +19,7 @@ a {
 
 .MuiGrid-root {
   background-color: #1F1E1C;
+  min-height: 100vh;
   padding: 0 1rem;
   @include checkDarkMode(isDarkMode);
 }
