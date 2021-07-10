@@ -1,11 +1,38 @@
-.MuiToolbar-root {
-  display: flex;
-
-  position: relative;
+nav {
+  display: grid;
+  grid-template-columns: 4rem 4rem 4rem 4rem auto 8rem;
+  width: 100%;
+  height: 4rem;
+  padding: 0.5rem 1rem;
 }
 
-.search-field {
-  width: max-content;
+nav > * {
+  align-self: center;
+}
+
+.search {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &__input {
+    height: 50%;
+    width: inherit;
+    padding: 0 5rem 0 1rem;
+  }
+
+  &__clear-btn {
+    position: absolute;
+    width: 4rem;
+    right: 1rem;
+    background-color: transparent;
+    border: 1px solid darkgray;
+    border-radius: 1rem;
+    padding: 5px
+  }
+
 }
 
 .theme-switch {

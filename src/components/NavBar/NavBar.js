@@ -1,10 +1,5 @@
 import {
-  AppBar,
   IconButton,
-  Toolbar,
-  Typography,
-  TextField,
-  Button,
 } from "@material-ui/core";
 import { HomeTwoTone, LibraryAddTwoTone, Bookmark } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
@@ -40,27 +35,23 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
   }
 
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography
-          variant="h2"
-        >
-          TTT
-        </Typography>
-        <Link to="/">
-          <IconButton
-            aria-label="Back to home button link"
-          >
-            <HomeTwoTone />
-          </IconButton>
-        </Link>
-        <Link to="/pins">
+    <nav>
+      <h1>TTT</h1>
+      <Link to="/">
         <IconButton
-            aria-label="My pins button link"
-          >
-            <Bookmark />
-          </IconButton>
-        </Link>
+          aria-label="Back to home button link"
+        >
+          <HomeTwoTone />
+        </IconButton>
+      </Link>
+      <Link to="/pins">
+        <IconButton
+          aria-label="My pins button link"
+        >
+          <Bookmark />
+        </IconButton>
+      </Link>
+      <div>
         <IconButton
           onClick={ openForm }
           id="openForm"
@@ -68,45 +59,37 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
         >
           <LibraryAddTwoTone />
         </IconButton>
+      </div>
+      <div className="search">
         <input type="text"
           defaultValue=""
           id="searchField"
+          className="search__input"
           list="authors"
           placeholder="Search..."
           onChange={e => search(e.target.value)}
           onKeyDown={e => searchOnEnter(e)}
         />
-        {/* <TextField
-          id="searchField"
-          className="search-field"
-          placeholder="Search..."
-          variant="filled"
-          autoFocus={true}
-          defaultValue=""
-          inputProps={{list: "authors"}}
-          onChange={e => search(e.target.value)}
-          onKeyDown={e => searchOnEnter(e)}
-        /> */}
-        <datalist id="authors">
-          { writeDataListOptions() }
-        </datalist>
-        <Button
-          variant="outlined"
-          onClick={() => clearSearch()}
+        <button
+          className="search__clear-btn"
+          onClick={ e => clearSearch() }
         >
           Clear
-        </Button>
-        <div className="theme-switch" onClick={() => toggleModes()
-          }>
-          <input
-            type="checkbox"
-            className="theme-switch__input"
-            checked={isDarkMode}
-          />
-          <span className="theme-switch__track" />
-        </div>
-      </Toolbar>
-    </AppBar>
+        </button>
+      </div>
+      <datalist id="authors">
+        { writeDataListOptions() }
+      </datalist>
+      <div className="theme-switch" onClick={() => toggleModes()
+        }>
+        <input
+          type="checkbox"
+          className="theme-switch__input"
+          checked={isDarkMode}
+        />
+        <span className="theme-switch__track" />
+      </div>
+    </nav>
   )
 }
 
