@@ -1,8 +1,8 @@
 import {
   IconButton,
 } from "@material-ui/core";
-import { HomeTwoTone, LibraryAddTwoTone, Bookmark } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
+import { HomeTwoTone, LibraryAddTwoTone, Bookmarks } from '@material-ui/icons';
+import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDarkMode }) => {
@@ -39,20 +39,12 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
       <div>
         <h1>TTT</h1>
       </div>
-      <Link to="/">
-        <IconButton
-          aria-label="Back to home button link"
-        >
-          <HomeTwoTone />
-        </IconButton>
-      </Link>
-      <Link to="/pins">
-        <IconButton
-          aria-label="My pins button link"
-        >
-          <Bookmark />
-        </IconButton>
-      </Link>
+      <NavLink exact to="/" activeClassName="nav__active">
+        <HomeTwoTone style={{fill: "darkgrey"}} />
+      </NavLink>
+      <NavLink to="/pins" activeClassName="nav__active">
+        <Bookmarks style={{fill: "darkgrey"}} />
+      </NavLink>
       <div>
         <IconButton
           onClick={ openForm }
