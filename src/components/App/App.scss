@@ -9,8 +9,6 @@ a {
  text-decoration: none;
 }
 
-
-
 @mixin checkDarkMode($isDark) {
   @if $isDark {
   } @else {
