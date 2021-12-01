@@ -5,6 +5,7 @@ import {
   CardMedia,
   CardActions,
   IconButton,
+  Link
 } from '@material-ui/core';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
@@ -53,9 +54,19 @@ const Independent = ({
           onClick={ e => toggleDialog() }
         />
         <CardContent>
-          <a href={ author_url } className="author">@{ author_name }</a>
+          <Link 
+            href={ author_url }
+            underline="hover"
+            color="secondary"
+            >@{ author_name }
+          </Link>
           <p className="title">{ title }</p>
-          <a href={ sound_url }>{ sound_title }</a>
+          <Link
+            href={ sound_url }
+            underline="hover"
+            color="secondary"
+            >{ sound_title }
+          </Link>
         </CardContent>
       </>
     )
