@@ -48,7 +48,7 @@ const darkMode = createMuiTheme({
       main: "#00E0D8"
     },
     text: {
-      primary: '#8F8F8E',
+      primary: '#F8F5FA',
       secondary: '#1F1E1C'
     }
   }
