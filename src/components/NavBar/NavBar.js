@@ -51,7 +51,7 @@ const NavBar = ({ search, openForm, retrieveSearchOptions, isDarkMode, setIsDark
           id="openForm"
           aria-label="Open add tiktok form"
         >
-          <LibraryAddTwoTone />
+          <LibraryAddTwoTone style={{fill: "darkgrey"}}/>
         </IconButton>
       </div>
       <div className="search">
