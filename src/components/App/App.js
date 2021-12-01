@@ -17,7 +17,7 @@ const lightMode = createMuiTheme({
       main: '#F8F5FA'
     },
     secondary: {
-      main: '#1F1E1C'
+      main: '#DF0147'
     },
     text: {
       primary: '#1F1E1C',
@@ -45,7 +45,7 @@ const darkMode = createMuiTheme({
       main: "#1F1E1C"
     },
     secondary: {
-      main: "#8F8F8E"
+      main: "#00E0D8"
     },
     text: {
       primary: '#8F8F8E',
